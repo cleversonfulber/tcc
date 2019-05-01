@@ -1,0 +1,196 @@
+/*
+ * Base structure
+ */
+html, body {
+	height: 100%;
+}
+
+body {
+	padding-top: 56px;
+	padding-left: 0;
+}
+
+/*
+ * main layout
+ */
+.layout-main {
+    display: flex;
+    min-height: calc(100vh - 52px);
+    overflow: hidden;
+}
+
+/*
+ * Content
+ */
+.layout-content {
+    width: 100%;
+    padding-top: 0px;
+}
+
+.container {
+	width: 100%;
+	padding-top: 20px;
+}
+
+/*
+ * Sidebar
+ */
+.sidebar {
+    width: 0px;
+    height: 100%;
+    border-top: 1px solid #eee;
+    border-right: 1px solid #eee;
+    background-color: #000000;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: width .2s;
+
+}
+
+.sidebar .nav {
+	margin-bottom: 0px;
+}
+
+.sidebar .nav-item {
+	width: 100%;
+}
+
+.sidebar .nav-item {
+	margin-left: 0;
+}
+
+.sidebar .nav-link {
+	border-radius: 0;
+}
+
+.sidebar ul li:hover a, .menu ul li.active a{
+    color: #ffffff;
+    background-color: #0046d2;
+}
+
+.sidebar ul{
+    list-style: none;
+}
+
+.sidebar ul li a{
+    display: block;
+    color:#777777;
+    /*padding: 10px 15px;*/
+    white-space: nowrap;
+}
+
+.sidebar.sidebar-close {
+    width: 20px;
+}
+
+.sidebar.sidebar-open {
+    width: 200px;
+}
+
+/*
+ * nav-pills home
+ */
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+	color: #fff;
+	background-color: #1e94d2;
+}
+
+/*
+ * toogle do navbar do menu
+ */
+
+.navbar-toggle {
+    display: inline-block;
+    margin-left: 0px;
+}
+
+
+
+/*
+ * Footer
+ */
+.layout-footer {
+	/*position: fixed;*/
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	height: 50px;
+	border-top: 2px solid #eeeeee;
+}
+
+.footer-copy {
+	font-size: 92%;
+	display: block;
+	color: #777777;
+	text-align: center;
+}
+
+ /*header*/
+
+.navbar-header img{
+    width: 25px;
+}
+
+/*lista*/
+
+a:not([href]):not([tabindex]) {
+    color: #eeeeee;
+}
+
+.texto, .texto:hover {
+    color: #333333;
+    text-decoration: none;
+}
+
+#linha{
+    display: inline-flex;
+}
+
+.padd{
+    margin: 0 20px 0 20px;
+}
+
+
+/* da qui pra frente*/
+
+/*.ut-layout-page {*/
+/*    position: relative;*/
+/*    overflow-x: hidden;*/
+/*    width: 100%;*/
+/*    min-height: 100%;*/
+/*    padding-bottom: 60px;*/
+/*}*/
+
+/*.ut-layout-footer {*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    height: 20px;*/
+/*    margin: 0;*/
+/*    border-top: 1px solid #eeeeee;*/
+/*    transition: all 0.5s;*/
+/*}*/
+/*.ut-layout-content {*/
+/*    position: relative;*/
+/*    margin: 0;*/
+/*    margin-top: 50px;*/
+/*    transition: all 0.5s;*/
+/*}*/
+/*@media (min-width: 992px) {*/
+/*    .ut-layout-content.is-toggled {*/
+/*        margin-left: 0;*/
+/*    }*/
+/*}*/
+/*@media (min-width: 992px) {*/
+/*    .ut-layout-content {*/
+/*        margin-left: 210px;*/
+/*        margin-right: 100px;*/
+/*    }*/
+/*}*/
+/*.page-header {*/
+/*    padding-bottom: 8px;*/
+/*    margin: 150px 0 18px;*/
+/*    border-bottom: 1px solid #eeeeee;*/
+/*}*/
