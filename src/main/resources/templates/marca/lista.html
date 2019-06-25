@@ -15,87 +15,82 @@
 					<span>Lista de Marcas</span>
 				</li>
 			</ul>
-			<button type="button" class="btn btn-primary btnNovoMarca">
-				<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-				<span>Nova Marca</span>
-			</button>
-		</div>
-	</nav>
-
-	<!-- Modal ---------------------------------->
-	<div class="modal fade" id="modalMarca" tabindex="-1" role="dialog" aria-labelledby="modalMarcaLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="modalMarcaLabel">Cadastrar Nova Marca</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="container" id="cadastro">
-
-						<div th:replace="fragments/alert"></div>
-
-						<form  method="POST"
-							   th:object="${marca}"
-							   th:action="@{/marcas/}"
-							id="formNewEdit" data-target="#modalNweEdit" >
-							<input th:type="hidden" name="id" th:field="*{id}">
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="nomeMarca">Marca</label>
-									<input type="text" class="form-control" id="nomeMarca"
-										   placeholder="Nome Marca" autofocus="autofocus" th:field="*{nome}"/>
-									<!--//th:classappend="${#fields.hasErrors('nomeMarca')} ? 'invalid'" />-->
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
-								<button type="submit" class="btn btn-primary" >Salvar</button>
-							</div>
-						</form>
-					</div>
+			<div class="row">
+				<div class="col-xs-4">
+					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-form">
+						<i class="fa fa-plus-square"></i> Novo Registro	</a>
 				</div>
 			</div>
 		</div>
-	</div>
+	</nav>
 
-	<div class="container" id="listagem">
 
-		<div th:replace="fragments/alert"></div>
+	<div class="container-fluid">
+		<div class="alert  alert-success"
+			 th:if="${!#strings.isEmpty(mensagem)}">
+			<i class="fa fa-check-circle"></i> <span th:text="${mensagem}">Mensagem de sucesso!</span>
+		</div>
 
 		<div class="table-responsive">
-			<table class="table table-striped table-hover table-sm">
-				<thead>
+			<table id="minhaTable" [rows]="5"
+				   [rowsPerPageOptions]="[5,10,20]"
+
+				   class="table table-striped  table-bordered  table-hover  table-condensed">
+				<thead class="ut-table-header-solid">
 				<tr>
-					<th>#</th>
+					<th>Código</th>
 					<th>Nome</th>
-					<th>Ação</th>
+					<th>Ações</th>
 				</tr>
 				</thead>
 				<tbody>
-				<tr th:each="marca : ${marcas}">
-					<td th:text="${marca.id}"></td>
-					<td th:text="${marca.nome}"></td>
-					<td colspan="2" id="linha">
-						<a class="btn btn-primary btn-sm btnEditMarca"
-						   th:href="@{/marcas/{id}(id=${marca.id})}">
-							<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
-						</a>
-						<form method="POST"
-							  th:onsubmit="'return confirm(\'Confirma a remoção do registro ' + ${marca.nome} + '?\');'"
-							  th:action="@{/marcas/{id}(id=${marca.id})}">
-							<button type="button" class="btn btn-danger btn-sm padd">
-								<span class="oi oi-circle-x" title="Exclusão desabilitada" aria-hidden="true"></span>
-							</button>
-						</form>
+				<tr th:id="'row_' + ${marca.id}" th:each="marca : ${marcas}">
+					<td style="width:150px" class="text-center" th:text="${marca.id}">0</td>
+					<td><a class="texto" th:href="'javascript:editar(\'/marcas/ajax/' + ${marca.id} + '\' );'"
+						   th:text="${marca.nome}">...</a></td>
+
+					<td style="width:200px" class="text-center">
+						<a th:href="'javascript:editar(\'/marcas/ajax/' + ${marca.id} + '\' );'"
+						   class="btn btn-primary btn-xs botao"> <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
+						</a> &nbsp;
+						<a th:href="'javascript:excluir('+ ${marca.id} +',\'/marcas\');'"
+						   class="btn btn-danger btn-xs botao"><span class="oi oi-circle-x " title="Exclusão desabilitada" aria-hidden="true"></span></span></i></a>
 					</td>
 				</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
+
+
+	<div class="modal modal-form" th:id="modal-form">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3>Marca</h3>
+					<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">x</button>
+				</div> <!-- modal-header -->
+				<div class="modal-body">
+					<form id="frm" name="frm"
+						  method="POST" class="form-vertical"
+						  th:action="@{/marcas/ajax}">
+						<input type="hidden" id="id" name="id"/>
+						<div class="form-group">
+							<label for="nome">Nome</label>
+							<input type="text" class="form-control" id="nome" name="nome" />
+						</div>
+					</form>
+				</div> <!-- modal-body -->
+				<div class="modal-footer">
+					<button type="button" class="btn" data-dismiss="modal"
+							aria-hid	den="true">Cancelar</button>
+					<button type="button" class="btn btn-success"
+							onclick="salvar('/marcas')">Salvar</button>
+				</div>
+			</div> <!-- modal-content -->
+		</div> <!-- modal-dialog -->
+	</div> <!-- modal-form -->
 </section>
 
 </body>

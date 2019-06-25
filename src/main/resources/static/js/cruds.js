@@ -1,83 +1,3 @@
-// // Categoria
-//
-// $('.btnNovoCat').on('click', function (event) {
-//     event.preventDefault();
-//
-//     $('.modal-title').text('Novo') ;
-//     $('#nomeCat').val('');
-//
-//     $('#modalCat').modal();
-//
-// });
-//
-// $('.btnEditCat').on('click', function (event) {
-//     event.preventDefault();
-//     var href = $(this).attr('href');
-//
-//     $('.modal-title').text('Editar');
-//     $.get(href, function (categoria, status) {
-//         $('#formNewEdit #id').val(categoria.id);
-//         $('#formNewEdit #nomeCat').val(categoria.nome);
-//     });
-//
-//     $('#modalCat').modal();
-//
-// });
-//
-// // Marca
-//
-// $('.btnNovoMarca').on('click', function (event) {
-//     event.preventDefault();
-//
-//     $('.modal-title').text('Novo') ;
-//     $('#nomeMarca').val('');
-//
-//     $('#modalMarca').modal();
-//
-// });
-//
-// $('.btnEditMarca').on('click', function (event) {
-//     event.preventDefault();
-//     var href = $(this).attr('href');
-//
-//     $('.modal-title').text('Editar');
-//     $.get(href, function (marca, status) {
-//         $('#formNewEdit #id').val(marca.id);
-//         $('#formNewEdit #nomeMarca').val(marca.nome);
-//     });
-//
-//     $('#modalMarca').modal();
-//
-// });
-//
-//
-// // Tipo
-//
-// $('.btnNovoTipo').on('click', function (event) {
-//     event.preventDefault();
-//
-//     $('.modal-title').text('Novo') ;
-//     $('#nomeTipo').val('');
-//
-//     $('#modalTipo').modal();
-//
-// });
-//
-// $('.btnEditTipo').on('click', function (event) {
-//     event.preventDefault();
-//     var href = $(this).attr('href');
-//
-//     $('.modal-title').text('Editar');
-//     $.get(href, function (tipo, status) {
-//         $('#formNewEdit #id').val(tipo.id);
-//         $('#formNewEdit #nomeTipo').val(tipo.nome);
-//     });
-//
-//     $('#modalTipo').modal();
-//
-// });
-
-// salvar---------------------------------------------------------------------------------------------------------------
 
 function salvar(urlDestino){
     $.ajax({
@@ -100,6 +20,12 @@ function editar(url){
         $('#nome').val(entity.nome);
     });
     $('#modal-form').modal();
+}
+
+function limpar(){
+    $('#id').val('');
+    $('#nome').val('');
+    $('#modal-form').hide();
 }
 
 function excluir(id, url){

@@ -3,6 +3,8 @@ package br.edu.utfpr.tcc.controller;
 import br.edu.utfpr.tcc.model.Tipo;
 import br.edu.utfpr.tcc.repository.TipoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -28,39 +30,40 @@ public class TipoController {
 		return modelAndView;
 	}
 
-	@GetMapping({"","/"})
+	@GetMapping({"novo"})
 	public ModelAndView novo(Tipo tipo) {
 		ModelAndView modelAndView = new ModelAndView("tipo/lista");
-		modelAndView.addObject("tipos", tipoRepository.findAll());
-		modelAndView.addObject(tipo);
-
+		if (tipo != null) {
+			modelAndView.addObject(tipo);
+		}else {
+			modelAndView.addObject(new Tipo());
+		}
 		return modelAndView;
 	}
 
-	@PostMapping("/")
-	public ModelAndView salvar(@Valid Tipo tipo, BindingResult result,
-							   RedirectAttributes attributes) {
-		if (result.hasErrors()) {
-			return novo(tipo);
+	@PostMapping("ajax")
+	public ResponseEntity<?> salvar(@Valid Tipo tipo, BindingResult result,
+									RedirectAttributes attributes) {
+		if ( result.hasErrors() ) {
+			return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
 		}
 		tipoRepository.save(tipo);
-		attributes.addFlashAttribute("mensagem","Tipo salva com sucesso!");
-		return new ModelAndView("redirect:/tipos/");
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("ajax/{id}")
 	@ResponseBody
-	public Tipo editar(@PathVariable Long id, RedirectAttributes attributes) {
-		attributes.addFlashAttribute("mensagem","Tipo salva com sucesso!");
+	public Tipo editar(@PathVariable Long id) {
 		return tipoRepository.findOne(id);
 	}
 
-	@DeleteMapping("/{id}")
-	public String remover(@PathVariable Long id, RedirectAttributes attributes) {
-		tipoRepository.delete(id);
-		attributes.addFlashAttribute("mensagem", "Tipo removida com sucesso!");
-		return "redirect:/tipos";
+	@DeleteMapping("{id}")
+	public ResponseEntity<?> excluir(@PathVariable Long id){
+		try {
+			tipoRepository.delete(id);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
-
-
 }

@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>tcc</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Trabalho de Conclusão de Curso</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -107,7 +107,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>

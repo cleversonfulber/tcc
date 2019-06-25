@@ -65,26 +65,26 @@ public class CategoriaController {
 		return categoriaRepository.findOne(id);
 	}
 
-	@GetMapping("page")
-	public ModelAndView listar(@RequestParam("page") Optional<Integer> page,
-							 @RequestParam("size") Optional<Integer> size) {
-		int currentPage = page.orElse(1);
-		int pageSize = size.orElse(5);
-
-		Page<Categoria> list = categoriaRepository.findAll(
-				new PageRequest(currentPage -1, pageSize) );
-
-		ModelAndView modelAndView = new ModelAndView("categoria/lista");
-		modelAndView.addObject("lista", list);
-
-		if( list.getTotalPages() > 0) {
-			List<Integer> pageNumbers = IntStream
-					.rangeClosed(1, list.getTotalPages())
-					.boxed().collect(Collectors.toList());
-			modelAndView.addObject("pageNumbers", pageNumbers);
-		}
-		return modelAndView;
-	}
+//	@GetMapping("page")
+//	public ModelAndView listar(@RequestParam("page") Optional<Integer> page,
+//							 @RequestParam("size") Optional<Integer> size) {
+//		int currentPage = page.orElse(1);
+//		int pageSize = size.orElse(5);
+//
+//		Page<Categoria> list = categoriaRepository.findAll(
+//				new PageRequest(currentPage -1, pageSize) );
+//
+//		ModelAndView modelAndView = new ModelAndView("categoria/lista");
+//		modelAndView.addObject("lista", list);
+//
+//		if( list.getTotalPages() > 0) {
+//			List<Integer> pageNumbers = IntStream
+//					.rangeClosed(1, list.getTotalPages())
+//					.boxed().collect(Collectors.toList());
+//			modelAndView.addObject("pageNumbers", pageNumbers);
+//		}
+//		return modelAndView;
+//	}
 
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
