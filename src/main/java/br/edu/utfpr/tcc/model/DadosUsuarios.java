@@ -2,8 +2,6 @@ package br.edu.utfpr.tcc.model;
 
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -25,11 +23,11 @@ public class DadosUsuarios {
 	@Column(name = "telefone",  length = 60)
 	private String telefone;
 
-	@NotBlank(message = "O celular  é obrigatório.")
+	@NotNull(message = "O celular  é obrigatório.")
 	@Column(name = "celular", nullable = false,  length = 60)
 	private String celular;
 
-	@NotBlank(message = "O CPF é obrigatório.")
+	@NotNull(message = "O CPF é obrigatório.")
 	@Column(name = "cpf", nullable = false, length = 60)
 	private String cpf;
 

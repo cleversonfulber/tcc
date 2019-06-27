@@ -59,12 +59,6 @@ public class CategoriaController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	@GetMapping("ajax/{id}")
-	@ResponseBody
-	public Categoria editar(@PathVariable Long id) {
-		return categoriaRepository.findOne(id);
-	}
-
 //	@GetMapping("page")
 //	public ModelAndView listar(@RequestParam("page") Optional<Integer> page,
 //							 @RequestParam("size") Optional<Integer> size) {
@@ -86,10 +80,16 @@ public class CategoriaController {
 //		return modelAndView;
 //	}
 
+	@GetMapping("ajax/{id}")
+	@ResponseBody
+	public Categoria editar(@PathVariable Long id) {
+		return categoriaRepository.findById(id).orElse(null);
+	}
+
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
 		try {
-			categoriaRepository.delete(id);
+			categoriaRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

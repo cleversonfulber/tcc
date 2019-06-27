@@ -2,7 +2,6 @@ package br.edu.utfpr.tcc.model;
 
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -27,18 +26,15 @@ public class Anuncio {
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	private Usuario usuario;
 
-	@NotNull
-	@NotBlank(message = "A quantidade deve ser informado.")
+	@NotNull(message = "A quantidade deve ser informada.")
 	@Column(name = "qtde", nullable = false)
 	private Integer qtde;
 
-	@NotNull
-	@NotBlank(message = "A Data de inicio do anuncio deve ser informado.")
+	@NotNull(message = "A Data de inicio do anuncio deve ser informado.")
 	@Column(name= "data_inicio", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataInicio;
 
-	@NotNull
-	@NotBlank(message = "A Data do fim do anuncio deve ser informado.")
+	@NotNull(message = "A Data do fim do anuncio deve ser informado.")
 	@Column(name= "data_fim", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataFim;
 }

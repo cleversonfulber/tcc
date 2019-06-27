@@ -54,13 +54,13 @@ public class EstadoController {
 	@GetMapping("ajax/{id}")
 	@ResponseBody
 	public Estado editar(@PathVariable Long id) {
-		return estadoRepository.findOne(id);
+		return estadoRepository.findById(id).orElse(null);
 	}
 
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
 		try {
-			estadoRepository.delete(id);
+			estadoRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

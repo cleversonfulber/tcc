@@ -54,13 +54,13 @@ public class TipoController {
 	@GetMapping("ajax/{id}")
 	@ResponseBody
 	public Tipo editar(@PathVariable Long id) {
-		return tipoRepository.findOne(id);
+		return tipoRepository.findById(id).orElse(null);
 	}
 
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
 		try {
-			tipoRepository.delete(id);
+			tipoRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

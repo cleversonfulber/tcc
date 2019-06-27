@@ -54,13 +54,13 @@ public class PromocaoController {
 	@GetMapping("ajax/{id}")
 	@ResponseBody
 	public Promocao editar(@PathVariable Long id) {
-		return promocaoRepository.findOne(id);
+		return promocaoRepository.findById(id).orElse(null);
 	}
 
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
 		try {
-			promocaoRepository.delete(id);
+			promocaoRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

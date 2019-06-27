@@ -1,9 +1,6 @@
 package br.edu.utfpr.tcc.model;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -18,7 +15,7 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "O nome é obrigatório.")
+	@NotNull(message = "O nome é obrigatório.")
 	@Size(max = 60, message = "O nome deve conter no máximo 60 caracteres.")
 	@Column(name = "nome", nullable = false, unique = true, length = 60)
 	private String nome;
@@ -30,7 +27,7 @@ public class Produto {
 	@Column(name = "imagem", length = 100, nullable = true)
 	private String imagem;
 
-	@NotBlank(message = "Informe uma descrição.")
+	@NotNull(message = "Informe uma descrição.")
 	@Size(max = 254, message = "A descrição deve conter no máximo 254 caracteres.")
 	@Column(name = "descricao", nullable = false, length = 254)
 	private String descricao;

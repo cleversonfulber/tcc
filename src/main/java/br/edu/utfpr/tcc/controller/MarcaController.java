@@ -54,13 +54,13 @@ public class MarcaController {
 	@GetMapping("ajax/{id}")
 	@ResponseBody
 	public Marca editar(@PathVariable Long id) {
-		return marcaRepository.findOne(id);
+		return marcaRepository.findById(id).orElse(null);
 	}
 
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
 		try {
-			marcaRepository.delete(id);
+			marcaRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

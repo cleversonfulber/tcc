@@ -22,6 +22,11 @@ function editar(url){
     $('#modal-form').modal();
 }
 
+
+function novo() {
+    $('#modal-form').modal();
+}
+
 function limpar(){
     $('#id').val('');
     $('#nome').val('');

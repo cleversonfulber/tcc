@@ -17,7 +17,7 @@
 			</ul>
 			<div class="row">
 				<div class="col-xs-4">
-					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-form">
+					<a class="btn btn-primary" onclick="novo()" data-toggle="modal" data-target="#modal-form">
 						<i class="fa fa-plus-square"></i> Novo Registro	</a>
 				</div>
 			</div>
@@ -46,11 +46,11 @@
 				<tbody>
 				<tr th:id="'row_' + ${estado.id}" th:each="estado : ${estados}">
 					<td style="width:150px" class="text-center" th:text="${estado.id}">0</td>
-					<td><a class="texto" th:href="'javascript:editar(\'/estados/ajax/' + ${estado.id} + '\' );'"
+					<td><a class="texto" th:href="'javascript:editarEstado(\'/estados/ajax/' + ${estado.id} + '\' );'"
 						   th:text="${estado.nome}">...</a></td>
 
 					<td style="width:200px" class="text-center">
-						<a th:href="'javascript:editar(\'/estados/ajax/' + ${estado.id} + '\' );'"
+						<a th:href="'javascript:editarEstado(\'/estados/ajax/' + ${estado.id} + '\' );'"
 						   class="btn btn-primary btn-xs botao"> <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 						</a> &nbsp;
 						<a th:href="'javascript:excluir('+ ${estado.id} +',\'/estados\');'"
@@ -69,7 +69,7 @@
 				<div class="modal-header">
 					<h3>Estado</h3>
 					<button type="button" class="close" data-dismiss="modal"
-							onclick="limpar()" aria-hidden="true">x</button>
+							onclick="limparEstado()" aria-hidden="true">x</button>
 				</div> <!-- modal-header -->
 				<div class="modal-body">
 					<form id="frm" name="frm"
@@ -80,17 +80,22 @@
 							<label for="nome">Nome</label>
 							<input type="text" class="form-control" id="nome" name="nome" />
 						</div>
+						<div class="form-group">
+							<label for="sigla">Sigla</label>
+							<input type="text" class="form-control" id="sigla" name="sigla" />
+						</div>
 					</form>
 				</div> <!-- modal-body -->
 				<div class="modal-footer">
 					<button type="button" class="btn" data-dismiss="modal"
-							onclick="limpar()" aria-hidden="true">Cancelar</button>
+							onclick="limparEstado()" aria-hidden="true">Cancelar</button>
 					<button type="button" class="btn btn-success"
 							onclick="salvar('/estados')">Salvar</button>
 				</div>
 			</div> <!-- modal-content -->
 		</div> <!-- modal-dialog -->
 	</div> <!-- modal-form -->
+	<script type="text/javascript" th:src="@{/js/crud-estado.js}"></script>
 </section>
 
 </body>

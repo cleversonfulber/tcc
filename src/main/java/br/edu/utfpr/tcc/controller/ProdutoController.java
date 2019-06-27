@@ -2,7 +2,6 @@ package br.edu.utfpr.tcc.controller;
 
 import br.edu.utfpr.tcc.model.Produto;
 import br.edu.utfpr.tcc.repository.*;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -75,11 +75,11 @@ public class ProdutoController {
 //		return new ResponseEntity<>(HttpStatus.OK);
 //	}
 //
-//	@GetMapping("ajax/{id}")
-//	@ResponseBody
-//	public Produto editar(@PathVariable Long id) {
-//		return produtoRepository.findOne(id);
-//	}
+	@GetMapping("ajax/{id}")
+	@ResponseBody
+	public Produto editar(@PathVariable Long id) {
+		return produtoRepository.findById(id).orElse(new Produto());
+	}
 //
 //	@DeleteMapping("{id}")
 //	public ResponseEntity<?> excluir(@PathVariable Long id){

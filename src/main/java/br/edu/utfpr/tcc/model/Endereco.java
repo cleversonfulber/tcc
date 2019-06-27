@@ -2,7 +2,6 @@ package br.edu.utfpr.tcc.model;
 
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,19 +21,19 @@ public class Endereco {
 	@JoinColumn(name = "cidade_id", referencedColumnName = "id")
 	private Cidade cidade;
 
-	@NotBlank(message = "O CEP é obrigatório.")
+	@NotNull(message = "O CEP é obrigatório.")
 	@Column(name = "cep", nullable = false, length = 60)
 	private String cep;
 
 	@Column(name = "numero", nullable = false)
 	private Integer numero;
 
-	@NotBlank(message = "O bairro do endereço é obrigatório.")
+	@NotNull(message = "O bairro do endereço é obrigatório.")
 	@Size(max = 60, message = "O bairro do endereço deve conter no máximo 60 caracteres.")
 	@Column(name = "bairro", nullable = false,  length = 60)
 	private String bairro;
 
-	@NotBlank(message = "A rua do endereço é obrigatório.")
+	@NotNull(message = "A rua do endereço é obrigatório.")
 	@Size(max = 60, message = "A rua do endereço deve conter no máximo 60 caracteres.")
 	@Column(name = "rua", nullable = false, length = 60)
 	private String rua;

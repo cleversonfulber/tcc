@@ -60,13 +60,13 @@ public class CidadeController {
 	@GetMapping("ajax/{id}")
 	@ResponseBody
 	public Cidade editar(@PathVariable Long id) {
-		return cidadeRepository.findOne(id);
+		return cidadeRepository.findById(id).orElse(null);
 	}
 
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
 		try {
-			cidadeRepository.delete(id);
+			cidadeRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

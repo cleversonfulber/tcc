@@ -2,7 +2,6 @@ package br.edu.utfpr.tcc.model;
 
 
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,7 +16,7 @@ public class Cidade {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "O nome do cidade é obrigatório.")
+	@NotNull(message = "O nome do cidade é obrigatório.")
 	@Size(max = 60, message = "O nome do cidade deve conter no máximo 60 caracteres.")
 	@Column(name = "nome", nullable = false, length = 60)
 	private String nome;
