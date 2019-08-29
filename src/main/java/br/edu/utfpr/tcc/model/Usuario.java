@@ -1,39 +1,94 @@
 package br.edu.utfpr.tcc.model;
 
-
-import lombok.Data;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of = "id")
+@ToString
+public class Usuario implements Serializable, UserDetails {
+	private static final long serialVersionUID = 1L;
+	private static final BCryptPasswordEncoder bCrypt = 
+			new BCryptPasswordEncoder(10);
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@ManyToOne
-	@JoinColumn(name = "dados_usuarios_id", referencedColumnName = "id")
-	private DadosUsuarios dados_usuarios;
-
-	@Column(name = "tipo", nullable = false)
-	private Integer tipo;
-
-	@NotNull(message = "O Nome é obrigatório.")
-	@Column(name = "nome", nullable = false, length = 60)
+	
+	@Column(length = 100, nullable = false)
 	private String nome;
 
-	@NotNull(message = "O email é obrigatório.")
-	@Size(max = 60, message = "O email deve conter no máximo 60 caracteres.")
-	@Column(name = "email", nullable = false, unique = true, length = 60)
-	private String email;
+	@Column(length = 100, nullable = false)
+	private String username;
+	
+	@Column(length = 512, nullable = false)
+	private String password;
 
-	@NotNull(message = "A senha é obrigatório.")
-	@Size(max = 25,min = 6, message = "A senha deve ter entre 6 e 25 caracteres.")
-	@Column(name = "senha", nullable = false, length = 25)
-	private String senha;
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Permissao> permissoes;
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> list = new ArrayList<>();
+		list.addAll(permissoes);
+		return list;
+	}
+
+//	@Column(name = "telefone",  length = 60)
+//	private String telefone;
+
+//	@NotNull(message = "O celular  é obrigatório.")
+//	@Column(name = "celular", nullable = false,  length = 60)
+//	private String celular;
+//
+//	@NotNull(message = "O CPF é obrigatório.")
+//	@Column(name = "cpf_cnpj", nullable = false, length = 60)
+//	private String cpfCnpj;
+//
+//	@NotNull
+//	@Column(name= "data_nascimento", nullable = false, columnDefinition = "DATE")
+//	private LocalDate dataNascimento;
+//
+//	@Column(name = "sexo", nullable = false, length = 60)
+//	private String sexo;
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+	
+	public String getEncodedPassword(String password) {
+		return bCrypt.encode(password);
+	}
+	
 }

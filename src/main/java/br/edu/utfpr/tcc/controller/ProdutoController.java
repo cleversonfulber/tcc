@@ -2,6 +2,8 @@ package br.edu.utfpr.tcc.controller;
 
 import br.edu.utfpr.tcc.model.Produto;
 import br.edu.utfpr.tcc.repository.*;
+import br.edu.utfpr.tcc.services.S3Services;
+import com.amazonaws.services.s3.AmazonS3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,9 @@ import java.io.FileOutputStream;
 @Controller
 @RequestMapping("/produtos")
 public class ProdutoController {
+
+	@Autowired
+	S3Services s3Services;
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
@@ -133,6 +138,11 @@ public class ProdutoController {
 				BufferedOutputStream stream = new BufferedOutputStream(fileOut);
 				stream.write(anexo.getBytes());
 				stream.close();
+
+				String url = s3Services.uploadFile(nomeArquivo, caminhoAnexo + nomeArquivo);
+				Produto p = this.produtoRepository.getOne(id);
+				p.setImagem(url);
+				this.produtoRepository.save(p);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

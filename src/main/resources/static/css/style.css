@@ -160,7 +160,10 @@ a:not([href]):not([tabindex]) {
     padding: 3px 6px;
 }
 
+.usuario{
+    color: #eeeeee;
 
+}
 
 /* da qui pra frente*/
 
