@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns:layout="http://www.w3.org/1999/xhtml"
+<html lang="pt" xmlns:layoutinicial="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      layout:decorate="~{layout}">
+      layoutinicial:decorate="~{layoutinicial}">
 
 
 
@@ -12,11 +12,11 @@
 </head>
 <body>
 
-    <section class="layout-content" layout:fragment="corpo">
+    <section class="layout-content" layoutinicial:fragment="corpo">
 
 
         <div id="carrossel">
-            <img id="prev" src="assets/left.png">
+            <img id="prev" th:src="@{/image/carrossel/prev.png}" />
             <div id="itens">
                 <ul>
                     <li><div class="item"><img th:src="@{/image/carrossel/1.png}" /></div></li>
@@ -25,11 +25,12 @@
                     <li><div class="item"><img th:src="@{/image/carrossel/4.png}" /></div></li>
                 </ul>
             </div>
-            <img id="next" src="assets/rigth.png">
+            <img id="next" th:src="@{/image/carrossel/next.png}" />
         </div>
 
     </section>
 
     <script src="/js/carrossel.js"></script>
+    <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
 </body>
 </html>
