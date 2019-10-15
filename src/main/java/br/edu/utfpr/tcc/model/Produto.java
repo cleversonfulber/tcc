@@ -16,8 +16,8 @@ public class Produto {
 	private Long id;
 
 	@NotNull(message = "O nome é obrigatório.")
-	@Size(max = 60, message = "O nome deve conter no máximo 60 caracteres.")
-	@Column(name = "nome", nullable = false, unique = true, length = 60)
+	@Size(max = 45, message = "O nome deve conter no máximo 60 caracteres.")
+	@Column(name = "nome", nullable = false, unique = true, length = 45)
 	private String nome;
 
 	@NotNull(message = "O preço deve ser informado.")

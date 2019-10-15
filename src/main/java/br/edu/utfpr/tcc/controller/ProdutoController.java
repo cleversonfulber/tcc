@@ -70,31 +70,21 @@ public class ProdutoController {
 		return modelAndView;
 	}
 
-//	@PostMapping("ajax")
-//	public ResponseEntity<?> salvar(@Valid Produto produto, BindingResult result,
-//									RedirectAttributes attributes) {
-//		if ( result.hasErrors() ) {
-//			return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
-//		}
-//		produtoRepository.save(produto);
-//		return new ResponseEntity<>(HttpStatus.OK);
-//	}
-//
+	@DeleteMapping("{id}")
+	public ResponseEntity<?> excluir(@PathVariable Long id){
+		try {
+			produtoRepository.deleteById(id);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
 	@GetMapping("ajax/{id}")
 	@ResponseBody
 	public Produto editar(@PathVariable Long id) {
 		return produtoRepository.findById(id).orElse(new Produto());
 	}
-//
-//	@DeleteMapping("{id}")
-//	public ResponseEntity<?> excluir(@PathVariable Long id){
-//		try {
-//			produtoRepository.delete(id);
-//			return new ResponseEntity<>(HttpStatus.OK);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//		}
-//	}
 
 	//método para salvar com upload de arquivos
 	@PostMapping("upload")

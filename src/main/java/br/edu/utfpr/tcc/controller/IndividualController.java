@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HomeController {
+public class IndividualController {
 
 	@Autowired
 	S3Services s3Services;
@@ -30,9 +30,9 @@ public class HomeController {
 	@Autowired
 	private CorRepository corRepository;
 
-	@GetMapping("/")
-	public ModelAndView home() {
-		ModelAndView modelAndView = new ModelAndView("home");
+	@GetMapping("/individual")
+	public ModelAndView individual() {
+		ModelAndView modelAndView = new ModelAndView("individual");
 		modelAndView.addObject("produtos", produtoRepository.findAll());
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );

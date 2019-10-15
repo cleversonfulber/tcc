@@ -4,25 +4,64 @@
 
 <head><meta charset="UTF-8"></head>
 <body>
-	<header th:fragment="cabecalho"> 
-		<nav class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header col-md-10">
-					<button type="button" class="btn btn-dark navbar-toggle pull-left">
-						<i class="oi oi-menu"></i>
-					</button>
-					<img th:src="@{/image/icone.png}">
-					<a class="navbar-brand " href="/">E-Marketplace</a>
-				</div>
-				<div class="usuario">
-					<sec:authorize access="isAuthenticated()">
-						Olá, <span sec:authentication="principal.nome">
-							Erro!!!
-						</span>!
-					</sec:authorize>
-				</div>
-				<div>
-					<a th:href="@{/logout}" class="btn btn-outline-danger"><i class="fa fa-sign-out-alt"></i> Sair</a>
+	<header th:fragment="cabecalho">
+
+		<!-------- Header de Inicio -------->
+
+		<nav id="top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+
+						<a class="navbar-brand " href="/"><img th:src="@{/image/icone.png}" height="50px" width="50px">
+							E-Marketplace</a>
+					</div>
+					<div id="cor">
+						<div class="col-md-2">
+							<div class="dropdown">
+								<a data-toggle="dropdown" href="#">
+
+									<i class="fa fa-user fa-fw"></i>
+										<sec:authorize access="isAuthenticated()">
+											Olá, <span sec:authentication="principal.nome"> Erro!!!	</span>!
+										</sec:authorize>
+								</a>
+
+								<div class="dropdown-menu dropup">
+
+									<ul>
+										<li >
+											<a class="btn">Minha Conta</a>
+										</li>
+										<li >
+											<a class="btn">Meus Pedidos</a>
+										</li>
+										<li >
+											<a th:href="@{/logout}" class="btn">Sair</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-1">
+							<div class="cart dropdown">
+								<a data-toggle="dropdown" href="#"><i class="fa fa-shopping-cart"></i></a>
+								<div class="dropdown-menu dropup">
+									<span class="caret"></span>
+									<ul class="media-list">
+										<li class="media">
+											<img class="pull-left" src="images/product-item.jpg" alt="">
+											<div class="media-body">
+												<h6>teste
+												</h6>
+											</div>
+										</li>
+									</ul>
+									<button class="btn btn-primary btn-sm">Checkout</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</nav>

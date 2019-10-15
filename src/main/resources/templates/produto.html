@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layoutinicial}">
+
+<head><meta charset="UTF-8" />
+
+
+</head>
+<body>
+    <section id="shop"  class="layout-content" layout:fragment="corpo">
+        <div class="meuconteiner">
+            <div class="row">
+
+
+
+                <div class="col-md-2">
+                    <div class="blog-sidebar">
+                        <div class="block">
+                            <h4>Catagories</h4>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <i class="fa  fa-dot-circle-o"></i>
+                                    Italian Foods
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa  fa-dot-circle-o"></i>
+                                    Traditional Food
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa  fa-dot-circle-o"></i>
+                                    Indian Food
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa  fa-dot-circle-o"></i>
+                                    Spanish Food
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa  fa-dot-circle-o"></i>
+                                    Thai FoodN
+                                </a>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <img src="images/food-ad.png" alt="">
+                        </div>
+                        <div class="block">
+                            <h4>Latest Food Items</h4>
+                            <ul class="media-list">
+                                <li class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="images/post-img.png" alt="...">
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="" class="media-heading">Lamb leg roast
+                                            <p>Lorem ipsum dolor sit amet.</p></a>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="images/post-img-2.png" alt="...">
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="" class="media-heading"> Lamingtons
+                                            <p>Lorem ipsum dolor.</p></a>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="images/post-img-3.png" alt="...">
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="" class="media-heading">
+                                            Anzac Salad
+                                            <p>Lorem ipsum dolor sit.</p>
+
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="block">
+                            <h4>Food Tag</h4>
+                            <div class="tag-link">
+                                <a href="">BALLET</a>
+                                <a href="">CHRISTMAS</a>
+                                <a href="">ELEGANCE</a>
+                                <a href="">ELEGANT</a>
+                                <a href="">SHOPPING</a>
+                                <a href="">SHOP</a>
+                            </div>
+                        </div>
+                    </div>	<!-- End of /.col-md-3 -->
+
+                </div>	<!-- End of /.row -->
+
+                <div class="col-md-10">
+                    <div class="products-heading">
+                        <h2>PRODUTOS</h2>
+                    </div>
+                    <div class="product-grid" >
+                        <ul >
+                            <li th:id="'row_' + ${produto.id}" th:each="produto : ${produtos}">
+                                <div class="products">
+                                    <a href="#">
+                                        <img th:src="${produto.imagem}" alt=""/>
+                                    </a>
+                                    <a href="#">
+                                        <h4 th:text="${produto.nome}" ></h4>
+                                    </a>
+                                    <p class="price" th:text="${produto.valor}"></p>
+                                    <div >
+                                        <a class="view-link shutter" href="#">
+                                            <i class="fa fa-plus-circle"></i>Comprar</a>
+                                    </div>
+                                </div>	<!-- Fim do .products -->
+                            </li>
+                        </ul>
+                    </div>	<!-- FIm do .products-grid -->
+
+                    <!-- Pagination -->
+
+                    <div class="pagination-bottom">
+                        <ul class="pagination">
+                            <li class="disabled"><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="#">1 <span class="sr-only"></span></a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>	<!-- Fim da Paginacao -->
+                    </div>
+                </div>	<!-- Fim do .col-md-9 -->
+
+            </div>
+        </div>
+    </section>
+</body>
+</html>
