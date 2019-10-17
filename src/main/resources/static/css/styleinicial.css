@@ -841,6 +841,14 @@ footer .block span {
 	color: #ff6200;
 }
 
+.breadcrumb {
+    background-color: #fff;
+}
+
+.breadcrumb a {
+    color: #ff6200;
+}
+
 
 #blog {
 	margin-bottom: 50px;

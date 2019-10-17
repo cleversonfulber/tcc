@@ -14,14 +14,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <h1>Products Details</h1>
+                        <h1>Detalhes do Produto</h1>
                         <p></p>
                     </div>	<!-- /.col-md-4 -->
                     <div class="col-md-8 hidden-xs">
                         <ol class="breadcrumb pull-right">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Products</a></li>
-                            <li class="active">Single Products</li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/produto/" >Produtos</a></li>
+                            <li class="active" th:text="${produto.id}"></li>
                         </ol>
                     </div> <!-- /.col-md-8 -->
                 </div>	<!-- /.row -->
@@ -42,7 +42,7 @@
                             <h4>Claritas est etiam</h4>
                             <p class="price">$380</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, culpa, esse, magni omnis blanditiis unde vitae in nobis fuga optio numquam at ipsum impedit perspiciatis quia rem consequatur recusandae repudiandae provident nemo voluptatibus corporis ab id iste pariatur ipsam vero porro eos eaque rerum nam dolorum mollitia adipisci. Quaerat, ullam!</p>
-                            <a class="view-link" href="#"><i class="fa fa-plus-circle"></i>Add To Cart</a>
+                            <a class="view-link" href="#"><i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>
                         </div>	<!-- End of /.product-des -->
                     </div> <!-- End of /.block -->
                 </div>	<!-- End of /.col-md-4 -->
@@ -104,14 +104,14 @@
                 <div class="col-md-9">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#home" data-toggle="tab">More Info</a></li>
+                        <li class="active"><a href="#home" data-toggle="tab">Descrição</a></li>
                         <li><a href="#profile" data-toggle="tab">Comments</a></li>
                     </ul>
 
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus eligendi quidem vel sit expedita nam sint non explicabo magni totam?</p>
+                            <p>Descrição do produto...</p>
                         </div>
                         <div class="tab-pane" id="profile">
                             <p>No customer comments for the moment.</p>

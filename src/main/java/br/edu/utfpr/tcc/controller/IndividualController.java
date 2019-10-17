@@ -6,6 +6,7 @@ import br.edu.utfpr.tcc.services.S3Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -30,10 +31,10 @@ public class IndividualController {
 	@Autowired
 	private CorRepository corRepository;
 
-	@GetMapping("/individual")
-	public ModelAndView individual() {
+	@GetMapping("/individual/{id}")
+	public ModelAndView individual(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("individual");
-		modelAndView.addObject("produtos", produtoRepository.findAll());
+		modelAndView.addObject("produtos", produtoRepository.findById(id));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );

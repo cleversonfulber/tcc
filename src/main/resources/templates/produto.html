@@ -9,11 +9,28 @@
 </head>
 <body>
     <section id="shop"  class="layout-content" layout:fragment="corpo">
+
+        <section id="topic-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-2">
+                        <h1>Produtos</h1>
+                        <p></p>
+                    </div>	<!-- /.col-md-4 -->
+                    <div class="col-md-8 hidden-xs">
+                        <ol class="breadcrumb pull-right">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/produto/">Produtos</a></li>
+                        </ol>
+                    </div> <!-- /.col-md-8 -->
+                </div>	<!-- /.row -->
+            </div>	<!-- /.container-->
+        </section><!-- /Section -->
+
         <div class="meuconteiner">
             <div class="row">
-
-
-
                 <div class="col-md-2">
                     <div class="blog-sidebar">
                         <div class="block">
@@ -95,23 +112,22 @@
 
                 </div>	<!-- End of /.row -->
 
+
+
                 <div class="col-md-10">
-                    <div class="products-heading">
-                        <h2>PRODUTOS</h2>
-                    </div>
-                    <div class="product-grid" >
+                    <div class="product-grid" id="lista-produtos" >
                         <ul >
                             <li th:id="'row_' + ${produto.id}" th:each="produto : ${produtos}">
                                 <div class="products">
-                                    <a href="#">
+                                    <a href="" class="adicionar-carrinho" data-id="${produto.id}">
                                         <img th:src="${produto.imagem}" alt=""/>
                                     </a>
-                                    <a href="#">
+                                    <a href="" class="adicionar-carrinho" data-id="${produto.id}">
                                         <h4 th:text="${produto.nome}" ></h4>
                                     </a>
-                                    <p class="price" th:text="${produto.valor}"></p>
+                                        <p class="price" th:text="${produto.valor}"></p>
                                     <div >
-                                        <a class="view-link shutter" href="#">
+                                        <a class="view-link shutter adicionar-carrinho" href="" data-id="${produto.id}">
                                             <i class="fa fa-plus-circle"></i>Comprar</a>
                                     </div>
                                 </div>	<!-- Fim do .products -->
@@ -119,7 +135,7 @@
                         </ul>
                     </div>	<!-- FIm do .products-grid -->
 
-                    <!-- Pagination -->
+                    <!-- Paginação -->
 
                     <div class="pagination-bottom">
                         <ul class="pagination">
@@ -129,7 +145,7 @@
                             <li><a href="#">3</a></li>
                             <li><a href="#">4</a></li>
                             <li><a href="#">»</a></li>
-                        </ul>	<!-- Fim da Paginacao -->
+                        </ul>	<!-- Fim da Paginação -->
                     </div>
                 </div>	<!-- Fim do .col-md-9 -->
 

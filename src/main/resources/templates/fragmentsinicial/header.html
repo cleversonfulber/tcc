@@ -46,18 +46,20 @@
 						<div class="col-md-1">
 							<div class="cart dropdown">
 								<a data-toggle="dropdown" href="#"><i class="fa fa-shopping-cart"></i></a>
-								<div class="dropdown-menu dropup">
+								<div id="carrinho" class="dropdown-menu dropup">
 									<span class="caret"></span>
-									<ul class="media-list">
-										<li class="media">
-											<img class="pull-left" src="images/product-item.jpg" alt="">
-											<div class="media-body">
-												<h6>teste
-												</h6>
-											</div>
-										</li>
-									</ul>
-									<button class="btn btn-primary btn-sm">Checkout</button>
+									<table id="lista-carrinho" class="table">
+										<thead>
+											<tr>
+												<th>Imagem</th>
+												<th>Nome</th>
+												<th>Valor</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
+									<a href="#" id="esvaciar-carrinho" class="btn btn-primary btn-block">Esvaciar Carrinho</a>
+									<a href="#" id="finalizar-pedido" class="btn btn-danger btn-block">Finalizar Pedido</a>
 								</div>
 							</div>
 						</div>
