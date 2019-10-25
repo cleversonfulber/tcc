@@ -1,15 +1,16 @@
 const carro = new Carrinho();
-const carrinho = document.getElementById('.carrinho');
+const carrinho = document.getElementById('#carrinho');
 const produtos = document.getElementById('.lista-produtos');
 const listaProdutos = document.querySelector('#lista-carrinho tbody');
-//const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+//const esvaciarCarrinhoBtn = document.getElementById('esvaciar-carrinho');
 
 carregarEventos();
 
 function carregarEventos(){
     produtos.addEventListener('click', (e)=>{carro.comprarProduto(e)});
+//    document.getElementById('lista-produtos').addEventListener('click', (e)=>{carro.comprarProduto(e)});
 
-    //carrito.addEventListener('click', (e)=>{carro.eliminarProducto(e)});
-
-    //vaciarCarritoBtn.addEventListener('click', (e)=>{carro.vaciarCarrito(e)});
+//    carrinho.addEventListener('click', (e)=>{carro.eliminarProduto(e)});
+//
+//    esvaciarCarrinhoBtn.addEventListener('click', (e)=>{carro.esvaciarCarrinho(e)});
 }

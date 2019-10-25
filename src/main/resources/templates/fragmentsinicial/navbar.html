@@ -22,8 +22,42 @@
 					<ul class="nav navbar-nav nav-main">
 						<li><a href="/">HOME</a></li>
 						<li><a href="/produto/">PRODUTOS</a></li>
-						<li><a href="#">BLOG</a></li>
-						<li><a href="#">ARTICLE</a></li>
+						<li class="dropdown">
+							<a href="#">
+								CATEGORIAS
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li th:each="categoria : ${categorias}">
+									<a href="" th:text="${categoria.nome}"></a>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#">
+								MARCAS
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li th:each="marca : ${marcas}">
+									<a href="" th:text="${marca.nome}"></a>
+								</li>
+							</ul>
+
+						</li>
+						<li class="dropdown">
+							<a href="#">
+								TIPOS
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li th:each="tipo : ${tipos}">
+									<a href="" th:text="${tipo.nome}"></a>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#">E-EMPRESAS</a></li>
+						<li><a href="#">SOBRE</a></li>
 						<li class="dropdown">
 							<a href="#">
 								PAGES

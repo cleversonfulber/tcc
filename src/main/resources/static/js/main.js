@@ -61,3 +61,4 @@ $(document).ready(function() {
 var divXpto = $('.tamanho');
 divXpto.text(divXpto.text().substring(0,10));
 
+

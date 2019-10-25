@@ -94,34 +94,34 @@ px      68    160    252    344    436    528    620    712    */
 
 /* Example Media Queries */
 @media screen and (max-width: 65.375em) {
- 
+
     #blog .blog-zone > li .cbp_tmtime span:last-child {
         font-size: 1.5em;
     }
 }
- 
+
 @media screen and (max-width: 47.2em) {
     #blog .blog-zone:before {
         display: none;
     }
- 
+
     #blog .blog-zone > li .cbp_tmtime {
         width: 100%;
         position: relative;
         padding: 0 0 20px 0;
     }
- 
+
     #blog .blog-zone > li .cbp_tmtime span {
         text-align: left;
     }
- 
+
     #blog .blog-zone > li .blog-box {
         margin: 0 0 80px 0;
         padding: 1em;
         font-weight: 400;
         font-size: 95%;
     }
- 
+
     #blog .blog-zone > li .blog-box:after {
         right: auto;
         left: 20px;
@@ -130,11 +130,11 @@ px      68    160    252    344    436    528    620    712    */
         top: -20px;
         display: none;
     }
- 
+
     #blog .blog-zone > li:nth-child(odd) .blog-box:after {
         display: none;
     }
- 
+
     #blog .blog-zone > li .blog-icon {
         position: relative;
         float: left;

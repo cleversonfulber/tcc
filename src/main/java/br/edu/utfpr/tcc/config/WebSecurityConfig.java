@@ -32,11 +32,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.and().logout()
 			.logoutSuccessUrl("/login")
 			.and().authorizeRequests()
-				.antMatchers("/genero/**").hasAnyRole("USER", "ADMIN")
-				.antMatchers("/produtora/**").hasAnyRole("USER", "ADMIN")
-				.antMatchers("/serie/**").hasAnyRole("ADMIN")
-				.antMatchers("/episodio/**").permitAll()
-				.antMatchers("/**").authenticated();		
+				//.antMatchers("/categorias/**").hasAnyRole("USER", "ADMIN")
+				//.antMatchers("/produtos/**").hasAnyRole("USER", "ADMIN")
+				//.antMatchers("/tipos/**").hasAnyRole("ADMIN")
+				.antMatchers("/home/**").permitAll()
+				.antMatchers("/403/**").permitAll()
+				.antMatchers("/**").permitAll()
+				.antMatchers("/produto/**").permitAll()
+				.antMatchers("/fragmentsinicial/**").permitAll()
+				.antMatchers("/permissoes/**").permitAll()
+				.antMatchers("/empresas/**").authenticated();
 	}
 
 
@@ -46,6 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring()
 			.antMatchers("/css/**")
 			.antMatchers("/js/**")
+			.antMatchers("/images/**")
 			.antMatchers("/image/**")
 			.antMatchers("/assets/**")
 			.antMatchers("/webjars/**");

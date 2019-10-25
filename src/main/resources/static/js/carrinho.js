@@ -1,8 +1,8 @@
 class Carrinho{
-    //Adicionar o produto ao carrinho
+//    Adicionar o produto ao carrinho
     comprarProduto(e){
         e.preventDefault();
-        if(e.target.classList.contains('adicionar-carrinho')){
+        if(e.target.classList.contains('.adicionar-carrinho')){
             const produto = e.target.parentElement.parentElement;
             this.lerDadosProduto(produto);
         }
@@ -23,32 +23,32 @@ class Carrinho{
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>
-                <img src="${producto.imagen}" width=100>
+                <img th:src="${produto.imagem}" width=100>
             </td>
             <td>${produto.nome}</td>
             <td>${produto.valor}</td>
             <td>
-                <a href="#" class="apagar-producto fas fa-times-circle" data-id="${produto.id}></a>
+                <a href="#" class="apagar-produto fas fa-times-circle" data-id="${produto.id}></a>
             </td>
         `;
         listaProdutos.appendChild(row);
     }
 
-//    eliminarProducto(e){
-//        e.preventDefault();
-//        let producto, productoID;
-//        if(e.target.classList.contains('borra-producto')){
-//            e.target.parentElement.parentElement.remove();
-//            producto = e.target.parentElement.parentElement;
-//            productoID = producto.querySelector('a').getAtribute('data-id');
-//        }
-//    }
-//
-//    vaciarCarrito(e){
-//        e.preventDefault();
-//        while(listaProductos.firstChild){
-//            listaProductos.removeChild(listaProductos.firstChild);
-//        }
-//        return false;
-//    }
+    eliminarProduto(e){
+        e.preventDefault();
+        let produto, produtoID;
+        if(e.target.classList.contains('.apagar-produto')){
+            e.target.parentElement.parentElement.remove();
+            produto = e.target.parentElement.parentElement;
+            produtoID = producto.querySelector('a').getAtribute('data-id');
+        }
+    }
+
+    esvaciarCarrinho(e){
+        e.preventDefault();
+        while(listaProdutos.firstChild){
+            listaProdutos.removeChild(listaProdutos.firstChild);
+        }
+        return false;
+    }
 }

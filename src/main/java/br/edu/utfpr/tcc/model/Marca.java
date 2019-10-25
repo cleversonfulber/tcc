@@ -21,4 +21,7 @@ public class Marca {
 	@Column(name = "nome", nullable = false, unique = true, length = 60)
 	private String nome;
 
+	@Column(name = "imagem", length = 100, nullable = true)
+	private String imagem;
+
 }

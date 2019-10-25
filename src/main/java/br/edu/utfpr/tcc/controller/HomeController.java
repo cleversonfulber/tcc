@@ -5,6 +5,7 @@ import br.edu.utfpr.tcc.repository.*;
 import br.edu.utfpr.tcc.services.S3Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -44,4 +45,18 @@ public class HomeController {
 
 		return modelAndView;
 	}
+
+	@GetMapping(value = "/home")
+	public String index(Model model) {
+
+		return "redirect:/";
+	}
+
+	@GetMapping(value = "/403")
+	public ModelAndView erro403() {
+		ModelAndView modelAndView = new ModelAndView("403");
+
+		return modelAndView;
+	}
+
 }
