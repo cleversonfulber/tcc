@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head><meta charset="UTF-8"></head>
+<head><meta charset="UTF-8">
+
+</head>
 <body>
 	<header th:fragment="cabecalho">
 
@@ -18,27 +20,41 @@
 					</div>
 					<div id="cor">
 						<div class="col-md-2">
-							<div class="dropdown">
-								<a data-toggle="dropdown" href="#">
-
+							<div class="dropdown" sec:authorize="isAuthenticated()">
+								<a data-toggle="dropdown" href="#" >
 									<i class="fa fa-user fa-fw"></i>
-										<sec:authorize access="isAuthenticated()">
-<!--												Olá, <span sec:authentication="principal.nome"> Erro!!!	</span>!-->
-												<span>Fazer Login</span>
-										</sec:authorize>
+									Olá, <span class="teste" sec:authentication="principal.nome"> Erro!!!	</span>!
 								</a>
-
 								<div class="dropdown-menu dropup">
-
 									<ul>
-										<li >
-											<a class="btn">Minha Conta</a>
+										<li class="botao">
+											<a>Minha Conta</a>
 										</li>
-										<li >
-											<a class="btn">Meus Pedidos</a>
+										<li class="botao">
+											<a>Meus Pedidos</a>
 										</li>
-										<li >
-											<a th:href="@{/logout}" class="btn">Sair</a>
+										<li class="botao">
+											<a th:href="@{/logout}" >Sair</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="dropdown" sec:authorize="! isAuthenticated()">
+								<a data-toggle="dropdown" href="#" >
+									<i class="fa fa-user fa-fw"></i>
+									<span class="teste">Entrar | Login</span>
+								</a>
+								<div class="dropdown-menu dropup">
+									<ul>
+										<li class="botao">
+											<a th:href="@{/login}">Fazer Login</a>
+										</li>
+										<li class="botao">
+											<span>Não é Cadastrado?</span>
+										</li>
+										<li class="botao">
+											<a>Cadastre-se!</a>
 										</li>
 									</ul>
 								</div>
@@ -59,8 +75,8 @@
 										</thead>
 										<tbody></tbody>
 									</table>
-									<a href="#" id="esvaciar-carrinho" class="btn btn-primary btn-block">Esvaciar Carrinho</a>
-									<a href="#" id="finalizar-pedido" class="btn btn-danger btn-block">Finalizar Pedido</a>
+									<a href="#" id="esvaciar-carrinho" class="view-link shutter">Esvaciar Carrinho</a>
+									<a href="/carrinho" id="processar-pedido" class="view-link shutter">Finalizar Pedido</a>
 								</div>
 							</div>
 						</div>

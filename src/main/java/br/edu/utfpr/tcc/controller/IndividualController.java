@@ -34,7 +34,7 @@ public class IndividualController {
 	@GetMapping("/individual/{id}")
 	public ModelAndView individual(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("individual");
-		modelAndView.addObject("produtos", produtoRepository.findById(id));
+		modelAndView.addObject("produtos", produtoRepository.findAll());
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );

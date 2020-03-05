@@ -1,7 +1,11 @@
 ------------- Common-CSS----------------*/
+ /*Alert*/
+
+body {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 /* cor  #ff6200  */
-
 body { font-family: 'Open Sans', sans-serif; color: #555; font-size: 14px; font-weight: 300; }
 li { list-style: none;}
 a:hover { text-decoration: none; }
@@ -55,6 +59,16 @@ section+section { margin-top: 50px; }
 	background: url("../images/top.png") no-repeat;
 }
 
+#carrinho a{
+    margin: 5%;
+    font-size: 12px;
+}
+
+
+
+.nUsuario{
+    color: #ff6200;
+}
 
 /*------------- Top bar----------------*/
 .navbar-brand{
@@ -562,7 +576,7 @@ section+section { margin-top: 50px; }
 	-o-transition: .2s ease-in-out;
 	transition: .2s ease-in-out;
 }
-.price {
+.valor {
 	font-size: 22px;
 	color: #ff6200;
 	font-weight: bold;
@@ -740,7 +754,10 @@ footer .block span {
 }
 .shutter:hover {
 	color: #fff;
+}
 
+.shutter:link {
+	text-decoration: none;
 }
 
 .btn-transparent {
@@ -1184,25 +1201,22 @@ footer .block span {
     margin-left: 5%;
 }
 
-.product-grid ul li {
+.pGrid{
+    width: 20%;
+}
+
+.hGrid{
     width: 24%;
+}
+
+.product-grid ul li {
     text-align: center;
     padding: 10px 20px 0 0px;
     display: inline-block;
     vertical-align: top;
 }
 
-@media screen and (max-width: 57em) {
-    .product-grid ul li {
-        width: 49%;
-    }
-}
 
-@media screen and (max-width: 40.125em) {
-    .product-grid ul li {
-        width: 100%;
-    }
-}
 
 
 #shop .products-heading h2 {
@@ -1258,4 +1272,14 @@ footer .block span {
 }
 .top-catagori-heading {
 	margin-top: 0;
+}
+
+/*css do seet alert*/
+.swal2-popup {
+
+    font-size: 14px !important;
+}
+
+.botao{
+    margin: 10px 20px;
 }

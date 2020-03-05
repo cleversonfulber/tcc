@@ -18,34 +18,50 @@
 
 </head>
 
-<body>
-	<div class="wrapper fadeInDown">
-		<div id="formContent">
-			<!-- Tabs Titles -->
 
-			<!-- Icon -->
-			<div class="fadeIn first">
-				<img alt="E-Marketplace" th:src="@{/image/icone.png}" />
-			</div>
 
-			<!-- Login Form -->
-			<form th:action="@{/login}" method="POST">
-				<input type="email" id="username" class="fadeIn second" name="username" placeholder="e-mail">
-				
-				<input type="password" id="password" class="fadeIn third" name="password" placeholder="senha"> 
-					
-				<input type="submit" class="fadeIn fourth" value="Entrar">
-				<div class="alert alert-danger" th:if="${#bools.isTrue(param.error)}">
-					O usuário e/ou senha inválido(s)!
-				</div>
-			</form>
+<body class="text-center">
 
-			<!-- Remind Passowrd -->
-			<div id="formFooter">
-				<a class="underlineHover" href="#">Esqueceu a senha?</a>
+<nav id="top">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+
+				<a class="navbar-brand " href="/"><img th:src="@{/image/icone.png}" height="50px" width="50px">
+					E-Marketplace</a>
 			</div>
 
 		</div>
 	</div>
+</nav>
+
+	<form class="form-signin" th:action="@{/login}" method="POST">
+		<img class="mb-4" alt="E-Marketplace" th:src="@{/image/icone.png}" width="72" height="72">
+		<h1 class="h3 mb-3 font-weight-normal">Fazer Login</h1>
+
+		<label for="username" class="sr-only">Endereço de e-mail</label>
+		<input type="email" id="username" class="form-control" name="username" placeholder="Endereço de email" required="" autofocus="">
+		<label for="password" class="sr-only">Senha</label>
+		<input type="password" id="password" class="form-control" name="password" placeholder="Senha" required="">
+		<div class="checkbox mb-3">
+			<label>
+				<input type="checkbox" value="remember-me"> Lembre-me
+			</label>
+		</div>
+
+		<button class="view-link shutter" type="submit">Entrar</button>
+		<div class="alert alert-danger" th:if="${#bools.isTrue(param.error)}">
+			O usuário e/ou senha inválido(s)!
+		</div>
+
+		<div>
+			<span class="">Não é Cadastrado?</span>
+			<a th:href="@{/login}" class=" btn2">Cadastre-se!</a>
+		</div>
+
+
+		<p class="mt-5 mb-3 text-muted">© 2019</p>
+	</form>
 </body>
+
 </html>

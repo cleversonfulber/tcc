@@ -46,10 +46,10 @@ public class HomeController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = "/home")
+	@GetMapping(value = "/index")
 	public String index(Model model) {
 
-		return "redirect:/";
+		return "redirect:/index";
 	}
 
 	@GetMapping(value = "/403")

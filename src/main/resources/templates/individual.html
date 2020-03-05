@@ -28,8 +28,28 @@
             </div>	<!-- /.container-->
         </section><!-- /Section -->
 
-        <div class="container">
-            <div class="row">
+        <div class="product-grid" id="lista-produtos">
+            <ul >
+                <li th:id="'row_' + ${produto.id}" th:each="produto : ${produtos}" >
+                    <div class="products">
+                        <a href="" class="adicionar-carrinho" data-id="${produto.id}">
+                            <img th:src="${produto.imagem}" alt=""/>
+                        </a>
+                        <a href="" class="adicionar-carrinho" data-id="${produto.id}">
+                            <h4 th:text="${produto.nome}" ></h4>
+                        </a>
+                        <p class="valor" th:text="${produto.valor}"></p>
+                        <div >
+                            <a class="view-link shutter adicionar-carrinho" href="" data-id="${produto.id}">
+                                <i class="fa fa-plus-circle"></i>Comprar</a>
+                        </div>
+                    </div>	<!-- Fim do .products -->
+                </li>
+            </ul>
+        </div>	<!-- FIm do .products-grid -->
+
+        <div class="container" >
+            <div class="row" >
                 <div class="col-md-5">
                     <div class="single-product-img">
                         <img src="images/single-product.png" alt="">
@@ -39,7 +59,7 @@
                 <div class="col-md-4">
                     <div class="block">
                         <div class="product-des">
-                            <h4>Claritas est etiam</h4>
+                            <h4 th:text="${produto.nome}"></h4>
                             <p class="price">$380</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, culpa, esse, magni omnis blanditiis unde vitae in nobis fuga optio numquam at ipsum impedit perspiciatis quia rem consequatur recusandae repudiandae provident nemo voluptatibus corporis ab id iste pariatur ipsam vero porro eos eaque rerum nam dolorum mollitia adipisci. Quaerat, ullam!</p>
                             <a class="view-link" href="#"><i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>
