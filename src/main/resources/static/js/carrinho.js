@@ -61,12 +61,12 @@ class Carrinho{
     excluirProduto(e){
         e.preventDefault();
         let produto, produtoID;
-        if(!e.target.classList.contains('lista-compra')){
+        if(e.target.classList.contains('excluir-produto')){     // não te entrando
             e.target.parentElement.parentElement.remove();
             produto = e.target.parentElement.parentElement;
-            produtoID = produto.querySelector('h1').textContent;
+            produtoID = produto.getElementById('excluir');      // não está conseguindo pegar
         }
-        this.excluirProdutoLocalStorage(produtoID);
+        this.excluirProdutoLocalStorage(produtoID);             // consequentemente não ta excluindo
         this.calcularTotal();
     }
 
@@ -156,15 +156,11 @@ class Carrinho{
                     <input type="number" class="form-control qtda" min="1" value=${produto.qtda}>
                 </td>
                 <td>${produto.valor * produto.qtda}</td>
-
                 <td>
-                    <a href="" class="fas fa-times-circle"
-                            style="font-size: 25px" ></a>
-
+                    <a href="#" class="excluir-produto fas fa-times-circle" style="font-size: 25px" ></a>
                 </td>
-                <td>    <h1 th:text="${produto.id}" ></h1>
+                <td>    <h1 id="excluir" th:text="${produto.id}" ></h1>
                 </td>
-
             `;
             listaCompra.appendChild(row);
         });
