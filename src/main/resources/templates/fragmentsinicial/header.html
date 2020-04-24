@@ -17,7 +17,11 @@
 
 						<a class="navbar-brand " href="/"><img th:src="@{/image/icone.png}" height="50px" width="50px">
 							E-Marketplace</a>
+						<div sec:authorize="hasRole('ROLE_ADMIN')">
+							Esse texto só vai aparecer para o ADMIN.
+						</div>
 					</div>
+
 					<div id="cor">
 						<div class="col-md-2">
 							<div class="dropdown" sec:authorize="isAuthenticated()">
@@ -54,7 +58,7 @@
 											<span>Não é Cadastrado?</span>
 										</li>
 										<li class="botao">
-											<a>Cadastre-se!</a>
+											<a th:href="@{/usuarios}">Cadastre-se!</a>
 										</li>
 									</ul>
 								</div>

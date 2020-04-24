@@ -8,13 +8,17 @@ class Carrinho{
         }
     }
 
+
+
     lerDadosProduto(produto){
         const infoProduto = {
             imagem : produto.querySelector('img').src,
             nome : produto.querySelector('h4').textContent,
             valor : produto.querySelector('p').textContent,
             id : produto.querySelector('h1').textContent,
+            sub: produto.querySelector('p').textContent,
             qtda : 1
+
         }
         let produtosLS;
         produtosLS = this.pegarProdutosLocalStorage();
@@ -60,16 +64,45 @@ class Carrinho{
 
     excluirProduto(e){
         e.preventDefault();
-        let produto, produtoID;
-        if(e.target.classList.contains('excluir-produto')){     // não te entrando
-            e.target.parentElement.parentElement.remove();
-            produto = e.target.parentElement.parentElement;
-            produtoID = produto.getElementById('excluir');      // não está conseguindo pegar
+
+        const produtoID = e.target.parentElement.parentElement
+            .parentElement.querySelector('h1').innerText;
+
+        if(e.target.parentElement.parentElement.parentElement.localName == 'tr'){
+            e.target.parentElement.parentElement.parentElement.remove();
         }
-        this.excluirProdutoLocalStorage(produtoID);             // consequentemente não ta excluindo
+        else {
+            e.target.parentElement.parentElement.parentElement.parentElement.remove();
+        }
+
+        this.excluirProdutoLocalStorage(produtoID);
         this.calcularTotal();
     }
 
+    alterarQtda(e){
+        e.preventDefault();
+
+        const produtoQtda = e.target.parentElement.parentElement
+                    .querySelector('td input').value;
+
+        const produtoID = e.target.parentElement.parentElement
+            .querySelector('td h1').innerText;
+
+        let produtosLS = this.pegarProdutosLocalStorage();
+
+        produtosLS.forEach(function(produtosLS){
+            if(produtosLS.id == produtoID){
+                produtosLS.qtda = produtoQtda;
+                produtosLS.sub = produtoQtda*produtosLS.valor;
+            }
+        });
+
+        localStorage.setItem('produtos', JSON.stringify(produtosLS));
+
+        this.calcularTotal();
+        window.location = "/carrinho";
+
+    }
 
     esvaciarCarrinho(e){
         e.preventDefault();
@@ -87,6 +120,8 @@ class Carrinho{
         localStorage.setItem('produtos', JSON.stringify(produtos));
     }
 
+
+
     pegarProdutosLocalStorage(){
         let produtoLS;
 
@@ -102,16 +137,7 @@ class Carrinho{
     excluirProdutoLocalStorage(produtoID){
         let produtoLS;
         produtoLS = this.pegarProdutosLocalStorage();
-        produtoLS.forEach(function(produtoLS, index){
-            if(produtoLS.id == produtoID){
-                localStorage.removeItem(produtoLS.id);
-
-                  /*var tabela = document.querySelector('lista-compra');
-                  tabela.deleteRow(e.target.parentNode.parentNode.rowIndex);*/
-            }
-        });
-
-        localStorage.setItem('produtos', JSON.stringify(produtoLS));
+        localStorage.setItem('produtos', JSON.stringify(produtoLS.filter(x => x.id != produtoID)));
     }
 
     lerLocalStorage(){
@@ -125,7 +151,6 @@ class Carrinho{
                 </td>
                 <td>${produto.nome}</td>
                 <td>${produto.valor}</td>
-
             `;
             listaProdutos.appendChild(row);
         });
@@ -155,11 +180,14 @@ class Carrinho{
                 <td>
                     <input type="number" class="form-control qtda" min="1" value=${produto.qtda}>
                 </td>
-                <td>${produto.valor * produto.qtda}</td>
+                <td>${produto.sub}</td>
                 <td>
-                    <a href="#" class="excluir-produto fas fa-times-circle" style="font-size: 25px" ></a>
+                    <h1 style="display: none;">${produto.id}</h1>
+                    <a href="" class="excluir-produto fas fa-times-circle" style="font-size: 25px" >
+                    </a>
                 </td>
-                <td>    <h1 id="excluir" th:text="${produto.id}" ></h1>
+                <td>
+
                 </td>
             `;
             listaCompra.appendChild(row);
@@ -168,6 +196,7 @@ class Carrinho{
     }
 
     calcularTotal(){
+
         let produtosLS;
         let total = 0, subtotal = 0, igv =0;
         produtosLS = this.pegarProdutosLocalStorage();
@@ -196,8 +225,10 @@ class Carrinho{
             }).then(function(){
                 window.location = "../";
             })
-        }else if(cliente.value == null){
+        }else if(cliente == null){
             window.location = "../login";
+        }else{
+            window.location = "../";
         }
     }
 }

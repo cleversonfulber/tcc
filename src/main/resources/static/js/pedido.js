@@ -10,7 +10,8 @@ cargarEventos();
 function cargarEventos(){
     produtos.addEventListener('click', (e) => {carro.comprarProduto(e)});
 
-    carrinho.addEventListener('click', (e)=>{carro.excluirProduto(e)});
+//    carrinho.addEventListener('click', (e)=>{carro.excluirProduto(e)});
+    $("#carrinho tbody tr td a.excluir-produto").click((e) => carro.excluirProduto(e));
 
     esvaciarCarrinhoBtn.addEventListener('click', (e)=>{carro.esvaciarCarrinho(e)});
 

@@ -1,3 +1,4 @@
+
 const compra = new Carrinho();
 const listaCompra = document.querySelector('#lista-compra tbody');
 const carrinho = document.getElementById('carrinho');
@@ -10,7 +11,11 @@ carregarEventos();
 function carregarEventos(){
     document.addEventListener('DOMContentLoaded', compra.lerLocalStorageCompra());
 
-    carrinho.addEventListener('click', (e)=> {compra.excluirProduto(e)});
+//    carrinho.addEventListener('click', (e)=>{compra.excluirProduto(e)});
+    $("#carrinho tbody tr td a.excluir-produto").click((e) => compra.excluirProduto(e));
+
+    $("#carrinho tbody tr td input.qtda").on('keyup mouseup', (e) => compra.alterarQtda(e));
+//    $("#carrinho tbody tr td input.qtda").click((e) => compra.alterarQtda(e));
 
     compra.calcularTotal();
 

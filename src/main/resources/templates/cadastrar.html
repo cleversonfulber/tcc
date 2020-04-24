@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>Cadastrar</title>
+
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous">
+
+	<link rel="stylesheet" th:href="@{/css/login.css}" />
+	<link rel="shortcut icon" href="/image/icone.png" type="image/x-icon">
+	<link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+	<!-- Bootstrap core CSS -->
+	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="/sweetalert/sweetalert.css" />
+	<link rel="stylesheet" href="/vendors/bootstrap-datepicker/css/bootstrap-datepicker.min.css" />
+
+
+	<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+
+</head>
+
+<body class="text-center">
+
+	<nav id="top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+
+					<a class="navbar-brand " href="/"><img th:src="@{/image/icone.png}" height="50px" width="50px">
+						E-Marketplace</a>
+				</div>
+
+			</div>
+		</div>
+	</nav>
+
+	<form id="frm" name="frm"
+		  method="POST" class="form-signin"
+		  th:action="@{/usuarios}"
+		  data-parsley-validate="parsley">
+
+		<h1 class="h3 mb-3 font-weight-normal">Cadastrar</h1>
+
+		<div class="modal-body">
+			<input type="hidden" id="id" name="id"/>
+
+			<input type="text" class="form-control" placeholder="Nome Completo"
+				   id="nome" name="nome" required/>
+
+			<input type="text" class="form-control" placeholder="E-mail"
+				   id="username" name="username" required/>
+
+			<input type="password" class="form-control" placeholder="Senha"
+				   id="password" name="password" required/>
+
+			<input type="text" class="form-control" placeholder="Telefone"
+				   id="telefone" name="telefone"/>
+
+			<input type="text" class="form-control" placeholder="Celular"
+				   id="celular" name="celular" required/>
+
+			<input type="text" class="form-control" placeholder="CPF/CNPJ"
+				   id="cpfCnpj" name="cpfCnpj" required/>
+
+			<input type="text" class="datepicker form-control" placeholder="Data de Nascimento"
+				   id="dataNascimento" name="dataNascimento" required/>
+
+<!--			<input type="text" class="form-control" placeholder="Genero"-->
+<!--				   id="genero" name="genero"/>-->
+
+
+			<select class="form-control" id="genero" name="genero" >
+				<option value="Masculino"> Masculino </option>
+				<option value="Feminino"> Feminino </option>
+			</select>
+
+
+			<div class="form-group">
+				<label>Permissões:</label>
+				<div th:each="permissao: ${permissoes}">
+					<input type="checkbox" name="permissoes"
+						   th:id="'chk_' + ${permissao.id}"
+						   th:value="${permissao.id}"/>
+					<label
+							th:for="'chk_' + ${permissao.id}"
+							th:text="${permissao.nome}"></label>
+				</div>
+			</div>
+
+		</div> <!-- modal-body -->
+		<div class="modal-footer">
+			<button type="button" class="btn" data-dismiss="modal"
+					aria-hidden="true">Cancelar</button>
+			<button type="submit" class="btn btn-success" >Salvar</button>
+		</div>
+
+		<div>
+			<span class="">Já é Cadastrado?</span>
+			<a th:href="@{/login}" class=" btn2">Entrar</a>
+		</div>
+
+	</form>
+
+
+	<script src="/sweetalert/sweetalert-dev.js"></script>
+	<script src="/js/cruds.js"></script>
+<!--	<script src="/js/paginacao.js"></script>-->
+
+	<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/crud-usuario.js}"></script>
+
+	<script type="text/javascript" th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+
+	<script type="text/javascript">
+    	$('.datepicker').datepicker({
+    		format: 'dd/mm/yyyy',
+    		autoclose: true
+    	});
+    </script>
+</body>
+
+</html>

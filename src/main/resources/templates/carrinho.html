@@ -16,7 +16,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="/js/carrinho.js" type="text/javascript"></script>
     <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+    <script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
     <script src="http://localhost:9000/js/bootstrap.min.js" type="text/javascript"></script>
+
 
 </head>
 
@@ -92,9 +94,10 @@
                 <form id="procesar-pago" action="#">
 
                     <div class="form-group row">
-                        <label for="correio" class="col-12 col-md-2 col-form-label h2">Frete :</label>
+                        <label for="correo" class="col-12 col-md-2 col-form-label h2">Frete :</label>
                         <div class="col-12 col-md-10">
-                            <input type="text" class="form-control" id="correio" placeholder="Adicione seu CEP" required>
+                            <input type="text" class="form-control" id="correo" data-mask="00.000-000"
+                                   data-mask-reverse="true" placeholder="Adicione seu CEP" required>
                         </div>
                     </div>
 
@@ -122,7 +125,7 @@
                                 <!-- <th scope="col"></th> -->
                             </tr>
                             <tr>
-                                <th colspan="4" scope="col" class="text-right">FRETE :</th>
+                                <th colspan="4" scope="col" mask="99.999-999" class="text-right">FRETE :</th>
                                 <th scope="col">
                                     <p id="igv"></p>
                                 </th>

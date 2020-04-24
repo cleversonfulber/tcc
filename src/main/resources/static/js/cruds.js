@@ -64,4 +64,8 @@ function excluir(id, url){
     );//FIM SWAWL
 }
 
+redireciona(){
+    window.location = "../";
+}
+
 

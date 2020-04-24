@@ -16,7 +16,7 @@ body {
 .form-signin {
   width: 100%;
   max-width: 330px;
-  padding: 15px;
+  padding: 50px 15px;
   margin: auto;
 }
 .form-signin .checkbox {
@@ -154,5 +154,10 @@ body {
 }
 .shutter:hover {
 	color: #fff;
+
+}
+
+#genero.form-control{
+    padding: 0px 8px;
 
 }

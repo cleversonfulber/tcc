@@ -1,6 +1,7 @@
 package br.edu.utfpr.tcc.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,17 +30,18 @@ public class Usuario implements Serializable, UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(length = 100, nullable = false)
 	private String nome;
 
-	@Column(length = 100, nullable = false)
-	private String username;
+	@Column(length = 100, nullable = false, unique = true)
+	private String username ;
 	
 	@Column(length = 512, nullable = false)
 	private String password;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL,
+			fetch = FetchType.EAGER)
 	private Set<Permissao> permissoes;
 
 	@Override
@@ -49,23 +51,28 @@ public class Usuario implements Serializable, UserDetails {
 		return list;
 	}
 
-//	@Column(name = "telefone",  length = 60)
-//	private String telefone;
+	@Column(name = "telefone",  length = 60)
+	private String telefone;
 
-//	@NotNull(message = "O celular  é obrigatório.")
-//	@Column(name = "celular", nullable = false,  length = 60)
-//	private String celular;
-//
-//	@NotNull(message = "O CPF é obrigatório.")
-//	@Column(name = "cpf_cnpj", nullable = false, length = 60)
-//	private String cpfCnpj;
-//
-//	@NotNull
-//	@Column(name= "data_nascimento", nullable = false, columnDefinition = "DATE")
-//	private LocalDate dataNascimento;
-//
-//	@Column(name = "sexo", nullable = false, length = 60)
-//	private String sexo;
+	@NotNull(message = "O celular  é obrigatório.")
+	@Column(name = "celular", nullable = false,  length = 60)
+	private String celular;
+
+	@NotNull(message = "O CPF é obrigatório.")
+	@Column(name = "cpf_cnpj", nullable = false, length = 60)
+	private String cpfCnpj;
+
+	@NotNull(message = "Preencha o campo data de nascimento!")
+	@Column(name = "data_nascimento", nullable = false)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataNascimento;
+
+	@Column(name = "genero", nullable = false, length = 60)
+	private String genero;
+
+	public String getEncodedPassword(String password) {
+		return bCrypt.encode(password);
+	}
 
 	@Override
 	public boolean isAccountNonExpired() {
@@ -86,9 +93,4 @@ public class Usuario implements Serializable, UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-	
-	public String getEncodedPassword(String password) {
-		return bCrypt.encode(password);
-	}
-	
 }

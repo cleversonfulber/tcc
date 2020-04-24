@@ -17,8 +17,9 @@
 			</ul>
 			<div class="row">
 				<div class="col-xs-4">
-					<a class="btn btn-primary" onclick="novo()" data-toggle="modal" data-target="#modal-form">
-						<i class="fa fa-plus-square"></i> Novo Registro	</a>
+					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-form" onclick="novo()">
+						<i class="fa fa-plus-square"></i> Novo Registro
+					</a>
 				</div>
 			</div>
 		</div>
@@ -44,17 +45,18 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr th:id="'row_' + ${tipo.id}" th:each="tipo : ${tipos}">
-					<td style="width:150px" class="text-center" th:text="${tipo.id}">0</td>
-					<td><a class="texto" th:href="'javascript:editar(\'/tipos/ajax/' + ${tipo.id} + '\' );'"
-						   th:text="${tipo.nome}">...</a></td>
+					<tr th:id="'row_' + ${tipo.id}" th:each="tipo : ${tipos}">
+						<td style="width:150px" class="text-center" th:text="${tipo.id}"></td>
+						<td><a class="texto" th:href="'javascript:editar(\'/tipos/ajax/' + ${tipo.id} + '\' );'"
+							   th:text="${tipo.nome}">...</a></td>
 
 					<td style="width:200px" class="text-center">
 						<a th:href="'javascript:editar(\'/tipos/ajax/' + ${tipo.id} + '\' );'"
 						   class="btn btn-primary btn-xs botao"> <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 						</a> &nbsp;
 						<a th:href="'javascript:excluir('+ ${tipo.id} +',\'/tipos\');'"
-						   class="btn btn-danger btn-xs botao"><span class="oi oi-circle-x " title="Exclusão desabilitada" aria-hidden="true"></span></span></i></a>
+						   class="btn btn-danger btn-xs botao"><span class="oi oi-circle-x " title="Exclusão desabilitada" aria-hidden="true"></span>
+						</a>
 					</td>
 				</tr>
 				</tbody>

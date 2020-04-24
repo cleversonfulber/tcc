@@ -5775,9 +5775,10 @@ Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nom
 INSERT INTO permissoes (nome) values('ROLE_ADMIN');
 INSERT INTO permissoes (nome) values('ROLE_USER');
 
-INSERT INTO usuarios(nome, username, password) VALUES ('Administrador', 'admin@admin.com','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
-INSERT INTO usuarios(nome, username, password) VALUES ('Teste', 'teste@teste.com','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem');
+INSERT INTO usuarios(nome, username, password, telefone, celular, cpf_cnpj, data_nascimento, genero) VALUES ('Administrador', 'admin@admin.com','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem', '(11) 2342-3423', '(11) 99954-9864', '923.029.023-00','12/12/1992','Masculino');
+INSERT INTO usuarios(nome, username, password, telefone, celular, cpf_cnpj, data_nascimento, genero ) VALUES ('Teste', 'teste@teste.com','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem','(41) 4523-2939', '(41) 99931-2343','041.293.023-00','12/12/1992','Feminino');
 
--- INSERT INTO usuarios_permissoes(usuarios_id, permissoes_id) VALUES (1, 1);
--- INSERT INTO usuarios_permissoes(usuarios_id, permissoes_id) VALUES (1, 2);
--- INSERT INTO usuarios_permissoes(usuarios_id, permissoes_id) VALUES (2, 2);
+INSERT INTO usuarios_permissoes(usuario_id, permissoes_id) VALUES (1, 1);
+INSERT INTO usuarios_permissoes(usuario_id, permissoes_id) VALUES (1, 2);
+INSERT INTO usuarios_permissoes(usuario_id, permissoes_id) VALUES (2, 2);
+
