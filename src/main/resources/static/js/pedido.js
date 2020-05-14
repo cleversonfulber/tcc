@@ -3,14 +3,17 @@ const carrinho = document.getElementById('carrinho');
 const produtos = document.getElementById('lista-produtos');
 const listaProdutos = document.getElementById('lista-carrinho');
 const esvaciarCarrinhoBtn = document.getElementById('esvaciar-carrinho');
-const processarPedidoBtn = document.getElementById('processar-pedido')
+const processarPedidoBtn = document.getElementById('processar-pedido');
 
 cargarEventos();
 
 function cargarEventos(){
     produtos.addEventListener('click', (e) => {carro.comprarProduto(e)});
 
-//    carrinho.addEventListener('click', (e)=>{carro.excluirProduto(e)});
+    produtos.addEventListener('click', (e) => {carro.verProduto(e)});
+
+    produtos.addEventListener('click', (e) => {carro.irCarrinho(e)});
+
     $("#carrinho tbody tr td a.excluir-produto").click((e) => carro.excluirProduto(e));
 
     esvaciarCarrinhoBtn.addEventListener('click', (e)=>{carro.esvaciarCarrinho(e)});

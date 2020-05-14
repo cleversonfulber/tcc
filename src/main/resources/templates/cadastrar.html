@@ -45,7 +45,7 @@
 
 	<form id="frm" name="frm"
 		  method="POST" class="form-signin"
-		  th:action="@{/usuarios}"
+		  th:action="@{/usuario}"
 		  data-parsley-validate="parsley">
 
 		<h1 class="h3 mb-3 font-weight-normal">Cadastrar</h1>
@@ -74,10 +74,6 @@
 			<input type="text" class="datepicker form-control" placeholder="Data de Nascimento"
 				   id="dataNascimento" name="dataNascimento" required/>
 
-<!--			<input type="text" class="form-control" placeholder="Genero"-->
-<!--				   id="genero" name="genero"/>-->
-
-
 			<select class="form-control" id="genero" name="genero" >
 				<option value="Masculino"> Masculino </option>
 				<option value="Feminino"> Feminino </option>
@@ -98,9 +94,10 @@
 
 		</div> <!-- modal-body -->
 		<div class="modal-footer">
-			<button type="button" class="btn" data-dismiss="modal"
-					aria-hidden="true">Cancelar</button>
-			<button type="submit" class="btn btn-success" >Salvar</button>
+			<a type="button" class="btn3" data-dismiss="modal"
+						aria-hidden="true"th:href="@{../}">Cancelar</a>
+			<button type="button" class="btn btn-success"
+					onclick="salvar('/login')">Salvar</button>
 		</div>
 
 		<div>
@@ -117,7 +114,6 @@
 
 	<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/crud-usuario.js}"></script>
-
 	<script type="text/javascript" th:src="@{/js/bootstrap-datepicker.min.js}"></script>
 
 	<script type="text/javascript">

@@ -23,7 +23,7 @@ function editar(url){
 }
 
 
-function novo() {
+function novo(){
     $('#modal-form').modal();
 }
 
@@ -64,7 +64,7 @@ function excluir(id, url){
     );//FIM SWAWL
 }
 
-redireciona(){
+function redireciona(){
     window.location = "../";
 }
 

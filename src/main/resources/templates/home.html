@@ -43,7 +43,7 @@
                                     <div class="caption">
                                         <p>Se você já encontrou seu esporte favorito, agora falta se equipar para treinar com conforto e funcionalidade...</p>
                                         <p>
-                                            <a href="" class="btn btn-default btn-transparent" role="button">
+                                            <a href="/produto" class="btn btn-default btn-transparent" role="button">
                                                 <span>Ver itens</span>
                                             </a>
                                         </p>
@@ -59,7 +59,7 @@
                                     <div class="caption">
                                         <p>Encontre os looks perfeitos para ficar em casa com conforto e estilo. Escolha algo que aconpanhe seu dia a dia, aconteça o que acontecer...</p>
                                         <p>
-                                            <a href="" class="btn btn-default btn-transparent" role="button">
+                                            <a href="/produto" class="btn btn-default btn-transparent" role="button">
                                                 <span>Ver itens</span>
                                             </a>
                                         </p>
@@ -75,7 +75,7 @@
                                     <div class="caption">
                                         <p>Não importa seu treino, seja dança, CrossFit, boxe, corrida ou academia, na nossa loja de esportes online você vai encontrar tudo que precisa.</p>
                                         <p>
-                                            <a href="" class="btn btn-default btn-transparent" role="button">
+                                            <a href="/produto" class="btn btn-default btn-transparent" role="button">
                                                 <span>Ver itens</span>
                                             </a>
                                         </p>
@@ -102,16 +102,20 @@
                 <ul >
                     <li class="hGrid" th:id="'row_' + ${produto.id}" th:each="produto : ${produtos}">
                         <div class="products">
-                            <a href="" >
-                            <img th:src="${produto.imagem}" alt=""/>
-                        </a>
-                            <a href="" >
-                                <h4 th:text="${produto.nome}" ></h4>
+                            <a >
+                                <img th:src="${produto.imagem}" alt=""/>
                             </a>
-                            <p class="valor" th:text="${produto.valor}"></p>
+                            <a>
+                                <h4 th:text="${produto.nome}" ></h4>
+                            </a >
+                                <p class="valor" th:text="${produto.valor}"></p>
                             <div >
                                 <a class="view-link shutter adicionar-carrinho" href="" >
                                     <i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>
+                            </div>
+                            <div>
+                                <a class="view-link shutter ver-produto" >
+                                    <i class="fa fa-stream"></i>Ver Detalhes</a>
                             </div>
                             <a href="" style="display:none">
                                 <h1 th:text="${produto.id}" ></h1>
@@ -134,7 +138,15 @@
                     </div>
                     <div id="owl-example" class="owl-carousel">
                         <div th:id="'row_' + ${produto.id}" th:each="produto : ${produtos}">
-                            <img th:src="${produto.imagem}" alt=""/>
+                            <div>
+                                <a th:href="'produto/' + ${produto.id}">
+                                <img class="" th:src="${produto.imagem}" /></a>
+                            </div>
+                            <div>
+                                <a href="" style="display:none">
+                                    <h1 th:text="${produto.id}" ></h1></a>
+                            </div>
+
                         </div>
                     </div>
                 </div>

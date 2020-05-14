@@ -56,19 +56,13 @@
 								</li>
 							</ul>
 						</li>
-						<li><a href="#">E-EMPRESAS</a></li>
+
 						<li><a href="#">SOBRE</a></li>
-						<li class="dropdown">
-							<a href="#">
-								PAGES
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a  href="#">Action</a></li>
-								<li><a  href="#">Another action</a></li>
-								<li><a  href="#">Something else here</a></li>
-								<li><a  href="#">Separated link</a></li>
-							</ul>
+						<li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+							<a class="adm" href="/index">E-ADMINISTRADOR</a>
+						</li>
+						<li class="dropdown" sec:authorize="hasRole('ROLE_USER')">
+							<a class="adm" href="/index">E-PARCEIROS</a>
 						</li>
 					</ul>
 				</div>

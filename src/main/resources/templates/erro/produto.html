@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:layout="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorate="~{layout/layoutinicial}">
+
+<head><meta charset="UTF-8" />
+
+</head>
+<body>
+	<section id="slider-area"  class="layout-content" layout:fragment="corpo">
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class=" col-md-12">
+					<h1>Produto não encontrado.</h1>
+				</div>
+			</div>
+		</div>
+		<!-------- Slide de Produtos -------->
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="block">
+						<div class="block-heading">
+							<h2>Talvez você possa gostar</h2>
+						</div>
+					</div>
+					<div id="owl-example" class="owl-carousel">
+						<div th:id="'row_' + ${produto.id}" th:each="produto : ${produtos}">
+							<div>
+								<a th:href="'produto/' + ${produto.id}">
+									<img class="" th:src="${produto.imagem}" /></a>
+							</div>
+							<div>
+								<a href="" style="display:none">
+									<h1 th:text="${produto.id}" ></h1></a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="/js/pedido.js" type="text/javascript"></script>
+	</section>
+</body>
+</html>

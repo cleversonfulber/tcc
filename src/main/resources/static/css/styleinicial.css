@@ -134,16 +134,11 @@ section+section { margin-top: 50px; }
 	padding: 10px;
 
 }
-.cart .dropup .caret {
-	margin-top: -36px;
-	margin-left: -130px;
-	text-align: left;
-	border-bottom: 4px solid #FFF;
-}
+
 .cart .dropdown-menu {
 	text-align: center;
-
 	margin-top: 7px;
+	margin-left: -75px;
 }
 .cart .dropdown-cart-body {
 	margin: 0 0 15px 0;
@@ -338,6 +333,11 @@ section+section { margin-top: 50px; }
 
 /* ------------ header secundario ------*/
 
+.adm{
+    color: #ccc;
+    margin-left: 15px;
+}
+
 .navbar{
 
      margin-top: 100px;
@@ -516,7 +516,8 @@ section+section { margin-top: 50px; }
 }
 .products {
 	text-align: center;
-	margin-bottom: 65px;
+
+	margin: 30px 0 30px 0;
 	cursor: pointer;
 
 }
@@ -555,6 +556,7 @@ section+section { margin-top: 50px; }
 .view-link {
 	text-align: center;
 	border: 1px solid #dedede;
+	margin: 10px 0;
 	display: block;
 	padding: 8px 10px;
 	font-size: 17px;
@@ -812,6 +814,11 @@ footer .block span {
 #owl-example img {
 	width: 80%;
 }
+
+#owl-example img:hover {
+    border: 1px solid #ff6200;
+}
+
 .owl-theme .owl-controls {
 	margin-top: 0;
 	margin-bottom: 20px;
@@ -1242,6 +1249,7 @@ footer .block span {
     ==================================================*/
 #single-product .tab-content {
 	padding: 10px;
+	margin-bottom: 100px;
 	border-left:1px solid #dedede;
 	border-right:1px solid #dedede;
 	border-bottom:1px solid #dedede;
@@ -1286,4 +1294,14 @@ footer .block span {
 
 .botao{
     margin: 10px 20px;
+}
+
+/*página individual*/
+
+.media-heading {
+    color: #000;
+}
+
+.media-heading:hover {
+    color: #ccc;
 }

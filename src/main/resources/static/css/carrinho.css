@@ -2,14 +2,13 @@
 /*carrinho  */
 
 .row2{
-    margin: 0 0 10% 0;
+    margin: 0 0 2% 0;
 }
 
 .tCarrinho{
     margin: 5%;
     text-align: center;
 }
-
 
 
 .qtda{
@@ -43,6 +42,9 @@
     text-decoration: none;
 }
 
+.table span{
+    font-weight: normal;
+}
 
 #cor a:hover {
     color: #dbbd9d;
@@ -186,4 +188,15 @@ ul {padding-left: 0;}
 #carregando{
     display: none;
 }
+
+.direita{
+    margin: 5% 0 5% 0;
+    float: right;
+}
+
+.table thead>tr>th, .table tbody>tr>th, .table tfoot>tr>th, .table thead>tr>td, .table tbody>tr>td, .table tfoot>tr>td {
+    border-top: 0px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
 

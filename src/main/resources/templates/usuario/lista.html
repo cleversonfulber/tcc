@@ -17,7 +17,8 @@
 			</ul>
 			<div class="row">
 				<div class="col-xs-4">
-					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-form" onclick="novo()">
+					<a class="btn btn-primary" data-toggle="modal"
+					   data-target="#modal-form" onclick="novo()">
 						<i class="fa fa-plus-square"></i> Novo Registro
 					</a>
 				</div>
@@ -32,10 +33,9 @@
 		</div>
 
 		<div class="table-responsive">
-			<table id="minhaTable" [rows]="5"
-				   [rowsPerPageOptions]="[5,10,20]"
+			<table id="minhaTable" class="table table-striped
+					table-bordered  table-hover  table-condensed">
 
-					class="table  table-striped  table-bordered  table-hover  table-condensed">
 				<thead class="ut-table-header-solid">
 					<tr>
 						<th>Código</th>
@@ -46,11 +46,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:id="'row_' + ${usuario.id}" th:each="usuario: ${lista.content}">
+					<tr th:id="'row_' + ${usuario.id}" th:each="usuario: ${usuarios}">
 						<td style="width:150px" class="text-center" th:text="${usuario.id}">0</td>
 						<td><a th:href="'javascript:editarUsuario(' + ${usuario.id} + ');'"
-							th:text="${usuario.nome}">...</a></td>
-
+							   th:text="${usuario.nome}">...</a></td>
 						<td th:text="${usuario.username}">...</td>
 						<td>
 							<ul class="list-inline">
@@ -61,11 +60,14 @@
 							</ul>
 						</td>
 						<td style="width:200px" class="text-center">
-							<a th:href="'javascript:edit(' + ${usuario.id} + ');'"
-								class="btn btn-primary btn-xs"> <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
+
+							<a th:href="'javascript:editarUsuario(' + ${usuario.id} + ');'"
+							   class="btn btn-primary btn-xs botao">
+								<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 							</a> &nbsp;
-							<a th:href="'javascript:remover(' + ${usuario.id} + ');'"
-								class="btn btn-danger btn-xs"><span class="oi oi-circle-x " title="Exclusão desabilitada" aria-hidden="true"></span>
+							</a> &nbsp;
+							<a th:href="'javascript:excluir('+ ${usuario.id} +',\'/usuarios\');'"
+							   class="btn btn-danger btn-xs botao"><span class="oi oi-circle-x " title="Exclusão desabilitada" aria-hidden="true"></span>
 							</a>
 						</td>
 					</tr>
@@ -83,8 +85,7 @@
 				</div> <!-- modal-header -->
 				<form id="frm" name="frm"
 						method="POST" class="form-vertical"
-						th:action="@{/usuario}"
-						data-parsley-validate="parsley">
+					  th:action="@{/usuarios/ajax}">
 					<div class="modal-body">
 							<input type="hidden" id="id" name="id"/>
 							<div class="form-group">
@@ -105,6 +106,33 @@
 								<input type="password" class="form-control"
 									id="password" name="password" required />
 							</div>
+							<div class="form-group">
+								<label for="telefone">Telefone</label>
+								<input type="text" class="form-control"
+								   id="telefone" name="telefone" />
+							</div>
+							<div class="form-group">
+								<label for="celular">Celular</label>
+								<input type="text" class="form-control"
+								   id="celular" name="celular" required/>
+							</div>
+							<div class="form-group">
+								<label for="cpfCnpj">CPF/CNPJ</label>
+								<input type="text" class="form-control"
+								   id="cpfCnpj" name="cpfCnpj" required/>
+							</div>
+							<div class=" form-group">
+								<label for="dataNascimento">Data de Nascimento</label>
+								<input type="text" class="datepicker form-control"
+								   id="dataNascimento" name="dataNascimento" required/>
+							</div>
+							<div class="form-group">
+								<label for="genero">Gênero</label>
+								<select class="form-control" id="genero" name="genero" >
+									<option value="Masculino"> Masculino </option>
+									<option value="Feminino"> Feminino </option>
+								</select>
+							</div>
 
 							<div class="form-group">
 								<label>Permissões:</label>
@@ -122,13 +150,15 @@
 					<div class="modal-footer">
 						<button type="button" class="btn" data-dismiss="modal"
 								onclick="limparUsuario()" aria-hidden="true">Cancelar</button>
-						<button type="submit" class="btn btn-success">Salvar</button>
+						<button type="button" class="btn btn-success"
+								onclick="salvar('/usuarios')">Salvar</button>
 					</div>
 				</form>
 			</div> <!-- modal-content -->
 		</div> <!-- modal-dialog -->
 	</div> <!-- modal-form -->
 	<script type="text/javascript" th:src="@{/js/crud-usuario.js}"></script>
+	<script type="text/javascript" th:src="@{/js/cruds.js}"></script>
 </section>
 
 </body>

@@ -134,9 +134,7 @@ body {
 
 /*lista*/
 
-a:not([href]):not([tabindex]) {
-    color: #eeeeee;
-}
+
 
 .texto, .texto:hover {
     color: #333333;

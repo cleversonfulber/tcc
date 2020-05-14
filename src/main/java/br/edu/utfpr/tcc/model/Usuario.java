@@ -40,9 +40,11 @@ public class Usuario implements Serializable, UserDetails {
 	@Column(length = 512, nullable = false)
 	private String password;
 
-	@ManyToMany(cascade = CascadeType.ALL,
-			fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Permissao> permissoes;
+
+	@OneToMany(mappedBy = "usuario", targetEntity = Endereco.class)
+	private Set<Endereco> enderecos;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head><meta charset="UTF-8">
 
@@ -17,9 +16,7 @@
 
 						<a class="navbar-brand " href="/"><img th:src="@{/image/icone.png}" height="50px" width="50px">
 							E-Marketplace</a>
-						<div sec:authorize="hasRole('ROLE_ADMIN')">
-							Esse texto só vai aparecer para o ADMIN.
-						</div>
+
 					</div>
 
 					<div id="cor">
@@ -58,7 +55,7 @@
 											<span>Não é Cadastrado?</span>
 										</li>
 										<li class="botao">
-											<a th:href="@{/usuarios}">Cadastre-se!</a>
+											<a th:href="@{/usuario}">Cadastre-se!</a>
 										</li>
 									</ul>
 								</div>
@@ -68,7 +65,6 @@
 							<div class="cart dropdown">
 								<a data-toggle="dropdown" href="#"><i class="fa fa-shopping-cart"></i></a>
 								<div id="carrinho" class="dropdown-menu dropup">
-									<span class="caret"></span>
 									<table id="lista-carrinho" class="table">
 										<thead>
 											<tr>
@@ -79,8 +75,8 @@
 										</thead>
 										<tbody></tbody>
 									</table>
-									<a href="#" id="esvaciar-carrinho" class="view-link shutter">Esvaciar Carrinho</a>
-									<a href="/carrinho" id="processar-pedido" class="view-link shutter">Finalizar Pedido</a>
+									<a href="#" id="esvaciar-carrinho" class="view-link shutter">Limpar Carrinho</a>
+									<a href="/carrinho" id="processar-pedido" class="view-link shutter">Ver Carrinho</a>
 								</div>
 							</div>
 						</div>

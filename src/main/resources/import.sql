@@ -5643,13 +5643,6 @@ Insert into marcas (imagem, nome) values ('/image/marcas/topper.png','Topper');
 Insert into marcas (imagem, nome) values ('/image/marcas/umbro.png','Umbro');
 Insert into marcas (imagem, nome) values ('/image/marcas/under.png','Under Armour');
 
--- Insert into enderecos ( cidade_id, cep, numero, bairro, rua, descricao ) values (4047, '85560-000', 4783, 'Nossa Senhora Aparecida', 'Diogo Antonio Fiejó', 'Próximo a Igreja');
--- Insert into enderecos ( cidade_id, cep, numero, bairro, rua, descricao ) values (4313, '85570-000', 2574, 'Cristo Rei', 'Antonio Guimarães', 'N/A');
--- Insert into enderecos ( cidade_id, cep, numero, bairro, rua, descricao ) values (4339, '85565-000', 2108, 'Centro', 'Sabino Cenci', 'Casa verde');
--- Insert into enderecos ( cidade_id, cep, numero, bairro, rua, descricao ) values (4066, '93387-098', 7304, 'Centro', 'AV VX de Novembro', 'Proximo ao Posto');
--- Insert into enderecos ( cidade_id, cep, numero, bairro, rua, descricao ) values (3890, '93387-098', 1034, 'Nossa Esperança', 'Serqueira Filho', 'nada');
--- Insert into enderecos ( cidade_id, cep, numero, bairro, rua, descricao ) values (4992, '93387-098', 8459, 'Centro', 'Antonio Rubens', 'nenhuma');
---
 -- Insert into dados_usuarios ( endereco_id, telefone, celular, cpf, data_nascimento, sexo) values ( 1, '(46) 3242-2034', '(46) 92347-8236', '034.234.342-12', '1978-02-01', 'Masculino');
 -- Insert into dados_usuarios ( endereco_id, telefone, celular, cpf, data_nascimento, sexo) values ( 2, '(46) 3533-2843', '(46) 98347-3423', '234.575.234-66', '1989-04-03', 'Feminino');
 -- Insert into dados_usuarios ( endereco_id, telefone, celular, cpf, data_nascimento, sexo) values ( 3, '(46) 3233-3756' , '(46) 99547-1294', '245.568.356-23', '1990-06-05', 'Masculino');
@@ -5781,4 +5774,7 @@ INSERT INTO usuarios(nome, username, password, telefone, celular, cpf_cnpj, data
 INSERT INTO usuarios_permissoes(usuario_id, permissoes_id) VALUES (1, 1);
 INSERT INTO usuarios_permissoes(usuario_id, permissoes_id) VALUES (1, 2);
 INSERT INTO usuarios_permissoes(usuario_id, permissoes_id) VALUES (2, 2);
+
+INSERT INTO enderecos(usuario_id, cidade_id, descricao, cep, numero, bairro, rua, complemento) VALUES (1, 2, 'Casa', '85560-000', 4783, 'Nossa Senhora Aparecida','Diogo Antonio Fiejó', 'Próximo a Igreja' );
+INSERT INTO enderecos(usuario_id, cidade_id, descricao, cep, numero, bairro, rua, complemento) VALUES (2, 1, 'Apartamento', '85560-000', 2574, 'Cristo Rei','Antonio Guimarães', 'N/A' );
 

@@ -93,6 +93,16 @@ body {
     text-decoration: none;
 }
 
+.btn3{
+    color: #000;
+}
+
+.btn3:focus,
+.btn3:hover{
+    color: #ccc;
+    text-decoration: none;
+}
+
 /*	Shutter Button Start
     ==================================================*/
 .view-link {

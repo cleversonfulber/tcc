@@ -46,11 +46,7 @@ public class HomeController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = "/index")
-	public String index(Model model) {
 
-		return "redirect:/index";
-	}
 
 	@GetMapping(value = "/403")
 	public ModelAndView erro403() {

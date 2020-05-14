@@ -1,6 +1,6 @@
 
 const compra = new Carrinho();
-const listaCompra = document.querySelector('#lista-compra tbody');
+const listaChecar = document.querySelector('#lista-checar tbody');
 const carrinho = document.getElementById('carrinho');
 const finalizarCompraBtn = document.getElementById('finalizar-pedido');
 const cliente = document.getElementById('cliente');
@@ -10,7 +10,7 @@ carregarEventos();
 
 function carregarEventos(){
 
-    document.addEventListener('DOMContentLoaded', compra.lerLocalStorageCompra());
+    document.addEventListener('DOMContentLoaded', compra.lerLocalStorageChecar());
 
     $("#carrinho tbody tr td a.excluir-produto").click((e) => compra.excluirProduto(e));
 

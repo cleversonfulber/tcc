@@ -1,8 +1,9 @@
 package br.edu.utfpr.tcc.controller;
 
-import br.edu.utfpr.tcc.model.Cidade;
+import br.edu.utfpr.tcc.model.Endereco;
+import br.edu.utfpr.tcc.repository.EnderecoRepository;
 import br.edu.utfpr.tcc.repository.CidadeRepository;
-import br.edu.utfpr.tcc.repository.EstadoRepository;
+import br.edu.utfpr.tcc.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,57 +17,61 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("/cidades")
-public class CidadeController {
+@RequestMapping("/enderecos")
+public class EnderecoController {
+
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 
 	@Autowired
 	private CidadeRepository cidadeRepository;
 
 	@Autowired
-	private EstadoRepository estadoRepository;
+	private UsuarioRepository usuarioRepository;
 
 	@GetMapping
 	public ModelAndView listar() {
-		ModelAndView modelAndView = new ModelAndView("cidade/lista");
-		modelAndView.addObject("cidades", cidadeRepository.findAll());
-		modelAndView.addObject("estados", estadoRepository.findAll());
-		modelAndView.addObject("cidade", new Cidade());
+		ModelAndView modelAndView = new ModelAndView("endereco/lista");
+		modelAndView.addObject("enderecos", enderecoRepository.findAll());
+		modelAndView.addObject("cidades", cidadeRepository.findAll() );
+		modelAndView.addObject("usuarios", usuarioRepository.findAll() );
+		modelAndView.addObject("endereco", new Endereco());
 
 		return modelAndView;
 	}
 
 	@GetMapping({"novo"})
-	public ModelAndView novo(Cidade cidade) {
-		ModelAndView modelAndView = new ModelAndView("cidade/lista");
+	public ModelAndView novo(Endereco endereco) {
+		ModelAndView modelAndView = new ModelAndView("endereco/lista");
 
-		if (cidade != null) {
-			modelAndView.addObject(cidade);
+		if (endereco != null) {
+			modelAndView.addObject(endereco);
 		}else {
-			modelAndView.addObject(new Cidade());
+			modelAndView.addObject(new Endereco());
 		}
 		return modelAndView;
 	}
 
 	@PostMapping("ajax")
-	public ResponseEntity<?> salvar(@Valid Cidade cidade, BindingResult result,
+	public ResponseEntity<?> salvar(@Valid Endereco endereco, BindingResult result,
 									RedirectAttributes attributes) {
 		if ( result.hasErrors() ) {
 			return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
 		}
-		cidadeRepository.save(cidade);
+		enderecoRepository.save(endereco);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@GetMapping("ajax/{id}")
 	@ResponseBody
-	public Cidade editar(@PathVariable Long id) {
-		return cidadeRepository.findById(id).orElse(null);
+	public Endereco editar(@PathVariable Long id) {
+		return enderecoRepository.findById(id).orElse(null);
 	}
 
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
 		try {
-			cidadeRepository.deleteById(id);
+			enderecoRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

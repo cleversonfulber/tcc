@@ -52,7 +52,7 @@
                             <h4>Marcas</h4>
                             <ul class="media-list">
                                 <li class="media" th:each="marca : ${marcas}">
-                                    <a class="pull-left" href="#" >
+                                    <a class="pull-left" th:href="'marca/' + ${marca.id}" >
                                         <img class="media-object" th:src="${marca.imagem}" >
                                     </a>
                                     <div class="media-body">
@@ -72,23 +72,25 @@
 
                 </div>	<!-- End of /.row -->
 
-
-
                 <div class="row" >
                     <div class="product-grid" id="lista-produtos">
                         <ul >
                             <li class="pGrid" th:id="'row_' + ${produto.id}" th:each="produto : ${produtos}" >
                                 <div class="products">
-                                    <a href="" >
+                                    <a href="">
                                         <img th:src="${produto.imagem}" alt=""/>
                                     </a>
-                                    <a href="" >
+                                    <a href="">
                                         <h4 th:text="${produto.nome}" ></h4>
                                     </a>
                                         <p class="valor" th:text="${produto.valor}"></p>
                                     <div >
                                         <a class="view-link shutter adicionar-carrinho" href="" >
                                             <i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>
+                                    </div>
+                                    <div>
+                                        <a class="view-link shutter ver-produto" >
+                                            <i class="fa fa-stream"></i>Ver Detalhes</a>
                                     </div>
                                     <a href="" style="display:none">
                                         <h1 th:text="${produto.id}" ></h1>

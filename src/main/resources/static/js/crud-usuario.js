@@ -1,19 +1,3 @@
-$('#frm').submit(function(e){
-
-	$.ajax({
-		type: $('#frm').attr('method'),
-		 url: $('#frm').attr('action'),
-		data: $('#frm').serialize(),
-		success: function(){
-			swal('Salvo!', 'Registro salvo com sucesso!', 'success');
-			location.reload();
-		},
-		error: function(){
-			swal('Errou!', 'Falha ao salvar o registro!', 'error');
-		}
-	});//Fim Ajax
-	return false;
- });
 
 function limparUsuario() {
 
@@ -21,6 +5,11 @@ function limparUsuario() {
 	$('#nome').val('');
 	$('#username').val('');
 	$('#password').val('');
+	$('#telefone').val('');
+	$('#celular').val('');
+	$('#cpfCnpj').val('');
+	$('#dataNascimento').val('');
+	$('#genero').val('');
 	$('#frm input:checkbox:checked').each(function(){
 		$(this).prop('checked', false);
 	});
@@ -28,11 +17,15 @@ function limparUsuario() {
 }
 
 function editarUsuario(id) {
-	clearForm();
-	$.get('usuario/' + id, function(entity, status){
+	$.get('usuarios/' + id, function(entity, status){
 		$('#id').val(entity.id);
 		$('#nome').val(entity.nome);
 		$('#username').val(entity.username);
+		$('#telefone').val(entity.telefone);
+        $('#celular').val(entity.celular);
+        $('#cpfCnpj').val(entity.cpfCnpj);
+        $('#dataNascimento').val(entity.dataNascimento);
+        $('#genero').val(entity.genero);
 		$.each(entity.permissoes, function(i, item) {
 			$('#chk_'+entity.permissoes[i].id).prop('checked', true);
 		});

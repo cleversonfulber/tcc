@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Finalizar</title>
+
+    <!-- CSS -->
+    <link rel="shortcut icon" href="/image/icone.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost:9000/css/bootstrap.min.css">
+    <link href="/css/carrinho.css" rel="stylesheet" />
+
+    <!-- jS -->
+    <script src="https://use.fontawesome.com/releases/v5.10.2/js/all.js" data-auto-replace-svg="nest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="/js/carrinho.js" type="text/javascript"></script>
+    <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+    <script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="http://localhost:9000/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+<nav id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+
+                <a class="navbar-brand " href="/"><img th:src="@{/image/icone.png}" height="50px" width="50px">
+                    E-Marketplace</a>
+            </div>
+            <div id="cor">
+                <div class="col-md-2">
+                    <div class="dropdown" sec:authorize="isAuthenticated()">
+                        <a data-toggle="dropdown" href="#" >
+                            <i class="fa fa-user fa-fw"></i>
+                            Olá, <span id="cliente" class="cliente" sec:authentication="principal.nome"> Erro!!!	</span>!
+                        </a>
+
+                        <div class="dropdown-menu dropup">
+
+                            <ul>
+                                <li class="botao">
+                                    <a >Minha Conta</a>
+                                </li>
+                                <li class="botao">
+                                    <a >Meus Pedidos</a>
+                                </li>
+                                <li class="botao">
+                                    <a th:href="@{/logout}" >Sair</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="dropdown" sec:authorize="! isAuthenticated()">
+
+                        <a data-toggle="dropdown" href="#" >
+                            <i class="fa fa-user fa-fw"></i>
+                            <span class="teste">Entrar | Login</span>
+                        </a>
+
+                        <div class="dropdown-menu dropup">
+
+                            <ul>
+
+
+                                <li class="botao">
+                                    <a th:href="@{/login}" >Fazer Login</a>
+                                </li>
+                                <li class="botao">
+                                    <span >Não é Cadastrado?</span>
+                                </li>
+                                <li class="botao">
+                                    <a>Cadastre-se!</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+    <div class="container tCar">
+        <div class="row row2 mt-3">
+            <div class="col">
+                <h1 class="mb-3 tCarrinho">Resumo</h1>
+                <form id="procesar-pago" action="#">
+
+                    <div class="col-12 col-md-6" >
+                        <div class="table-responsive">
+
+                            <table id="minhaTable" class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Endereço</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <div th:id="'row_' + ${endereco.id}" th:each="endereco : ${enderecos}">
+
+                                    <tr>
+                                        <th scope="col">
+                                            <p th:text="${endereco.usuario.nome}"></p>
+                                            <span th:text="${endereco.rua}"></span>,
+                                            <span th:text="${endereco.numero}"></span>,
+                                            <span th:text="${endereco.complemento}"></span>
+                                            <h5 th:text="${endereco.bairro}"></h5>
+                                            <h5 th:text="${endereco.cidade.nome}+ ' - ' + ${endereco.cidade.estado.sigla}"></h5>
+                                            <span>CEP:</span> <span th:text="${endereco.cep}"></span>
+                                        </th>
+                                    </tr>
+                                </div>
+                                </tbody>
+                            </table>
+                            <div class="col-md-4 mb-2">
+                                <a href="/endereco" class="view-link shutter">Editar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div id="carrinho" class="table-responsive">
+                            <table class="table" id="lista-checar">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Imagem</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Quantidade</th>
+                                    <th scope="col">Sub Total</th>
+                                </tr>
+                                </thead>
+                                <tbody >
+
+                                </tbody>
+                                <tr>
+                                    <th colspan="2" scope="col" class="text-right">PRODUTOS :</th>
+                                    <th scope="col">
+                                        <p id="subtotal"></p>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" scope="col" mask="99.999-999" class="text-right">FRETE :</th>
+                                    <th scope="col">
+                                        <p id="igv"></p>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" scope="col" class="text-right">TOTAL :</th>
+                                    <th scope="col">
+                                        <p id="total"></p>
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 final">
+            <div class="col-xs-4 col-md-4 direita">
+                <a href="" class="view-link shutter " id="finalizar-pedido">Finalizar Compra</a>
+            </div>
+            <div class="col-xs-4 col-md-4 direita">
+                <a href="/carrinho" class="view-link shutter " >Voltar</a>
+            </div>
+        </div>
+    </div>
+    <script src="/js/checar.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 package br.edu.utfpr.tcc.controller;
 
+import br.edu.utfpr.tcc.model.Cidade;
+import br.edu.utfpr.tcc.model.Marca;
 import br.edu.utfpr.tcc.model.Usuario;
 import br.edu.utfpr.tcc.repository.PermissaoRepository;
 import br.edu.utfpr.tcc.repository.UsuarioRepository;
@@ -21,79 +23,64 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
-@RequestMapping("usuario")
+@RequestMapping("usuarios")
 public class UsuarioEditController {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+
 	@Autowired
 	private PermissaoRepository permissaoRepository;
-	
-	protected String getURL() {
-			return "usuario";
-		}
 
-	@GetMapping("new")
-	protected ModelAndView form(Usuario entity) {
-		ModelAndView modelAndView = new ModelAndView(getURL() + "/form");
-		if (entity == null) {
-			modelAndView.addObject("usuario", new Usuario());
-		} else {
-			modelAndView.addObject("usuario", entity);
+
+	@GetMapping
+	public ModelAndView listar() {
+		ModelAndView modelAndView = new ModelAndView("usuario/lista");
+		modelAndView.addObject("usuarios", usuarioRepository.findAll());
+		modelAndView.addObject("permissoes", permissaoRepository.findAll());
+		modelAndView.addObject("usuario", new Marca());
+
+		return modelAndView;
+	}
+
+	@GetMapping({"novo"})
+	protected ModelAndView novo(Usuario usuario) {
+		ModelAndView modelAndView = new ModelAndView("usuario/lista");
+		if (usuario != null) {
+			modelAndView.addObject(usuario);
+		}else {
+			modelAndView.addObject(new Marca());
 		}
 		return modelAndView;
 	}
 	
 	@GetMapping("{id}")
 	@ResponseBody
-	public Usuario edit(@PathVariable Long id) {
+	public Usuario editar(@PathVariable Long id) {
 		return usuarioRepository.findById(id).orElse(null);
 	}
-	
-	@PostMapping()
-	public ResponseEntity<?> saveAjax(@Valid Usuario entity,
-                                      BindingResult result, RedirectAttributes attributes) {
+
+	@PostMapping("ajax")
+	public ResponseEntity<?> salvar(@Valid Usuario entity,BindingResult result,
+                                       RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
 		}
+		entity.setPassword(entity.getEncodedPassword(entity.getPassword()));
 
-		entity.setPassword(
-				entity.getEncodedPassword(entity.getPassword()));
 		usuarioRepository.save(entity);
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-//	@GetMapping
-//	public ModelAndView listar() {
-//		ModelAndView modelAndView = new ModelAndView("lista");
-//		modelAndView.addObject("permissoes", permissaoRepository.findAll());
-//		modelAndView.addObject("usuario", new Usuario());
-//
-//		return modelAndView;
-//	}
-
-	@GetMapping
-	public ModelAndView list(@RequestParam("page") Optional<Integer> page,
-                             @RequestParam("size") Optional<Integer> size) {
-		int currentPage = page.orElse(1);
-		int pageSize = size.orElse(5);
-
-		Page<Usuario> list = usuarioRepository.findAll(
-				PageRequest.of(currentPage -1, pageSize) );
-
-		ModelAndView modelAndView = new ModelAndView(this.getURL() + "/lista");
-		modelAndView.addObject("lista", list);
-
-		modelAndView.addObject("permissoes", permissaoRepository.findAll());
-
-		if( list.getTotalPages() > 0) {
-			List<Integer> pageNumbers = IntStream
-					.rangeClosed(1, list.getTotalPages())
-					.boxed().collect(Collectors.toList());
-			modelAndView.addObject("pageNumbers", pageNumbers);
+	@DeleteMapping("{id}")
+	public ResponseEntity<?> excluir(@PathVariable Long id){
+		try {
+			usuarioRepository.deleteById(id);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return modelAndView;
 	}
 
 }
