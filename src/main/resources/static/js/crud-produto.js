@@ -4,6 +4,7 @@ function editarProduto(url) {
 		$('#nome').val(entity.nome);
 		$('#valor').val(entity.valor);
 		$('#descricao').val(entity.descricao);
+		$('#caracteristica').val(entity.caracteristica);
 		$('#tamanho').val(entity.tamanho.id);
 		$('#cor').val(entity.cor.id);
 		$('#tipo').val(entity.tipo.id);
@@ -39,7 +40,8 @@ function limparForm(){
 	$('#id').val('');
 	$('#nome').val('');
 	$('#valor').val('');
-	$('#descricao').val('');
+	$('#descricao').val('')
+	$('#caracteristica').val('')
 	$('#tamanho').val('');
 	$('#cor').val('');
 	$('#tipo').val('' );

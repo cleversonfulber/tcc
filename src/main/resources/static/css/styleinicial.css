@@ -70,6 +70,29 @@ section+section { margin-top: 50px; }
     color: #ff6200;
 }
 
+.btn-buscar{
+    background: #fff;
+    border-radius: 0;
+}
+
+.btn-buscar:hover{
+    color: ccc;
+    background: #ff6200;
+}
+
+input[type="search"] {
+    border-radius: 0;
+    margin-top: 7px;
+}
+
+input[type="search"]:focus {
+    border-color: #ff6200;
+}
+
+button.btn.btn-buscar {
+    margin-top: 7px;
+}
+
 /*------------- Top bar----------------*/
 .navbar-brand{
     padding: 0;
@@ -282,25 +305,36 @@ section+section { margin-top: 50px; }
 	padding: 20px 15px;
 	color: #555;
 	font-size: 17px;
+
 }
 .navbar-nav {
 	float: none;
 	text-align: center;
 }
 
-.navbar-nav>li {
+.navbar-nav > li {
 	float: none;
 	display: inline-block;
 	margin:0 10px;
 }
+
 .nav-main .dropdown-menu a:hover{
 	background: #fff;
 }
+
+.nav-main .dividir {
+    -moz-column-count: 2;
+    -moz-column-gap: 2rem;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 2rem;
+	column-count: 2;
+    column-gap: 2rem;
+}
+
 .nav-main .dropdown-menu li a {
 	color: #555;
 	text-align: left;
 	padding: 6px 10px;
-
 }
 .nav-main .dropdown-menu li:hover {
 	color: #fff;
@@ -317,6 +351,7 @@ section+section { margin-top: 50px; }
 	color: #fff;
 	background: #ff6200;
 }
+
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.open>a:hover,
 .navbar-default .navbar-nav>.open>a:focus {
@@ -1303,5 +1338,27 @@ footer .block span {
 }
 
 .media-heading:hover {
-    color: #ccc;
+    color: #ff6200;
+}
+
+}
+.nav-main .dropdown-menu option a {
+    color: #555;
+    text-align: left;
+    padding: 6px 10px;
+}
+.nav-main > option a {
+    padding: 20px 15px;
+    color: #555;
+    font-size: 17px;
+}
+
+.fa-times{
+    margin-left: 10px;
+}
+
+
+.filtro a:hover{
+    background: ccc;
+    text-decoration: none;
 }

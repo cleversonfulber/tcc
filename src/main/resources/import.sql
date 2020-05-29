@@ -5606,9 +5606,8 @@ Insert into categorias ( nome) values ('Acessórios');
 Insert into tipos ( nome) values ('Botas');
 Insert into tipos ( nome) values ('Chinelo');
 Insert into tipos ( nome) values ('Chuteiras');
-Insert into tipos ( nome) values ('Crocs');
 Insert into tipos ( nome) values ('Sandálias');
-Insert into tipos ( nome) values ('Sapatilhas');
+Insert into tipos ( nome) values ('Sapatênis');
 Insert into tipos ( nome) values ('Tênis');
 Insert into tipos ( nome) values ('Bermudas');
 Insert into tipos ( nome) values ('Calças');
@@ -5637,6 +5636,7 @@ Insert into marcas (imagem, nome) values ('/image/marcas/newbalance.png','New Ba
 Insert into marcas (imagem, nome) values ('/image/marcas/nike.png','Nike');
 Insert into marcas (imagem, nome) values ('/image/marcas/oakley.png','Oakley');
 Insert into marcas (imagem, nome) values ('/image/marcas/olympikus.png','Olympikus');
+Insert into marcas (imagem, nome) values ('/image/marcas/pegada.png','Pegada');
 Insert into marcas (imagem, nome) values ('/image/marcas/penalty.png','Penalty');
 Insert into marcas (imagem, nome) values ('/image/marcas/puma.png','Puma');
 Insert into marcas (imagem, nome) values ('/image/marcas/topper.png','Topper');
@@ -5681,7 +5681,7 @@ Insert into cor ( nome) values ('Cinza');
 Insert into cor ( nome) values ('Dourado');
 Insert into cor ( nome) values ('Lilás');
 Insert into cor ( nome) values ('Limão');
-Insert into cor ( nome) values ('Marinho');
+Insert into cor ( nome) values ('Marrom');
 Insert into cor ( nome) values ('Pink');
 Insert into cor ( nome) values ('Prata');
 Insert into cor ( nome) values ('Preto');
@@ -5751,12 +5751,17 @@ Insert into tamanho ( nome) values ('46');
 Insert into tamanho ( nome) values ('47');
 Insert into tamanho ( nome) values ('48');
 
-Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, tamanho_id, cor_id) values ('https://tcc-cleversonfulber.s3.amazonaws.com/1_1.png', 2, 1, 10, 1, 'Camisa Polo Adidas Club Masculina Preta', 129.99, 'Ideal para os praticantes de tênis e squash, a Camisa Polo da Adidas não pode faltar no seu guarda-roupa. ', 6, 16);
-Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, tamanho_id, cor_id) values ('https://tcc-cleversonfulber.s3.amazonaws.com/2_1.png', 2, 1, 10, 1, 'Camisa Polo Adidas Club Masculina Branca', 129.99, 'Ideal para os praticantes de tênis e squash, a Camisa Polo da Adidas não pode faltar no seu guarda-roupa. ', 6, 5);
-Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, tamanho_id, cor_id) values ('https://tcc-cleversonfulber.s3.amazonaws.com/3_1.png', 1, 5, 3, 2, 'Chuteira Society Kappa Torpedo', 119.99, 'Com a Chuteira Society Kappa Torpedo você tem vantagem sobre a defesa. ', 50, 16);
-Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, tamanho_id, cor_id) values ('https://tcc-cleversonfulber.s3.amazonaws.com/4_1.png', 2, 8, 12, 3, 'Camiseta Nike Legend 2.0 Ss Masculina', 89.99, 'Eleve sua performance com o conforto e a leveza da Camiseta Nike Legend 2.0.', 6, 2);
-Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, tamanho_id, cor_id) values ('https://tcc-cleversonfulber.s3.amazonaws.com/5_1.png', 3, 11, 17, 4, 'Bola de Futsal Penalty Max 1000 All Black', 279.99, 'A Bola de Futsal Penalty Max 1000 All Black Edição Limitada é ideal para partidas acirradas em quadras indoor.', 2, 16);
-Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, tamanho_id, cor_id) values ('https://tcc-cleversonfulber.s3.amazonaws.com/6_1.png', 2, 14, 12, 5, 'Camisa Umbro TWR Basic Masculina', 59.99, 'Entre em campo pronto para decidir a partida com a Camisa Masculina TWR da Umbro.', 6, 20);
+Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, cor_id, caracteristica) values ('https://tcc-cleversonfulber.s3.amazonaws.com/1_1.png', 2, 1, 9, 1, 'Camisa Polo Adidas Club Masculina', 129.99, 'Ideal para os praticantes de tênis e squash, a Camisa Polo da Adidas não pode faltar no seu guarda-roupa. Essa Polo de jogar tênis é produzida em tecido com tecnologia ClimaLite, leve e respirável, afastando o calor e mantendo o corpo fresco...', 16, 'Nome: Camisa Polo Adidas Club Masculina, Gênero: Masculino, Indicado para: Dia a Dia, Material: Poliéster, Manga: Manga Curta, Composição: 100% Poliéster, Garantia do Fabricante: Contra defeito de fabricação, Origem: Estrangeira, Marca: Adidas.');
+Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, cor_id, caracteristica) values ('https://tcc-cleversonfulber.s3.amazonaws.com/2_1.png', 2, 1, 9, 1, 'Camisa Polo Adidas Club - Masculina', 129.99, 'Ideal para os praticantes de tênis e squash, a Camisa Polo da Adidas não pode faltar no seu guarda-roupa. Essa Polo de jogar tênis é produzida em tecido com tecnologia ClimaLite, leve e respirável, afastando o calor e mantendo o corpo fresco...', 5 , 'Nome: Camisa Polo Adidas Club Masculina, Gênero: Masculino, Indicado para: Dia a Dia, Material: Poliéster, Manga: Manga Curta, Composição: 100% Poliéster, Garantia do Fabricante: Contra defeito de fabricação, Origem: Estrangeira, Marca: Adidas.');
+Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, cor_id, caracteristica) values ('https://tcc-cleversonfulber.s3.amazonaws.com/3_1.png', 1, 4, 3, 2, 'Chuteira Society Kappa Torpedo', 119.99, 'Com a Chuteira Society Kappa Torpedo você tem vantagem sobre a defesa. A Chuteira Kappa é feita de material sintético e cravos de borracha que dão velocidade e aderência na passada.', 16, 'Nome: Chuteira Society Kappa Torpedo, Gênero: Unissex, Tipo: Society, Indicado para: Jogo, Material: Sintético, Cabedal: Sintético, Solado: Borracha, Garantia do Fabricante: Contra Defeito de Fabricação, Origem: Nacional, Marca: Kappa.');
+Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, cor_id, caracteristica) values ('https://tcc-cleversonfulber.s3.amazonaws.com/4_1.png', 2, 8, 11, 3, 'Camiseta Nike Legend 2.0 Ss Masculina', 89.99, 'Eleve sua performance com o conforto e a leveza da Camiseta Nike Legend 2.0. A peça oferece tecnologia Nike Dri-Fit para você se manter em movimento sem se preocupar com incômodos.', 2, 'Nome: Camiseta Nike Legend 2.0 Ss Masculina, Gênero: Masculino, Indicado para: Dia a Dia, Categoria: Musculação, Manga: Manga Curta, Material: Poliéster, Garantia do Fabricante: Contra Defeito de Fabricação, Origem: Estrangeira, Marca: Nike.');
+Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, cor_id, caracteristica) values ('https://tcc-cleversonfulber.s3.amazonaws.com/5_1.png', 3, 12, 16, 4, 'Bola de Futsal Penalty Max 1000 All', 279.99, 'A Bola de Futsal Penalty Max 1000 All Black Edição Limitada é ideal para partidas acirradas em quadras indoor. Essa bola da Penalty é feita em PU laminado e sem costuras para maior durabilidade.', 16, 'Nome: Bola de Futsal Penalty Max 1000 All Black - Edição Limitada, Indicado para: Jogo, Tipo: Futsal, Composição: PU, Peso: 430 - 450 gr, Costura: Sem Costura, Garantia do Fabricante: Contra defeito de fabricação, Origem: Nacional, Marca: Penalty.');
+Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, cor_id, caracteristica) values ('https://tcc-cleversonfulber.s3.amazonaws.com/6_1.png', 2, 15, 11, 5, 'Camisa Umbro TWR Basic Masculina', 59.99, 'Entre em campo pronto para decidir a partida com a Camisa Masculina TWR da Umbro. Leve e feita em tecido de secagem rápida, essa Camisa de futebol completa seu uniforme de jogo. Garanta a sua!', 20, 'Nome: Camisa Umbro TWR Basic Masculina, Gênero: Masculino, Indicado para: Dia a Dia, Tipo: Camisa, Gola: Gola Careca, Manga: Manga Curta, Composição: 100% Poliéster, Garantia do Fabricante: Contra defeito de fabricação, Origem: Nacional, Marca: Umbro.');
+Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, cor_id, caracteristica) values ('https://tcc-cleversonfulber.s3.amazonaws.com/7_1.png', 1, 11, 1, 5, 'Bota Couro Pegada Masculina', 199.89, 'Bota Couro Coturno Pegada Tratorada Masculin.', 16, 'Nome: Bota Couro Coturno Pegada Tratorada Masculina, Gênero: Masculino, Indicado para: Dia a Dia, Material: Couro, Altura do Cano: Cano Curto, Solado: Borracha, Garantia do Fabricante: Contra defeito de fabricação, Origem: Nacional, Marca: Pegada.');
+Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, cor_id, caracteristica) values ('https://tcc-cleversonfulber.s3.amazonaws.com/8_1.png', 1, 9, 2, 5, 'Chinelo Oakley Rest 2.0 Masculino', 109.99, 'O Chinelo Oakley Rest é produzido com a tecnologia exclusiva Unobtanium®, que oferece alta durabilidade e aumenta a aderência conforme a transpiração. A estrutura em EVA garante maciez nos pés.', 5, 'Nome: Chinelo Oakley Rest 2.0 Masculino, Gênero: Masculino, Indicado para: Dia a Dia, Material: Sintético, Garantia do Fabricante: Contra defeito de fabricação, Origem: Nacional, Marca: Oakley.');
+Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, cor_id, caracteristica) values ('https://tcc-cleversonfulber.s3.amazonaws.com/9_1.png', 1, 7, 4, 5, 'Chinelo New Balance 130 Masculino', 119.90, 'Invista em um visual despojado e cheio de atitude com o Chinelo New Balance Masculino 130! A palmilha leve fornece conforto em cada passo, enquanto o solado emborrachado garante aderência, tração e estabilidade. Adquira já esse chinelo masculino!', 2, 'Nome: Chinelo New Balance 130 Masculino, Gênero: Masculino, Indicado para: Dia a Dia, Estilo da Peça: Com logo, Material: Sintético, Garantia do Fabricante: Contra defeito de fabricação, Origem: Nacional, Marca: New Balance.');
+Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nome, valor, descricao, cor_id, caracteristica) values ('https://tcc-cleversonfulber.s3.amazonaws.com/10_1.png', 1, 11, 5, 5, 'Sapatênis Pegada Atanado', 139.90, 'Sapatênis Pegada Microfibra possui look urbano e casual que combina com eventos importantes ou mesmo atividades do dia a dia. Com design clássico, possui cabedal confeccionado em microfibra, um material impermeável que garante leveza...', 13, 'Nome: Sapatênis Pegada Microfibra Atanado, Caracteristica:  Gênero: Masculino, Indicado para: Dia a Dia, Origem: Nacional, Marca: Pegada. Tem forro interno em tecido espumado, assegurando conforto e melhor absorção do suor.');
+
 
 -- Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 1, 4, 10, '2019-06-05', '2019-07-06');
 -- Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 2, 4, 10, '2019-06-05', '2019-07-06');
@@ -5767,14 +5772,17 @@ Insert into produtos ( imagem, categoria_id, marca_id, tipo_id, promocao_id, nom
 
 INSERT INTO permissoes (nome) values('ROLE_ADMIN');
 INSERT INTO permissoes (nome) values('ROLE_USER');
+INSERT INTO permissoes (nome) values('ROLE_LOJISTA');
 
-INSERT INTO usuarios(nome, username, password, telefone, celular, cpf_cnpj, data_nascimento, genero) VALUES ('Administrador', 'admin@admin.com','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem', '(11) 2342-3423', '(11) 99954-9864', '923.029.023-00','12/12/1992','Masculino');
-INSERT INTO usuarios(nome, username, password, telefone, celular, cpf_cnpj, data_nascimento, genero ) VALUES ('Teste', 'teste@teste.com','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem','(41) 4523-2939', '(41) 99931-2343','041.293.023-00','12/12/1992','Feminino');
+INSERT INTO usuarios(nome, username, password, sobrenome, telefone, celular, cpf_cnpj, data_nascimento, genero ) VALUES ('Administrador', 'admin@admin.com', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem', 'Adm' ,'(11) 2342-3423', '(11) 99954-9864', '923.029.023-38','12/12/1992','Masculino');
+INSERT INTO usuarios(nome, username, password, sobrenome, telefone, celular, cpf_cnpj, data_nascimento, genero ) VALUES ('User', 'user@user.com', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem', 'Usuario' ,'(46) 4523-2939', '(41) 99931-2343','041.293.023-00','12/12/1992','Masculino');
+INSERT INTO usuarios(nome, username, password, sobrenome, telefone, celular, cpf_cnpj, data_nascimento, genero ) VALUES ('Lojista', 'lojista@lojista.com', '$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem', 'Loja' ,'(41) 3242-8111', '(41) 98724-9265','398.287.938-28','12/12/1992','Masculino');
 
 INSERT INTO usuarios_permissoes(usuario_id, permissoes_id) VALUES (1, 1);
-INSERT INTO usuarios_permissoes(usuario_id, permissoes_id) VALUES (1, 2);
 INSERT INTO usuarios_permissoes(usuario_id, permissoes_id) VALUES (2, 2);
+INSERT INTO usuarios_permissoes(usuario_id, permissoes_id) VALUES (3, 3);
 
-INSERT INTO enderecos(usuario_id, cidade_id, descricao, cep, numero, bairro, rua, complemento) VALUES (1, 2, 'Casa', '85560-000', 4783, 'Nossa Senhora Aparecida','Diogo Antonio Fiejó', 'Próximo a Igreja' );
-INSERT INTO enderecos(usuario_id, cidade_id, descricao, cep, numero, bairro, rua, complemento) VALUES (2, 1, 'Apartamento', '85560-000', 2574, 'Cristo Rei','Antonio Guimarães', 'N/A' );
+INSERT INTO enderecos(usuario_id, cidade_id, descricao, cep, numero, bairro, rua, complemento) VALUES (1, 2, 'Escritório', '85340-000', 4783, 'Nossa Senhora Aparecida','Diogo Antonio Fiejó', 'CP 398' );
+INSERT INTO enderecos(usuario_id, cidade_id, descricao, cep, numero, bairro, rua, complemento) VALUES (2, 1, 'Apartamento', '85230-000', 2574, 'Cristo Rei','Antonio Guimarães', 'N/A' );
+INSERT INTO enderecos(usuario_id, cidade_id, descricao, cep, numero, bairro, rua, complemento) VALUES (3, 3, 'Casa', '85560-000', 3453, 'Cosul','Antônio Ludvicheck', 'Próximo a Igreja' );
 

@@ -31,7 +31,7 @@ public class Usuario implements Serializable, UserDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(length = 100, nullable = false)
+	@Column(length = 15, nullable = false)
 	private String nome;
 
 	@Column(length = 100, nullable = false, unique = true)
@@ -59,6 +59,10 @@ public class Usuario implements Serializable, UserDetails {
 	@NotNull(message = "O celular  é obrigatório.")
 	@Column(name = "celular", nullable = false,  length = 60)
 	private String celular;
+
+	@NotNull(message = "O Sobrenome é obrigatório.")
+	@Column(name = "sobrenome", nullable = false, length = 15)
+	private String sobrenome;
 
 	@NotNull(message = "O CPF é obrigatório.")
 	@Column(name = "cpf_cnpj", nullable = false, length = 60)

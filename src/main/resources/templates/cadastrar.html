@@ -53,8 +53,11 @@
 		<div class="modal-body">
 			<input type="hidden" id="id" name="id"/>
 
-			<input type="text" class="form-control" placeholder="Nome Completo"
+			<input type="text" class="form-control" placeholder="Somente Nome"
 				   id="nome" name="nome" required/>
+
+			<input type="text" class="form-control" placeholder="Sobrenome"
+				   id="sobrenome" name="sobrenome" required/>
 
 			<input type="text" class="form-control" placeholder="E-mail"
 				   id="username" name="username" required/>
@@ -75,21 +78,19 @@
 				   id="dataNascimento" name="dataNascimento" required/>
 
 			<select class="form-control" id="genero" name="genero" >
+				<option value=""> (Selecione) </option>
 				<option value="Masculino"> Masculino </option>
 				<option value="Feminino"> Feminino </option>
 			</select>
 
 
-			<div class="form-group">
-				<label>Permissões:</label>
-				<div th:each="permissao: ${permissoes}">
-					<input type="checkbox" name="permissoes"
-						   th:id="'chk_' + ${permissao.id}"
-						   th:value="${permissao.id}"/>
+			<div class="form-group" style="display:none">
+					<input type="checkbox" checked name="permissoes"
+						   th:id="'chk_' + ${2}"
+						   th:value="${2}"/>
 					<label
-							th:for="'chk_' + ${permissao.id}"
-							th:text="${permissao.nome}"></label>
-				</div>
+							th:for="'chk_' + ${2}"
+							th:text="${ROLE_USER}"></label>
 			</div>
 
 		</div> <!-- modal-body -->

@@ -28,7 +28,7 @@
 					<div id="owl-example" class="owl-carousel">
 						<div th:id="'row_' + ${produto.id}" th:each="produto : ${produtos}">
 							<div>
-								<a th:href="'produto/' + ${produto.id}">
+								<a th:href="'../produto/' + ${produto.id}">
 									<img class="" th:src="${produto.imagem}" /></a>
 							</div>
 							<div>

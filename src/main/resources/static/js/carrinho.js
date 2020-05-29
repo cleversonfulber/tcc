@@ -98,6 +98,16 @@ class Carrinho{
 
         this.excluirProdutoLocalStorage(produtoID);
         this.calcularTotal();
+
+        if((this.pegarProdutosLocalStorage() || []).length === 0)
+        {
+           $("tr.sem-registros").show();
+            $("tr.com-registros").hide();
+        }
+        else{
+            $("tr.com-registros").show();
+            $("tr.sem-registros").hide();
+        }
     }
 
     alterarQtda(e){
@@ -176,6 +186,16 @@ class Carrinho{
             listaProdutos.appendChild(row);
         });
 
+        if(produtoLS.length === 0) {
+            $("tr.sem-registros").show();
+            $("tr.com-registros").hide();
+
+        }
+        else{
+            $("tr.com-registros").show();
+            $("tr.sem-registros").hide();
+        }
+
     }
 
     esvaciarLocalStorage(){
@@ -199,8 +219,9 @@ class Carrinho{
                 <td>${produto.nome}</td>
                 <td>${produto.valor}</td>
                 <td>
-                    <input type="number" class="form-control qtda" min="1" value=${produto.qtda}>
+                    <input type="number" class="form-control qtda" min="1" max="6" value=${produto.qtda}>
                 </td>
+
                 <td>${produto.sub}</td>
                 <td>
                     <h1 style="display: none;">${produto.id}</h1>
@@ -210,6 +231,16 @@ class Carrinho{
             `;
             listaCompra.appendChild(row);
         });
+
+        if(produtoLS.length === 0) {
+            $("tr.sem-registros").show();
+            $("tr.com-registros").hide();
+
+        }
+        else{
+            $("tr.com-registros").show();
+            $("tr.sem-registros").hide();
+        }
 
     }
 
@@ -225,9 +256,6 @@ class Carrinho{
                 <td>${produto.nome}</td>
                 <td>${produto.qtda}</td>
                 <td>${produto.sub}</td>
-//                <tr if="produto === null">
-//                    <td colspan="3">Nenhum registro encontrado.</td>
-//                </tr>
             `;
             listaChecar.appendChild(row);
         });
@@ -265,7 +293,9 @@ class Carrinho{
                 window.location = "../";
             })
         }else{
-            window.location = "../checagem";
+            window.location = "../endereco";
         }
     }
 }
+
+

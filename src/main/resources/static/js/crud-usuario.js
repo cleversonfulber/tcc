@@ -16,10 +16,12 @@ function limparUsuario() {
 
 }
 
-function editarUsuario(id) {
-	$.get('usuarios/' + id, function(entity, status){
+function editarUsuario(id, url) {
+
+	$.get( url+ '/' + id, function(entity, status){
 		$('#id').val(entity.id);
 		$('#nome').val(entity.nome);
+		$('#sobrenome').val(entity.sobrenome);
 		$('#username').val(entity.username);
 		$('#telefone').val(entity.telefone);
         $('#celular').val(entity.celular);

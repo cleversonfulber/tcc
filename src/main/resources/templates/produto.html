@@ -32,21 +32,37 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="blog-sidebar">
+
+                    <!--  Filtros  --->
+
+                        <div class="block">
+
+                            <div class="tag-link filtro" th:each="categoria : ${categorias2}">
+                                <h4>Filtros</h4>
+                                <a th:href="@{../}" title="Remover Filtro" ><span th:text="${categoria.nome}"></span><i class="fa fa-times" ></i></a>
+                            </div>
+                            <div class="tag-link" th:each="marca : ${marcas2}">
+                                <h4>Filtros</h4>
+                                <a th:href="@{../}" title="Remover Filtro" ><span th:text="${marca.nome}"></span><i class="fa fa-times" ></i></a>
+                            </div>
+                            <div class="tag-link" th:each="tipo : ${tipos2}">
+                                <h4>Filtros</h4>
+                                <a th:href="@{../}" title="Remover Filtro" ><span th:text="${tipo.nome}"></span><i class="fa fa-times" ></i></a>
+                            </div>
+                        </div>
+
                         <div class="block">
                             <h4>Categorias</h4>
                             <div class="list-group">
                                 <ul >
                                     <li th:each="categoria : ${categorias}">
-                                        <a href="#" class="list-group-item">
+                                        <a th:href="@{'categoria/' + ${categoria.id}}" class="list-group-item">
                                             <i class="fas fa-th-list"></i>
                                             <span th:text="${categoria.nome}"></span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="block">
-                            <img src="" alt="">
                         </div>
                         <div class="block">
                             <h4>Marcas</h4>
@@ -56,7 +72,7 @@
                                         <img class="media-object" th:src="${marca.imagem}" >
                                     </a>
                                     <div class="media-body">
-                                        <a href="" class="media-heading"><span th:text="${marca.nome}"></span></a>
+                                        <a th:href="@{'marca/' + ${marca.id}}" class="media-heading"><span th:text="${marca.nome}"></span></a>
                                     </div>
                                 </li>
                             </ul>
@@ -65,7 +81,7 @@
                         <div class="block">
                             <h4>Tipos</h4>
                             <div class="tag-link" th:each="tipo : ${tipos}">
-                                <a href="" th:text="${tipo.nome}"></a>
+                                <a th:href="@{'tipo/' + ${tipo.id}}" th:text="${tipo.nome}"></a>
                             </div>
                         </div>
                     </div>	<!-- End of /.col-md-3 -->
@@ -81,13 +97,13 @@
                                         <img th:src="${produto.imagem}" alt=""/>
                                     </a>
                                     <a href="">
-                                        <h4 th:text="${produto.nome}" ></h4>
+                                        <h4 th:text="${produto.nome} + ' - ' + ${produto.cor.nome}" ></h4>
                                     </a>
                                         <p class="valor" th:text="${produto.valor}"></p>
-                                    <div >
-                                        <a class="view-link shutter adicionar-carrinho" href="" >
-                                            <i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>
-                                    </div>
+<!--                                    <div >-->
+<!--                                        <a class="view-link shutter adicionar-carrinho" href="" >-->
+<!--                                            <i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>-->
+<!--                                    </div>-->
                                     <div>
                                         <a class="view-link shutter ver-produto" >
                                             <i class="fa fa-stream"></i>Ver Detalhes</a>
@@ -97,26 +113,26 @@
                                     </a>
                                 </div>	<!-- Fim do .products -->
                             </li>
+
+                        </ul>
+                        <ul style="text-align:center">
+                            <li th:if="${produtos.empty}">
+                                <div class="blog-sidebar">
+                                    <div class="row" >
+                                        <h1 class="top-catagori-heading">Nenhum registro encontrado.</h1>
+                                    </div>	<!-- End of /.block -->
+                                </div>	<!-- End of /.blog-sidebar -->
+
+                            </li>
                         </ul>
                     </div>	<!-- FIm do .products-grid -->
 
-                    <!-- Paginação -->
-
-                    <div class="pagination-bottom">
-                        <ul class="pagination">
-                            <li class="disabled"><a href="#">&laquo;</a></li>
-                            <li class="active"><a href="#">1 <span class="sr-only"></span></a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">»</a></li>
-                        </ul>	<!-- Fim da Paginação -->
-                    </div>
                 </div>	<!-- Fim do .col-md-9 -->
 
             </div>
         </div>
         <script src="/js/pedido.js" type="text/javascript"></script>
+        <script src="/js/pag-produto.js" type="text/javascript"></script>
 
     </section>
 </body>

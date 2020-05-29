@@ -1,13 +1,9 @@
 package br.edu.utfpr.tcc.controller;
 
-import br.edu.utfpr.tcc.model.Cidade;
-import br.edu.utfpr.tcc.model.Marca;
 import br.edu.utfpr.tcc.model.Usuario;
 import br.edu.utfpr.tcc.repository.PermissaoRepository;
 import br.edu.utfpr.tcc.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,7 +20,7 @@ import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping("usuarios")
-public class UsuarioEditController {
+public class UsuariosController {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -38,7 +34,7 @@ public class UsuarioEditController {
 		ModelAndView modelAndView = new ModelAndView("usuario/lista");
 		modelAndView.addObject("usuarios", usuarioRepository.findAll());
 		modelAndView.addObject("permissoes", permissaoRepository.findAll());
-		modelAndView.addObject("usuario", new Marca());
+		modelAndView.addObject("usuario", new Usuario());
 
 		return modelAndView;
 	}
@@ -49,18 +45,18 @@ public class UsuarioEditController {
 		if (usuario != null) {
 			modelAndView.addObject(usuario);
 		}else {
-			modelAndView.addObject(new Marca());
+			modelAndView.addObject(new Usuario());
 		}
 		return modelAndView;
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	@ResponseBody
 	public Usuario editar(@PathVariable Long id) {
 		return usuarioRepository.findById(id).orElse(null);
 	}
 
-	@PostMapping("ajax")
+	@PostMapping("/")
 	public ResponseEntity<?> salvar(@Valid Usuario entity,BindingResult result,
                                        RedirectAttributes attributes) {
 		if (result.hasErrors()) {

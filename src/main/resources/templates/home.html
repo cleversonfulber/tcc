@@ -43,7 +43,8 @@
                                     <div class="caption">
                                         <p>Se você já encontrou seu esporte favorito, agora falta se equipar para treinar com conforto e funcionalidade...</p>
                                         <p>
-                                            <a href="/produto" class="btn btn-default btn-transparent" role="button">
+                                            <a th:href="@{'produto/categoria/1'}"
+                                               class="btn btn-default btn-transparent" role="button">
                                                 <span>Ver itens</span>
                                             </a>
                                         </p>
@@ -59,7 +60,8 @@
                                     <div class="caption">
                                         <p>Encontre os looks perfeitos para ficar em casa com conforto e estilo. Escolha algo que aconpanhe seu dia a dia, aconteça o que acontecer...</p>
                                         <p>
-                                            <a href="/produto" class="btn btn-default btn-transparent" role="button">
+                                            <a th:href="@{'produto/categoria/2'}"
+                                               class="btn btn-default btn-transparent" role="button">
                                                 <span>Ver itens</span>
                                             </a>
                                         </p>
@@ -75,7 +77,7 @@
                                     <div class="caption">
                                         <p>Não importa seu treino, seja dança, CrossFit, boxe, corrida ou academia, na nossa loja de esportes online você vai encontrar tudo que precisa.</p>
                                         <p>
-                                            <a href="/produto" class="btn btn-default btn-transparent" role="button">
+                                            <a th:href="@{'produto/categoria/3'}" class="btn btn-default btn-transparent" role="button">
                                                 <span>Ver itens</span>
                                             </a>
                                         </p>
@@ -106,13 +108,13 @@
                                 <img th:src="${produto.imagem}" alt=""/>
                             </a>
                             <a>
-                                <h4 th:text="${produto.nome}" ></h4>
+                                <h4 th:text="${produto.nome} + ' - ' + ${produto.cor.nome}" ></h4>
                             </a >
                                 <p class="valor" th:text="${produto.valor}"></p>
-                            <div >
-                                <a class="view-link shutter adicionar-carrinho" href="" >
-                                    <i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>
-                            </div>
+<!--                            <div >-->
+<!--                                <a class="view-link shutter adicionar-carrinho" href="" >-->
+<!--                                    <i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>-->
+<!--                            </div>-->
                             <div>
                                 <a class="view-link shutter ver-produto" >
                                     <i class="fa fa-stream"></i>Ver Detalhes</a>

@@ -11,28 +11,28 @@
 			</a></li>
 		</ul>
 
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills" sec:authorize="hasRole('ROLE_ADMIN')">
 			<li class="nav-item"><a class="nav-link" href="/categorias/"> <i
 					class="oi oi-spreadsheet"></i> <span>Categorias</span>
 			</a></li>
 		</ul>
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills" sec:authorize="hasRole('ROLE_ADMIN')">
 			<li class="nav-item"><a class="nav-link" href="/marcas/"> <i
 					class="oi oi-spreadsheet"></i> <span>Marcas</span>
 			</a></li>
 		</ul>
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills" sec:authorize="hasRole('ROLE_ADMIN')">
 			<li class="nav-item"><a class="nav-link" href="/tipos/"> <i
 					class="oi oi-spreadsheet"></i> <span>Tipos</span>
 			</a></li>
 		</ul>
 
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills" sec:authorize="hasRole('ROLE_ADMIN')">
 			<li class="nav-item"><a class="nav-link" href="/estados/"> <i
 					class="oi oi-spreadsheet"></i> <span>Estados</span>
 			</a></li>
 		</ul>
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills" sec:authorize="hasRole('ROLE_ADMIN')">
 			<li class="nav-item"><a class="nav-link" href="/cidades/"> <i
 					class="oi oi-spreadsheet"></i> <span>Cidades</span>
 			</a></li>
@@ -47,12 +47,7 @@
 					class="oi oi-spreadsheet"></i> <span>Produtos</span>
 			</a></li>
 		</ul>
-		<ul class="nav nav-pills">
-			<li class="nav-item"><a class="nav-link" href="/enderecos/"> <i
-					class="oi oi-spreadsheet"></i> <span>Endereços</span>
-			</a></li>
-		</ul>
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills" sec:authorize="hasRole('ROLE_ADMIN')">
 			<li class="nav-item"><a class="nav-link" href="/usuarios/"> <i
 					class="oi oi-spreadsheet"></i> <span>Usuarios</span>
 			</a></li>

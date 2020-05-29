@@ -48,7 +48,7 @@
 				<tbody>
 					<tr th:id="'row_' + ${usuario.id}" th:each="usuario: ${usuarios}">
 						<td style="width:150px" class="text-center" th:text="${usuario.id}">0</td>
-						<td><a th:href="'javascript:editarUsuario(' + ${usuario.id} + ');'"
+						<td><a th:href="'javascript:editarUsuario('+ ${usuario.id} +',\'/usuarios\');'"
 							   th:text="${usuario.nome}">...</a></td>
 						<td th:text="${usuario.username}">...</td>
 						<td>
@@ -61,7 +61,7 @@
 						</td>
 						<td style="width:200px" class="text-center">
 
-							<a th:href="'javascript:editarUsuario(' + ${usuario.id} + ');'"
+							<a th:href="'javascript:editarUsuario('+ ${usuario.id} +',\'/usuarios\');'"
 							   class="btn btn-primary btn-xs botao">
 								<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 							</a> &nbsp;
@@ -85,7 +85,7 @@
 				</div> <!-- modal-header -->
 				<form id="frm" name="frm"
 						method="POST" class="form-vertical"
-					  th:action="@{/usuarios/ajax}">
+					  th:action="@{/usuarios/}">
 					<div class="modal-body">
 							<input type="hidden" id="id" name="id"/>
 							<div class="form-group">
@@ -97,7 +97,12 @@
 									data-parsley-error-message="O Nome é obrigatório"/>
 							</div>
 							<div class="form-group">
-								<label for="username">Usuário</label>
+								<label for="sobrenome">Sobrenome</label>
+								<input type="text" class="form-control"
+									   id="sobrenome" name="sobrenome" />
+							</div>
+							<div class="form-group">
+								<label for="username">E-mail</label>
 								<input type="text" class="form-control"
 									id="username" name="username" required />
 							</div>

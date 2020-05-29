@@ -1,10 +1,15 @@
 package br.edu.utfpr.tcc.model;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -32,15 +37,18 @@ public class Produto {
 	@Column(name = "descricao", nullable = false, length = 254)
 	private String descricao;
 
-	@NotNull(message = "Selecione um Tamanho!")
-	@ManyToOne
-	@JoinColumn(name = "tamanho_id", referencedColumnName = "id")
-	private Tamanho tamanho;
+	@NotNull(message = "Informe uma descrição.")
+	@Size(max = 254, message = "A descrição deve conter no máximo 254 caracteres.")
+	@Column(name = "caracteristica", nullable = false, length = 254)
+	private String caracteristica;
 
 	@NotNull(message = "Selecione uma Cor!")
 	@ManyToOne
 	@JoinColumn(name = "cor_id", referencedColumnName = "id")
 	private Cor cor;
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Tamanho> tamanho;
 
 	@NotNull(message = "Selecione uma categoria!")
 	@ManyToOne

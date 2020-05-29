@@ -5,7 +5,7 @@ import br.edu.utfpr.tcc.repository.*;
 import br.edu.utfpr.tcc.services.S3Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,9 +32,9 @@ public class HomeController {
 	private CorRepository corRepository;
 
 	@GetMapping("/")
-	public ModelAndView home() {
+	public ModelAndView home(Pageable pageable) {
 		ModelAndView modelAndView = new ModelAndView("home");
-		modelAndView.addObject("produtos", produtoRepository.findAll());
+		modelAndView.addObject("produtos", produtoRepository.findAll(pageable));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );

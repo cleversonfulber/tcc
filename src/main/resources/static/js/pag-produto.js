@@ -1,5 +1,5 @@
 $(document).ready( function () {
-    $('#minhaTable').DataTable({
+    $('#lista-produtos').DataTable({
         "language": {
             "lengthMenu": "Mostrando _MENU_ registro por página",
             "zeroRecords": "Nada encontrado",

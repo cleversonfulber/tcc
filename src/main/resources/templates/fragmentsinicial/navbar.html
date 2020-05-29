@@ -22,14 +22,14 @@
 					<ul class="nav navbar-nav nav-main">
 						<li><a href="/">HOME</a></li>
 						<li><a href="/produto/">PRODUTOS</a></li>
-						<li class="dropdown">
+						<li class="dropdown" >
 							<a href="#">
 								CATEGORIAS
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
 								<li th:each="categoria : ${categorias}">
-									<a href="" th:text="${categoria.nome}"></a>
+									<a th:href="@{'../produto/categoria/' + ${categoria.id}}" th:text="${categoria.nome}"></a>
 								</li>
 							</ul>
 						</li>
@@ -38,9 +38,10 @@
 								MARCAS
 								<span class="caret"></span>
 							</a>
-							<ul class="dropdown-menu">
-								<li th:each="marca : ${marcas}">
-									<a href="" th:text="${marca.nome}"></a>
+
+							<ul class="dropdown-menu dividir">
+								<li th:each="marca : ${marcas}" >
+									<a th:href="@{'../produto/marca/' + ${marca.id}}" th:text="${marca.nome}" ></a>
 								</li>
 							</ul>
 
@@ -50,9 +51,9 @@
 								TIPOS
 								<span class="caret"></span>
 							</a>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu dividir">
 								<li th:each="tipo : ${tipos}">
-									<a href="" th:text="${tipo.nome}"></a>
+									<a th:href="@{'../produto/tipo/' + ${tipo.id}}" th:text="${tipo.nome}"></a>
 								</li>
 							</ul>
 						</li>
@@ -61,7 +62,7 @@
 						<li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
 							<a class="adm" href="/index">E-ADMINISTRADOR</a>
 						</li>
-						<li class="dropdown" sec:authorize="hasRole('ROLE_USER')">
+						<li class="dropdown" sec:authorize="hasRole('ROLE_LOJISTA')">
 							<a class="adm" href="/index">E-PARCEIROS</a>
 						</li>
 					</ul>

@@ -12,11 +12,23 @@
 		<nav id="top">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-9">
+					<div class="col-md-3">
 
 						<a class="navbar-brand " href="/"><img th:src="@{/image/icone.png}" height="50px" width="50px">
 							E-Marketplace</a>
 
+					</div>
+					<div class="col-md-6">
+						<form method="post" th:action="@{produto/buscarproduto}">
+							<div class="col-md-9">
+								<input type="search"  class="form-control buscar" id="buscar"
+									   th:name="nome" placeholder="Busque em Nossa Loja"  />
+							</div>
+							<div class="col-md-2">
+								<button class="btn btn-buscar" >
+										<i class="fa fa-search"></i> Buscar</button>
+							</div>
+						</form>
 					</div>
 
 					<div id="cor">
@@ -73,7 +85,9 @@
 												<th>Valor</th>
 											</tr>
 										</thead>
-										<tbody></tbody>
+										<tbody>
+
+										</tbody>
 									</table>
 									<a href="#" id="esvaciar-carrinho" class="view-link shutter">Limpar Carrinho</a>
 									<a href="/carrinho" id="processar-pedido" class="view-link shutter">Ver Carrinho</a>

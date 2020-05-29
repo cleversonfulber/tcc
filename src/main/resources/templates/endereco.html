@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Finalizar</title>
+
+    <!-- CSS -->
+    <link rel="shortcut icon" href="/image/icone.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://localhost:9000/css/bootstrap.min.css">
+    <link href="/css/carrinho.css" rel="stylesheet" />
+
+    <!-- jS -->
+    <script src="https://use.fontawesome.com/releases/v5.10.2/js/all.js" data-auto-replace-svg="nest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="/js/carrinho.js" type="text/javascript"></script>
+    <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+    <script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="http://localhost:9000/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+
+<nav id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+
+                <a class="navbar-brand " href="/"><img th:src="@{/image/icone.png}" height="50px" width="50px">
+                    E-Marketplace</a>
+            </div>
+            <div id="cor">
+                <div class="col-md-2">
+                    <div class="dropdown" sec:authorize="isAuthenticated()">
+                        <a data-toggle="dropdown" href="#" >
+                            <i class="fa fa-user fa-fw"></i>
+                            Olá, <span id="cliente" class="cliente" sec:authentication="principal.nome"> Erro!!!	</span>!
+                        </a>
+
+                        <div class="dropdown-menu dropup">
+
+                            <ul>
+                                <li class="botao">
+                                    <a >Minha Conta</a>
+                                </li>
+                                <li class="botao">
+                                    <a >Meus Pedidos</a>
+                                </li>
+                                <li class="botao">
+                                    <a th:href="@{/logout}" >Sair</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="dropdown" sec:authorize="! isAuthenticated()">
+
+                        <a data-toggle="dropdown" href="#" >
+                            <i class="fa fa-user fa-fw"></i>
+                            <span class="teste">Entrar | Login</span>
+                        </a>
+
+                        <div class="dropdown-menu dropup">
+
+                            <ul>
+
+
+                                <li class="botao">
+                                    <a th:href="@{/login}" >Fazer Login</a>
+                                </li>
+                                <li class="botao">
+                                    <span >Não é Cadastrado?</span>
+                                </li>
+                                <li class="botao">
+                                    <a>Cadastre-se!</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+    <div class="container tCar">
+        <div class="row row2 mt-3">
+            <div class="col">
+                <h1 class="mb-3 tCarrinho">Selecione um Endereço</h1>
+                <form id="procesar-pago" action="#">
+
+                    <div class="col-12 col-md-12" >
+                        <div class="table-responsive">
+
+                            <table id="lista-enderecos" class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Endereço</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Selecionar</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr th:id="'row_' + ${endereco.id}" th:each="endereco : ${enderecos}">
+                                            <td style="display:none"><h1 th:text="${endereco.usuario.nome} + ' ' + ${endereco.usuario.sobrenome}" ></h1></td>
+                                            <td><span class="rua" th:text="${endereco.rua}" ></span>,
+                                                <span class="numero" th:text="${endereco.numero}" ></span>,
+                                                <span class="complemento" th:text="${endereco.complemento}" ></span></td>
+                                            <td><span class="bairro" th:text="${endereco.bairro}" ></span></td>
+                                            <td><span class="cidade" th:text="${endereco.cidade.nome}+ ' - ' + ${endereco.cidade.estado.sigla}" ></span> -
+                                             <span class="cep" th:text="${endereco.cep}"></span></td>
+
+                                            <td class="col-md-1 mb-1">
+                                                <a th:href="'javascript:edit(\'/endereco/ajax/' + ${endereco.id} + '\' );'"
+                                                   class="bt bt-editar"><i class=" fa fa-edit"></i></a>
+                                            </td>
+                                            <td class="col-md-1 mb-1">
+                                                <a th:href="'javascript:delet('+ ${endereco.id} +',\'/endereco\');'"
+                                                   class="bt bt-excluir"><i class="fa fa-trash-alt"></i></a>
+                                            </td>
+                                            <td class="col-md-2 mb-2">
+                                                <a href="" class="view-link shutter selecionar-endereco">
+                                                    <i class="fa fa-check"></i></a>
+                                            </td>
+                                            </th>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 final">
+            <div class="col-xs-4 col-md-4 direita">
+                <a onclick="novo()" data-toggle="modal" data-target="#modal-form" class="view-link shutter ">
+                    <i class="fa fa-plus"></i> Novo Endereco</a>
+            </div>
+            <div class="col-xs-4 col-md-4 direita">
+                <a href="/carrinho" class="view-link shutter " >Voltar ao Carrinho</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal-form" th:id="modal-form">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Endereços</h3>
+                    <button type="button" class="close" data-dismiss="modal"
+                            onclick="clear()" aria-hidden="true">x</button>
+                </div> <!-- modal-header -->
+                <div class="modal-body">
+                    <form id="frm" name="frm"
+                          method="POST" class="form-vertical"
+                          th:action="@{/endereco/ajax}">
+                        <input type="hidden" id="id" name="id"/>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="descricao">Descrição</label>
+                                <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Ex: Casa dos pais"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="cidade">Cidade</label>
+                                <select id="cidade" name="cidade" class="form-control">
+                                    <option value=""> (Selecione) </option>
+                                    <option th:each="cidade: ${cidades}"
+                                            th:value="${cidade.id}"
+                                            th:text="${cidade.nome} + ' - ' + ${cidade.estado.sigla}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cep">CEP</label>
+                                <input type="text" class="form-control" id="cep" name="cep"  placeholder="Informe o CEP"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="numero">Numero</label>
+                                <input type="number" class="form-control" id="numero" min="0" name="numero" placeholder="Informe o número"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Informe o bairro"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="rua">Rua</label>
+                                <input type="text" class="form-control" id="rua" name="rua" placeholder="Informe a rua"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="complemento">Complemento</label>
+                                <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Ex: próximo a prefeitura"/>
+                            </div>
+                        </div>
+                    </form>
+                </div> <!-- modal-body -->
+                <div class="modal-footer">
+                    <div class="col-md-3">
+                        <a class="view-link shutter toptop" data-dismiss="modal" onclick="clear()" aria-hidden="true">Cancelar</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="view-link shutter toptop" onclick="save('/endereco')">Salvar</a>
+                    </div>
+                </div>
+            </div> <!-- modal-content -->
+        </div> <!-- modal-dialog -->
+    </div> <!-- modal-form -->
+    <script src="/js/crud-endereco.js" type="text/javascript"></script>
+    <script src="/js/cruds.js" type="text/javascript"></script>
+    <script src="/js/endereco.js" type="text/javascript"></script>
+    <script src="/js/selecionar.js" type="text/javascript"></script>
+</body>
+</html>
