@@ -620,7 +620,15 @@ button.btn.btn-buscar {
 	margin-bottom: 8px;
 }
 
+.valor2 {
+	font-size: 18px;
+	margin-bottom: 8px;
+	text-decoration: line-through;
+}
 
+.valor3{
+    margin: 11% 0;
+}
 
 /*	 Call To Action Start
     ==================================================*/

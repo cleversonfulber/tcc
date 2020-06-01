@@ -168,7 +168,19 @@ body {
 
 }
 
+.superior{
+    margin-top: 20%;
+}
+
 #genero.form-control{
     padding: 0px 8px;
 
 }
+
+
+
+.form-group {
+    text-align: left;
+
+}
+

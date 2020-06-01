@@ -34,3 +34,38 @@ function editarUsuario(id, url) {
 	});
 	$('#modal-form').modal();
 }
+
+function validarSenha(){
+   senha = document.getElementsByName('password').value;
+   senha2 = document.getElementsByName('senha').value;
+
+   if(senha!= senha2) {
+        senha2.setCustomValidity("Senhas diferentes!");
+       return false;
+   }
+   return true;
+}
+
+function salvarUsuario(urlDestino){
+
+//    senha = document.getElementsByName('password').value;
+//    senha2 = document.getElementsByName('current-password').value;
+//
+//    if(senha!= senha2) {
+//        swal('Erro!', 'Senhas Incoretas!', 'error');
+//        return error;
+//   }
+
+    $.ajax({
+        type: $('#frm').attr('method'),
+        url: $('#frm').attr('action'),
+        data: $('#frm').serialize(),
+        success: function(){
+            swal('Salvo!', 'Registro salvo com sucesso!', 'success');
+            window.location = urlDestino;
+        },
+        error: function(){
+            swal('Erro!', 'Falha ao salvar o registro!', 'error');
+        }
+    });//Fim Ajax
+}

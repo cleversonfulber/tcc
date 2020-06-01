@@ -45,9 +45,15 @@
                         <div class="col-md-4">
                             <div class="block">
                                 <div class="product-des">
-                                        <img th:src="${produto.imagem}" style="display: none;"/>
-                                        <h4 th:text="${produto.nome} + ' - ' + ${produto.cor.nome}"></h4>
-                                        <p class="price" th:text="${produto.valor}"></p>
+                                    <img th:src="${produto.imagem}" style="display: none;"/>
+                                    <h4 th:text="${produto.nome} + ' - ' + ${produto.cor.nome}"></h4>
+                                    <div th:if="${produto.promocao} != null">
+                                        <p class="valor" th:text="${produto.promocao.precoPromocional}"></p>
+                                        <p class="valor2" th:text="${produto.valor}"></p>
+                                    </div>
+                                    <div th:if="${produto.promocao} == null">
+                                        <p class="valor" th:text="${produto.valor}"></p>
+                                    </div>
 
                                         <p th:text="${produto.descricao}"></p>
                                     <a href="" >

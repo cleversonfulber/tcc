@@ -110,11 +110,14 @@
                             <a>
                                 <h4 th:text="${produto.nome} + ' - ' + ${produto.cor.nome}" ></h4>
                             </a >
-                                <p class="valor" th:text="${produto.valor}"></p>
-<!--                            <div >-->
-<!--                                <a class="view-link shutter adicionar-carrinho" href="" >-->
-<!--                                    <i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>-->
-<!--                            </div>-->
+                            <div th:if="${produto.promocao} != null">
+                                <p class="valor" th:text="${produto.promocao.precoPromocional}"></p>
+                                <p class="valor2" th:text="${produto.valor}"></p>
+                            </div>
+                            <div th:if="${produto.promocao} == null">
+                                <p class="valor valor3" th:text="${produto.valor}"></p>
+
+                            </div>
                             <div>
                                 <a class="view-link shutter ver-produto" >
                                     <i class="fa fa-stream"></i>Ver Detalhes</a>
