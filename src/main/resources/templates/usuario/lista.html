@@ -90,47 +90,48 @@
 							<input type="hidden" id="id" name="id"/>
 							<div class="form-group">
 								<label for="nome">Nome</label>
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" placeholder="Nome"
 									id="nome" name="nome"/>
 							</div>
 							<div class="form-group">
 								<label for="sobrenome">Sobrenome</label>
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" placeholder="Sobrenome"
 									   id="sobrenome" name="sobrenome" />
 							</div>
 							<div class="form-group">
 								<label for="username">E-mail</label>
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" placeholder="exemplo@exemplo.com"
 									id="username" name="username" required />
 							</div>
 							<div class="form-group">
 								<label for="password">Senha</label>
-								<input type="password" class="form-control"
+								<input type="password" class="form-control" placeholder="Senha"
 									id="password" name="password" required />
 							</div>
 							<div class="form-group">
 								<label for="telefone">Telefone</label>
-								<input type="text" class="form-control"
-								   id="telefone" name="telefone" />
+								<input type="text" class="form-control" placeholder="(XX)0000-0000)"
+								   id="telefone" name="telefone" data-mask="(00)0000-0000"/>
 							</div>
 							<div class="form-group">
 								<label for="celular">Celular</label>
-								<input type="text" class="form-control"
-								   id="celular" name="celular" required/>
+								<input type="text" class="form-control" placeholder="(XX)90000-0000)"
+								   id="celular" name="celular" required data-mask="(00)00000-0000"/>
 							</div>
 							<div class="form-group">
-								<label for="cpfCnpj">CPF/CNPJ</label>
-								<input type="text" class="form-control"
-								   id="cpfCnpj" name="cpfCnpj" required/>
+								<label for="cpfCnpj">CNPJ</label>
+								<input type="text" class="form-control" placeholder="00.000.000/0000-00"
+								   id="cpfCnpj" name="cpfCnpj" required data-mask="00.000.000/0000-00"/>
 							</div>
 							<div class=" form-group">
 								<label for="dataNascimento">Data de Nascimento</label>
-								<input type="text" class="datepicker form-control"
-								   id="dataNascimento" name="dataNascimento" required/>
+								<input type="text" class="datepicker form-control" placeholder="00/00/0000"
+								   id="dataNascimento" name="dataNascimento" required data-mask="00/00/0000"/>
 							</div>
 							<div class="form-group">
 								<label for="genero">Gênero</label>
 								<select class="form-control" id="genero" name="genero" >
+									<option value=""> (Selecione) </option>
 									<option value="Masculino"> Masculino </option>
 									<option value="Feminino"> Feminino </option>
 								</select>

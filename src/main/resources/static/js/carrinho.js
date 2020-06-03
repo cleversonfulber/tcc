@@ -293,7 +293,14 @@ class Carrinho{
                 window.location = "../";
             })
         }else{
-            window.location = "../endereco";
+            Swal.fire({
+
+              title: 'Selecione um endereço!',
+
+              showConfirmButton: true
+            }).then(function(){
+                window.location = "../endereco";
+            })
         }
     }
 }

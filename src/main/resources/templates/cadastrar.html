@@ -78,11 +78,7 @@
 						<input type="password" class="form-control" placeholder="Senha"
 							   id="password" name="password" required />
 					</div>
-					<div class="form-group">
-						<label for="current-password">Confirmar Senha*</label>
-						<input type="password" class="form-control" placeholder="Senha"
-							   id="current-password" name="current-password" required autocomplete="on"/>
-					</div>
+
 				</div>
 
 				<div class="col">
@@ -90,22 +86,22 @@
 					<div class="form-group">
 						<label for="telefone">Telefone</label>
 						<input type="text" class="form-control" placeholder="(00) 0000-0000"
-							   id="telefone" name="telefone" />
+							   id="telefone" name="telefone" data-mask="(00) 0000-0000"/>
 					</div>
 					<div class="form-group">
 						<label for="celular">Celular*</label>
 						<input type="text" class="form-control" placeholder="(00) 00000-0000"
-							   id="celular" name="celular" required/>
+							   id="celular" name="celular" required data-mask="(00) 00000-0000"/>
 					</div>
 					<div class="form-group">
 						<label for="cpfCnpj">CPF*</label>
 						<input type="text" class="form-control" placeholder="000.000.000-00"
-							   id="cpfCnpj" name="cpfCnpj" required/>
+							   id="cpfCnpj" name="cpfCnpj" required data-mask="000.000.000-00"/>
 					</div>
 					<div class=" form-group">
 						<label for="dataNascimento">Data de Nascimento*</label>
 						<input type="text" class="datepicker form-control" placeholder="00/00/0000"
-							   id="dataNascimento" name="dataNascimento" required/>
+							   id="dataNascimento" name="dataNascimento" required data-mask="00/00/0000"/>
 					</div>
 					<div class="form-group">
 						<label for="genero">Gênero*</label>
@@ -142,16 +138,17 @@
 		<p class="mt-5 mb-3 text-muted">© 2020</p>
 	</div>
 
-
+	<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.messages_pt_BR.js"></script>
 	<script src="/sweetalert/sweetalert-dev.js"></script>
 	<script src="/js/cruds.js"></script>
 	<script src="/js/crud-usuario.js"></script>
-	<script src="js/data.js"></script>
-<!--	<script src="/js/paginacao.js"></script>-->
+	<script th:src="@{/webjars/jquery-mask-plugin/dist/jquery.mask.min.js}"></script>
 
 	<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/crud-usuario.js}"></script>
 	<script type="text/javascript" th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+
 
 
 </body>

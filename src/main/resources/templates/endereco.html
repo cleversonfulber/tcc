@@ -90,7 +90,7 @@
     <div class="container tCar">
         <div class="row row2 mt-3">
             <div class="col">
-                <h1 class="mb-3 tCarrinho">Selecione um Endereço</h1>
+                <h1 class="mb-3 tCarrinho">Endereços</h1>
                 <form id="procesar-pago" action="#">
 
                     <div class="col-12 col-md-12" >
@@ -104,7 +104,7 @@
                                     <th scope="col"></th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
-                                    <th scope="col">Selecionar</th>
+                                    <th scope="col">Selecione um endereço</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -130,6 +130,9 @@
                                                     <i class="fa fa-check"></i></a>
                                             </td>
                                             </th>
+                                        </tr>
+                                        <tr th:if="${enderecos.empty}">
+                                            <td colspan="4"><h4>Nenhum endereço registrado, favor cadastre um novo.</h4></td>
                                         </tr>
                                 </tbody>
                             </table>
@@ -165,7 +168,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="descricao">Descrição</label>
-                                <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Ex: Casa dos pais"/>
+                                <input type="text" class="form-control" id="descricao"
+                                       name="descricao" placeholder="Ex: Casa dos pais"/>
                             </div>
                             <div class="form-group">
                                 <label for="cidade">Cidade</label>
@@ -173,30 +177,37 @@
                                     <option value=""> (Selecione) </option>
                                     <option th:each="cidade: ${cidades}"
                                             th:value="${cidade.id}"
-                                            th:text="${cidade.nome} + ' - ' + ${cidade.estado.sigla}"></option>
+                                            th:text="${cidade.nome} + ' - '
+                                            + ${cidade.estado.sigla}"></option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="cep">CEP</label>
-                                <input type="text" class="form-control" id="cep" name="cep"  placeholder="Informe o CEP"/>
+                                <input type="text" class="form-control" id="cep" name="cep"
+                                       placeholder="Informe o CEP" data-mask="00000-000"/>
                             </div>
                             <div class="form-group">
                                 <label for="numero">Numero</label>
-                                <input type="number" class="form-control" id="numero" min="0" name="numero" placeholder="Informe o número"/>
+                                <input type="text" class="form-control" id="numero" min="0"
+                                       name="numero" placeholder="Informe o número"
+                                       data-mask="0000"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="bairro">Bairro</label>
-                                <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Informe o bairro"/>
+                                <input type="text" class="form-control" id="bairro"
+                                       name="bairro" placeholder="Informe o bairro"/>
                             </div>
                             <div class="form-group">
                                 <label for="rua">Rua</label>
-                                <input type="text" class="form-control" id="rua" name="rua" placeholder="Informe a rua"/>
+                                <input type="text" class="form-control" id="rua" name="rua"
+                                       placeholder="Informe a rua"/>
                             </div>
                             <div class="form-group">
                                 <label for="complemento">Complemento</label>
-                                <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Ex: próximo a prefeitura"/>
+                                <input type="text" class="form-control" id="complemento"
+                                       name="complemento" placeholder="Ex: próximo a prefeitura"/>
                             </div>
                         </div>
                     </form>
@@ -216,5 +227,7 @@
     <script src="/js/cruds.js" type="text/javascript"></script>
     <script src="/js/endereco.js" type="text/javascript"></script>
     <script src="/js/selecionar.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/vendors/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script
+
 </body>
 </html>

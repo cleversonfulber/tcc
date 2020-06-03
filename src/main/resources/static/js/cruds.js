@@ -1,5 +1,10 @@
 
 function salvar(urlDestino){
+
+    $('#frm').validate();
+    if (!$('#frm').valid()){
+    	return false;
+    }
     $.ajax({
         type: $('#frm').attr('method'),
         url: $('#frm').attr('action'),

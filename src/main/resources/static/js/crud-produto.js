@@ -16,7 +16,12 @@ function editarProduto(url) {
 
 
 function saveUpload(urlDestino){
+	$('#frm').validate();
+    if (!$('#frm').valid()){
+        return false;
+    }
 	var formData = new FormData($('#frm')[0]);
+
 	$.ajax({
 		type: $('#frm').attr('method'),
 		 url: $('#frm').attr('action'),

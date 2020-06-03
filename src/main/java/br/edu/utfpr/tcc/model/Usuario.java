@@ -56,19 +56,15 @@ public class Usuario implements Serializable, UserDetails {
 	@Column(name = "telefone",  length = 60)
 	private String telefone;
 
-	@NotNull(message = "O celular  é obrigatório.")
 	@Column(name = "celular", nullable = false,  length = 60)
 	private String celular;
 
-	@NotNull(message = "O Sobrenome é obrigatório.")
 	@Column(name = "sobrenome", nullable = false, length = 15)
 	private String sobrenome;
 
-	@NotNull(message = "O CPF é obrigatório.")
 	@Column(name = "cpf_cnpj", nullable = false, length = 60)
 	private String cpfCnpj;
 
-	@NotNull(message = "Preencha o campo data de nascimento!")
 	@Column(name = "data_nascimento", nullable = false)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;

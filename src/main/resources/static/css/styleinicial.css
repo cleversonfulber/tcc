@@ -6,7 +6,7 @@ body {
 }
 
 /* cor  #ff6200  */
-body { font-family: 'Open Sans', sans-serif; color: #555; font-size: 14px; font-weight: 300; }
+body { font-family: 'Open Sans', sans-serif; color: #555; font-size: 13px; font-weight: 300; }
 li { list-style: none;}
 a:hover { text-decoration: none; }
 
@@ -18,12 +18,12 @@ element {
 /*Headers*/
 h1,h2,h3,h4,h5,h6 { font-family: 'Yanone Kaffeesatz', sans-serif;color: #555}
 
-h1 { font-size: 50px; }
-h2 { font-size: 40px; }
-h3 { font-size: 35px; }
-h4 { font-size: 30px; }
-h5 { font-size: 25px; }
-h6 { font-size: 20px; }
+h1 { font-size: 48px; }
+h2 { font-size: 38px; }
+h3 { font-size: 33px; }
+h4 { font-size: 28px; }
+h5 { font-size: 23px; }
+h6 { font-size: 18px; }
 ul {padding-left: 0;}
 /*Add space between sections*/
 section+section { margin-top: 50px; }
@@ -61,10 +61,8 @@ section+section { margin-top: 50px; }
 
 #carrinho a{
     margin: 5%;
-    font-size: 12px;
+    font-size: 13px;
 }
-
-
 
 .nUsuario{
     color: #ff6200;
@@ -120,7 +118,11 @@ button.btn.btn-buscar {
 }
 
 .dropdown i{
-    font-size: 28px;
+    font-size: 26px;
+}
+
+.dropdown span{
+    font-size: 14px;
 }
 
 .dropup{
@@ -137,7 +139,7 @@ button.btn.btn-buscar {
 .search-box input {
 	outline: none;
 	border:none;
-	font-size: 12px;
+	font-size: 13px;
 	padding: 5px;
 	height: 25px;
 }
@@ -205,7 +207,7 @@ button.btn.btn-buscar {
 	background: none repeat scroll 0 0 #212224;
 	color: #FFFFFF;
 	padding:8px 0;
-	font-size: 24px;
+	font-size: 22px;
 }
 #authentication #create-account_form .form_content,
 #authentication #login_form .form_content {
@@ -213,7 +215,7 @@ button.btn.btn-buscar {
 	padding: 15px 10px;
 }
 #create-account_form h4 {
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: normal;
 	margin: 0 10px;
 	padding-bottom: 22px;
@@ -262,7 +264,7 @@ button.btn.btn-buscar {
 	-ms-transition: .2s ease-in-out;
 	-o-transition: .2s ease-in-out;
 	transition: .2s ease-in-out;
-	font-size: 17px;
+	font-size: 15px;
 }
 
 .nav-main > li::before {
@@ -304,7 +306,7 @@ button.btn.btn-buscar {
 .nav-main > li a {
 	padding: 20px 15px;
 	color: #555;
-	font-size: 17px;
+	font-size: 15px;
 
 }
 .navbar-nav {
@@ -476,7 +478,7 @@ button.btn.btn-buscar {
 	color: #fff;
 }
 #features .block i {
-	font-size: 60px;
+	font-size: 58px;
 	margin: 15px 20px;
 }
 
@@ -521,7 +523,7 @@ button.btn.btn-buscar {
 	transition: all .3s ease-in-out;
 }
 #catagorie .block .thumbnail .caption p {
-	font-size: 14px;
+	font-size: 13px;
 	color: #4b4b4b;
 	font-weight: 300;
 }
@@ -594,7 +596,7 @@ button.btn.btn-buscar {
 	margin: 10px 0;
 	display: block;
 	padding: 8px 10px;
-	font-size: 17px;
+	font-size: 15px;
 	color: #555;
 	font-weight: bold;
 }
@@ -614,20 +616,20 @@ button.btn.btn-buscar {
 	transition: .2s ease-in-out;
 }
 .valor {
-	font-size: 22px;
+	font-size: 20px;
 	color: #ff6200;
 	font-weight: bold;
 	margin-bottom: 8px;
 }
 
 .valor2 {
-	font-size: 18px;
+	font-size: 16px;
 	margin-bottom: 8px;
 	text-decoration: line-through;
 }
 
 .valor3{
-    margin: 11% 0;
+    margin: 10% 0;
 }
 
 /*	 Call To Action Start
@@ -704,7 +706,7 @@ footer .block span {
 }
 .social-icon li a i {
 	color: #fff;
-	font-size: 20px;
+	font-size: 18px;
 }
 .social-icon li a {
 	padding: 8px 12px;
@@ -990,12 +992,12 @@ footer .block span {
 }
 
 #blog .blog-zone > li .cbp_tmtime span:first-child {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #bdd0db;
 }
 
 #blog .blog-zone > li .cbp_tmtime span:last-child {
-    font-size: 2.9em;
+    font-size: 2.8em;
     color: #ff6200;
 }
 
@@ -1008,7 +1010,7 @@ footer .block span {
     border: 1px solid #dedede;
     color: #fff;
     padding: 8px;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 300;
     line-height: 1.4;
     position: relative;
@@ -1031,7 +1033,7 @@ footer .block span {
 #blog .blog-zone > li .blog-icon {
     width: 40px;
     height: 40px;
-    font-size: 1.4em;
+    font-size: 1.3em;
     line-height: 40px;
     position: absolute;
     color: #fff;
@@ -1065,7 +1067,7 @@ footer .block span {
 .blog-post-tag .block p{
 	display: inline-block;
 	color: #999;
-	font-size: 14px;
+	font-size: 13px;
 }
 .blog-post-tag .block p a {
 	color: #999;
@@ -1082,7 +1084,7 @@ footer .block span {
 	margin-bottom: 20px;
 }
 .blog-post-body p {
-	font-size: 16px;
+	font-size: 14px;
 	color: #555;
 	padding-top: 10px;
 }
@@ -1113,7 +1115,7 @@ footer .block span {
 }
 .blog-post-body blockquote p {
 	color: #AFAFAF;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .author-id ,.comments-box,.leave-comment  {
@@ -1173,7 +1175,7 @@ footer .block span {
 }
 .blog-sidebar .block .media-heading {
 	color: #666;
-	font-size: 17px;
+	font-size: 15px;
 	display: block;
 	margin:0;
 	-webkit-transition: .2s ease-in-out;
@@ -1274,7 +1276,7 @@ footer .block span {
 
 
 #shop .products-heading h2 {
-	font-size: 30px;
+	font-size: 28px;
 }
 .pagination-bottom {
 	text-align: center;
@@ -1332,7 +1334,7 @@ footer .block span {
 /*css do seet alert*/
 .swal2-popup {
 
-    font-size: 14px !important;
+    font-size: 13px !important;
 }
 
 .botao{
@@ -1358,7 +1360,7 @@ footer .block span {
 .nav-main > option a {
     padding: 20px 15px;
     color: #555;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .fa-times{
@@ -1369,4 +1371,32 @@ footer .block span {
 .filtro a:hover{
     background: ccc;
     text-decoration: none;
+}
+
+.dataTables_length{
+    display:none;
+}
+
+.dataTables_info{
+    display:none;
+}
+
+.dataTables_paginate{
+    display:none;
+}
+
+.sorting_asc{
+    display:none;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    margin: 0px;
+    border: 1px solid #dedede;
+    border-radius: 0;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+
+    border: 1px solid #dedede;
+    border-radius: 0;
 }

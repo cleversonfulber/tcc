@@ -16,8 +16,6 @@ public class Tipo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull(message = "O nome do tipo é obrigatório.")
-	@Size(max = 60, message = "O nome do tipo deve conter no máximo 60 caracteres.")
 	@Column(name = "nome", nullable = false, unique = true, length = 60)
 	private String nome;
 

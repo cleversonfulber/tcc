@@ -16,8 +16,6 @@ public class Marca {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull(message = "O nome da marca é obrigatório.")
-	@Size(max = 60, message = "O nome da marca deve conter no máximo 60 caracteres.")
 	@Column(name = "nome", nullable = false, unique = true, length = 60)
 	private String nome;
 
