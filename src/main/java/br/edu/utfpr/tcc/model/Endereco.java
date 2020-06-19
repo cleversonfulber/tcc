@@ -21,10 +21,16 @@ public class Endereco {
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	@JsonIgnore
 	private Usuario usuario;
+//
+//	@ManyToOne
+//	@JoinColumn(name = "cidade_id", referencedColumnName = "id")
+//	private Cidade cidade;
 
-	@ManyToOne
-	@JoinColumn(name = "cidade_id", referencedColumnName = "id")
-	private Cidade cidade;
+	@Column(name = "cidade", nullable = false, length = 64)
+	private String cidade;
+
+	@Column(name = "uf", nullable = false, length = 64)
+	private String uf;
 
 	@Column(name = "descricao", nullable = false, length = 15)
 	private String descricao;

@@ -53,13 +53,20 @@
                                     </div>
                                     <div th:if="${produto.promocao} == null">
                                         <p class="valor" th:text="${produto.valor}"></p>
+                                        <p class="valor4" ></p>
                                     </div>
+                                    <label for="tamanho" class="texto-tamanho">Tamanho: </label>
+                                    <select id="tamanho" name="tamanho" class="tamanho">
+                                        <option value=""> (Selecione) </option>
+                                        <option th:each="tamanho: ${produto_tamanhos}"
+                                                th:value="${tamanho.nome}"
+                                                th:text="${tamanho.nome}"></option>
+                                    </select>
 
-                                        <p th:text="${produto.descri}"></p>
                                     <a href="" >
                                         <h1 th:text="${produto.id}" style="display: none;"></h1>
                                     </a>
-                                    <a class="view-link shutter adicionar-carrinho" href="" >
+                                    <a class="view-link shutter adicionar-carrinho margin-top" href="" >
                                         <i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>
                                     <a class="view-link shutter processar-pedido">
                                         <i class="fa fa-stream"></i>Ir ao Carrinho</a>
@@ -97,26 +104,20 @@
                 <div class="col-md-9">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#home" data-toggle="tab">Características</a></li>
-                        <li><a href="#profile" data-toggle="tab">Comentários</a></li>
+                        <li class="active"><a href="#home" data-toggle="tab">Descrição</a></li>
+                        <li><a href="#profile" data-toggle="tab">Características</a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
-                            <p th:text="${produto.caracteristica}"></p>
+                            <p th:text="${produto.descri}"></p>
                         </div>
                         <div class="tab-pane" id="profile">
-                            <p>Sem comentários de clientes até este momento.</p>
+                            <p th:text="${produto.caracteristica}"></p>
                         </div>
                     </div>
                 </div>	<!-- End of /.col-md-9 -->
-                <div class="col-md-3">
-                    <div class="blog-sidebar">
-                        <div class="block">
-                            <img src="images/food-ad.png" alt="">
-                        </div> <!-- End of /.block -->
-                    </div>	<!-- End of /.blog-sidebar -->
-                </div>	<!-- End of /.col-md-3 -->
+
             </div>	<!-- End of /.row -->
         </div>	<!-- End of /.Container -->
 

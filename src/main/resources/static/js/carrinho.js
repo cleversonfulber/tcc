@@ -1,10 +1,13 @@
 class Carrinho{
 //    Adicionar o produto ao carrinho
+
+
     comprarProduto(e){
         e.preventDefault();
         if(e.target.classList.contains('adicionar-carrinho')){
             const produto = e.target.parentElement.parentElement;
             this.lerDadosProduto(produto);
+            this.calcularQtde();
         }
     }
 
@@ -13,6 +16,7 @@ class Carrinho{
         if(e.target.classList.contains('ver-produto')){
             const produto = e.target.parentElement.parentElement;
             this.lerProduto(produto);
+
         }
     }
 
@@ -29,6 +33,7 @@ class Carrinho{
 
         }
         window.location = "/produto/" + infoProduto.id;
+
     }
 
     lerDadosProduto(produto){
@@ -38,34 +43,54 @@ class Carrinho{
             valor : produto.querySelector('p').textContent,
             id : produto.querySelector('h1').textContent,
             sub: produto.querySelector('p').textContent,
+            tamanho: produto.querySelector('#tamanho').value,
             qtda : 1
 
         }
-        let produtosLS;
+        let produtosLS, produtosSL;
+
         produtosLS = this.pegarProdutosLocalStorage();
+
         produtosLS.forEach(function(produtoLS){
            if(produtoLS.id == infoProduto.id){
-                produtosLS = produtoLS.id;
+                produtosSL = produtoLS.id;
            }
         });
-        if(produtosLS == infoProduto.id){
+        if(infoProduto.tamanho == ""){
             Swal.fire({
-              type: 'info',
-              title: 'Oops',
-              text: 'Este produto já está no carrinho',
-              timer: 1500,
-              showConfirmButton: false
+                type: 'info',
+                title: 'Oops',
+                text: 'Selecione um tamanho',
+                timer: 1500,
+                showConfirmButton: false
             })
         }else{
-            this.inserirCarrinho(infoProduto);
-            Swal.fire({
-              type: 'success',
-              title: 'Produto adicionado ao carrinho!',
-              timer: 1000,
-              showConfirmButton: false
-            })
+            if(produtosSL == infoProduto.id){
+                    Swal.fire({
+                    type: 'info',
+                    title: 'Oops',
+                    text: 'Este produto já está no carrinho',
+                    timer: 1500,
+                    showConfirmButton: false
+                })
+            }else if(produtosLS.length == 4){
+                Swal.fire({
+                    type: 'info',
+                    title: 'Oops',
+                    text: 'Você só pode adicionar 4 produtos ao carrinho.',
+                    timer: 1500,
+                    showConfirmButton: false
+                })
+            }else{
+                this.inserirCarrinho(infoProduto);
+                Swal.fire({
+                  type: 'success',
+                  title: 'Produto adicionado ao carrinho!',
+                  timer: 1000,
+                  showConfirmButton: false
+                })
+            }
         }
-
     }
 
     inserirCarrinho(produto){
@@ -125,14 +150,15 @@ class Carrinho{
             if(produtosLS.id == produtoID){
                 produtosLS.qtda = produtoQtda;
                 produtosLS.sub = produtoQtda*produtosLS.valor;
+                produtosLS.sub = parseFloat(produtosLS.sub.toFixed(2));
             }
         });
 
         localStorage.setItem('produtos', JSON.stringify(produtosLS));
 
         this.calcularTotal();
-        window.location = "/carrinho";
-
+//        window.location = "/carrinho";
+        document.location.reload(true);
     }
 
     esvaciarCarrinho(e){
@@ -195,11 +221,12 @@ class Carrinho{
             $("tr.com-registros").show();
             $("tr.sem-registros").hide();
         }
-
+        this.calcularQtde();
     }
 
     esvaciarLocalStorage(){
         localStorage.clear();
+        this.calcularQtde();
     }
 
     processarPedido(e){
@@ -216,16 +243,16 @@ class Carrinho{
                 <td>
                     <img src="${produto.imagem}" width=100>
                 </td>
-                <td>${produto.nome}</td>
+                <td>${produto.nome} - Tam:${produto.tamanho}</td>
                 <td>${produto.valor}</td>
                 <td>
-                    <input type="number" class="form-control qtda" min="1" max="6" value=${produto.qtda}>
+                    <input type="number" autocomplete="off" class="form-control qtda" min="1" max="6" value=${produto.qtda}>
                 </td>
 
                 <td>${produto.sub}</td>
                 <td>
-                    <h1 style="display: none;">${produto.id}</h1>
-                    <a href="" class="excluir-produto fas fa-times-circle" style="font-size: 25px" >
+                    <h1 id="produto" style="display: none;">${produto.id}</h1>
+                    <a href=""  class="excluir-produto fas fa-times-circle" style="font-size: 25px" >
                     </a>
                 </td>
             `;
@@ -253,7 +280,7 @@ class Carrinho{
                 <td>
                     <img src="${produto.imagem}" width=50>
                 </td>
-                <td>${produto.nome}</td>
+                <td>${produto.nome} - Tam:${produto.tamanho}</td>
                 <td>${produto.qtda}</td>
                 <td>${produto.sub}</td>
             `;
@@ -279,30 +306,41 @@ class Carrinho{
         document.getElementById('total').innerHTML = "R$ " + total.toFixed(2);
     }
 
+    calcularQtde(){
+
+        let produtosLS;
+        let qtde = 0;
+        produtosLS = this.pegarProdutosLocalStorage();
+        for(let i = 0; i < produtosLS.length; i++){
+//            let element = Number(produtosLS[i].qtda);
+//            qtde = qtde + element;
+//          achei mais interesante contar os itens do carrinho do que a qtda total
+            qtde++;
+        }
+
+        document.getElementById('qtde').innerHTML = qtde;
+    }
+
     finalizarCompra(e){
         e.preventDefault();
 
         if(compra.pegarProdutosLocalStorage().length == 0){
             Swal.fire({
-              type: 'error',
-              title: 'Carrinho Vazio!',
-              text: 'Adicione um item ao carrinho.',
-              timer: 2000,
-              showConfirmButton: false
+                type: 'error',
+                title: 'Carrinho Vazio!',
+                text: 'Adicione um item ao carrinho.',
+                timer: 2000,
+                showConfirmButton: false
             }).then(function(){
                 window.location = "../";
             })
         }else{
             Swal.fire({
-
-              title: 'Selecione um endereço!',
-
-              showConfirmButton: true
+                title: 'Selecione um endereço!',
+                showConfirmButton: true
             }).then(function(){
                 window.location = "../endereco";
             })
         }
     }
 }
-
-

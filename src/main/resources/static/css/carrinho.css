@@ -75,6 +75,7 @@
 	font-size: 17px;
 	color: #555;
 	font-weight: bold;
+	background: #fff;
 }
 .view-link:hover {
 	border: 1px solid #ff6200;
@@ -261,4 +262,11 @@ ul {padding-left: 0;}
     margin: 9% 0;
 }
 
+.error{
+   font-weight: normal;
+   color: #ff7272;
+}
 
+.finalizar{
+    padding: 8px 100px;
+}

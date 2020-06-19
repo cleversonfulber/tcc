@@ -177,10 +177,11 @@ body {
 
 }
 
-
-
 .form-group {
     text-align: left;
-
 }
 
+.error{
+   font-weight: normal;
+   color: #ff7272;
+}

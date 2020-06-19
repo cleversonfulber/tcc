@@ -39,6 +39,8 @@ public class ProdController {
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
+		modelAndView.addObject("cores", corRepository.findAll() );
+		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
 		modelAndView.addObject("produto", new Produto());
 
 		return modelAndView;
@@ -63,30 +65,55 @@ public class ProdController {
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
+		modelAndView.addObject("cores", corRepository.findAll() );
+		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
+		modelAndView.addObject("produto_tamanhos", tamanhoRepository.buscarTamanhoProduto(id) );
 		modelAndView.addObject("produto", new Produto());
 
 		return modelAndView;
 	}
 
-	@PostMapping("**/buscarproduto")
+	@PostMapping("/buscarproduto")
 	public ModelAndView pesquisar(@RequestParam("nome") String nome, Pageable pageable){
 		ModelAndView modelAndView = new ModelAndView("produto");
-		modelAndView.addObject("produtos", produtoRepository.buscarProdutoNome(nome,pageable));
+		modelAndView.addObject("produtos", produtoRepository.findByNomeContainingIgnoreCase(nome,pageable));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
+		modelAndView.addObject("cores", corRepository.findAll() );
+		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
 		modelAndView.addObject("produto", new Produto());
 
 		return modelAndView;
 	}
+//
+//	@GetMapping("filtro")
+//	public ModelAndView umFiltro(@RequestParam("classe")  String nome,
+//								 @RequestParam("id") Long id,
+//								 Pageable pageable){
+//
+//		ModelAndView modelAndView = new ModelAndView("produto");
+//		modelAndView.addObject("produtos", produtoRepository.buscarProdutoumFiltro( nome, id, pageable));
+//		modelAndView.addObject("categorias", categoriaRepository.findAll() );
+//		modelAndView.addObject("marcas", marcaRepository.findAll() );
+//		modelAndView.addObject("tipos", tipoRepository.findAll() );
+//		modelAndView.addObject("cores", corRepository.findAll() );
+//		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
+//
+//		modelAndView.addObject("produto", new Produto());
+//
+//		return modelAndView;
+//	}
 
-	@GetMapping("**/categoria/{id}")
+	@GetMapping("/categoria/{id}")
 	public ModelAndView categoria(@PathVariable Long id, Pageable pageable){
 		ModelAndView modelAndView = new ModelAndView("produto");
 		modelAndView.addObject("produtos", produtoRepository.buscarProdutoCategoria(id, pageable));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
+		modelAndView.addObject("cores", corRepository.findAll() );
+		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
 
 		modelAndView.addObject("categorias2", categoriaRepository.getOne(id) );
 
@@ -95,13 +122,15 @@ public class ProdController {
 		return modelAndView;
 	}
 
-	@GetMapping("**/marca/{id}")
+	@GetMapping("/marca/{id}")
 	public ModelAndView marca(@PathVariable Long id, Pageable pageable){
 		ModelAndView modelAndView = new ModelAndView("produto");
 		modelAndView.addObject("produtos", produtoRepository.buscarProdutoMarca(id, pageable));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
+		modelAndView.addObject("cores", corRepository.findAll() );
+		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
 
 		modelAndView.addObject("marcas2", marcaRepository.getOne(id) );
 
@@ -110,13 +139,15 @@ public class ProdController {
 		return modelAndView;
 	}
 
-	@GetMapping("**/tipo/{id}")
+	@GetMapping("/tipo/{id}")
 	public ModelAndView tipo(@PathVariable Long id, Pageable pageable){
 		ModelAndView modelAndView = new ModelAndView("produto");
 		modelAndView.addObject("produtos", produtoRepository.buscarProdutoTipo(id, pageable));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
+		modelAndView.addObject("cores", corRepository.findAll() );
+		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
 
 		modelAndView.addObject("tipos2", tipoRepository.getOne(id) );
 
@@ -125,53 +156,38 @@ public class ProdController {
 		return modelAndView;
 	}
 
-//	@GetMapping("categoria/{id}")
-//	public ModelAndView categoria(@PathVariable Long id) {
-//
-//		Categoria categoria = (Categoria) categoriaRepository.getOne(id);
-//
-//		ModelAndView modelAndView = new ModelAndView("produto");
-//		modelAndView.addObject("produtos", produtoRepository.findAll();
-//		modelAndView.addObject("categorias", categoriaRepository.getOne(id));
-//		modelAndView.addObject("marcas", marcaRepository.findAll() );
-//		modelAndView.addObject("tipos", tipoRepository.findAll() );
-//		modelAndView.addObject("promocoes", promocaoRepository.findAll() );
-//		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
-//		modelAndView.addObject("cores", corRepository.findAll() );
-//		modelAndView.addObject("produto", new Produto());
-//
-//		return modelAndView;
-//	}
-//
-//	@GetMapping("marca/{id}")
-//	public ModelAndView marca(@PathVariable Long id) {
-//
-//		ModelAndView modelAndView = new ModelAndView("produto");
-//		modelAndView.addObject("produtos", produtoRepository.findAll());
-//		modelAndView.addObject("categorias", categoriaRepository.findAll() );
-//		modelAndView.addObject("marcas", marcaRepository.getOne(id));
-//		modelAndView.addObject("tipos", tipoRepository.findAll() );
-//		modelAndView.addObject("promocoes", promocaoRepository.findAll() );
-//		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
-//		modelAndView.addObject("cores", corRepository.findAll() );
-//		modelAndView.addObject("produto", new Produto());
-//
-//		return modelAndView;
-//	}
-//
-//	@GetMapping("tipo/{id}")
-//	public ModelAndView tipo(@PathVariable Long id) {
-//
-//		ModelAndView modelAndView = new ModelAndView("produto");
-//		modelAndView.addObject("produtos", produtoRepository.findAll());
-//		modelAndView.addObject("categorias", categoriaRepository.findAll() );
-//		modelAndView.addObject("marcas", marcaRepository.findAll() );
-//		modelAndView.addObject("tipos", tipoRepository.getOne(id));
-//		modelAndView.addObject("promocoes", promocaoRepository.findAll() );
-//		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
-//		modelAndView.addObject("cores", corRepository.findAll() );
-//		modelAndView.addObject("produto", new Produto());
-//
-//		return modelAndView;
-//	}
+	@GetMapping("/cor/{id}")
+	public ModelAndView cor(@PathVariable Long id, Pageable pageable){
+		ModelAndView modelAndView = new ModelAndView("produto");
+		modelAndView.addObject("produtos", produtoRepository.buscarProdutoCor(id, pageable));
+		modelAndView.addObject("categorias", categoriaRepository.findAll() );
+		modelAndView.addObject("marcas", marcaRepository.findAll() );
+		modelAndView.addObject("tipos", tipoRepository.findAll() );
+		modelAndView.addObject("cores", corRepository.findAll() );
+		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
+
+		modelAndView.addObject("cores2", corRepository.getOne(id) );
+
+		modelAndView.addObject("produto", new Produto());
+
+		return modelAndView;
+	}
+
+	@GetMapping("/tamanho/{id}")
+	public ModelAndView tamanho(@PathVariable Long id, Pageable pageable){
+		ModelAndView modelAndView = new ModelAndView("produto");
+		modelAndView.addObject("produtos", produtoRepository.buscarProdutotamanho(id, pageable));
+		modelAndView.addObject("categorias", categoriaRepository.findAll() );
+		modelAndView.addObject("marcas", marcaRepository.findAll() );
+		modelAndView.addObject("tipos", tipoRepository.findAll() );
+		modelAndView.addObject("cores", corRepository.findAll() );
+		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
+
+		modelAndView.addObject("tamanhos2", tamanhoRepository.getOne(id) );
+
+		modelAndView.addObject("produto", new Produto());
+
+		return modelAndView;
+	}
+
 }

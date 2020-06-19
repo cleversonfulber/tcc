@@ -19,7 +19,7 @@
 
 					</div>
 					<div class="col-md-6">
-						<form method="post" th:action="@{produto/buscarproduto}">
+						<form method="post" th:action="@{/produto/buscarproduto}">
 							<div class="col-md-9">
 								<input type="search"  class="form-control buscar" id="buscar"
 									   th:name="nome" placeholder="Busque em Nossa Loja"  />
@@ -75,7 +75,12 @@
 						</div>
 						<div class="col-md-1">
 							<div class="cart dropdown">
-								<a data-toggle="dropdown" href="#"><i class="fa fa-shopping-cart"></i></a>
+								<a data-toggle="dropdown" href="#"><i class="fa fa-shopping-cart"></i>
+									<div class="notificacao-carrinho" >
+										<p id="qtde"></p>
+									</div>
+								</a>
+
 								<div id="carrinho" class="dropdown-menu dropup">
 									<table id="lista-carrinho" class="table">
 										<thead>

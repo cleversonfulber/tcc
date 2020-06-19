@@ -24,6 +24,7 @@
 	<link rel="stylesheet" href="/vendors/bootstrap-datepicker/css/bootstrap-datepicker.min.css" />
 
 
+
 	<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
 
 </head>
@@ -48,8 +49,7 @@
 		</div>
 		<form id="frm" name="frm"
 			  method="POST"
-			  th:action="@{/usuario}"
-			  data-parsley-validate="parsley">
+			  th:action="@{/usuario}">
 
 			<h1 class="h3 mb-3">Cadastrar</h1>
 
@@ -126,7 +126,7 @@
 				<a type="button" class="btn3" data-dismiss="modal"
 							aria-hidden="true"th:href="@{../}">Cancelar</a>
 				<button type="button" class="btn btn-success"
-						onclick="salvarUsuario('/login')">Salvar</button>
+						onclick="salvar('/login')">Salvar</button>
 			</div>
 
 			<div>
@@ -138,18 +138,21 @@
 		<p class="mt-5 mb-3 text-muted">© 2020</p>
 	</div>
 
-	<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.messages_pt_BR.js"></script>
 	<script src="/sweetalert/sweetalert-dev.js"></script>
 	<script src="/js/cruds.js"></script>
 	<script src="/js/crud-usuario.js"></script>
-	<script th:src="@{/webjars/jquery-mask-plugin/dist/jquery.mask.min.js}"></script>
 
 	<script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/crud-usuario.js}"></script>
 	<script type="text/javascript" th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+	<script type="text/javascript" th:src="@{/vendors/bootstrap-datepicker/js/bootstrap-datepicker.min.js}"></script>
 
-
+	<!-- Validação -->
+	<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="/js/messages_pt_BR.js"></script>
+	<script type="text/javascript" th:src="@{/js/validacao.js}" ></script>
+	<script src="/js/data.js"></script>
+	<script th:src="@{/webjars/jquery-mask-plugin/dist/jquery.mask.min.js}"></script>
 
 </body>
 

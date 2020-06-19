@@ -126,6 +126,15 @@ body {
 	text-align: center;
 }
 
+div, span, i, a{
+    font-size: 14px;
+}
+
+[type=search] {
+    -webkit-appearance: auto;
+}
+
+
  /*header*/
 
 .navbar-header img{
@@ -200,6 +209,11 @@ body {
 
 #checkboxes label:hover {
   background-color: #1e90ff;
+}
+
+.error{
+
+   color: #ff7272;
 }
 
 

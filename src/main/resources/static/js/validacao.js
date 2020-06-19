@@ -7,7 +7,7 @@ $(document).ready(function() {
                 maxlength: 100,
                 minlength: 3
             },
-            estado: {
+            uf: {
                 required: true
             },
             sigla: {
@@ -53,18 +53,21 @@ $(document).ready(function() {
             dataFim: {
                 required: true
             },
-            email: {
+            username: {
                 required: true,
                 email:true
             },
+            password:{
+                required: true
+            },
             telefone: {
                 required: false,
-                maxlength: 13
+                maxlength: 14
             },
             celular: {
                 required: true,
-                maxlength: 14,
-                minlength: 14
+                maxlength: 15,
+                minlength: 15
             },
             sobrenome: {
                 required: true,
@@ -98,10 +101,11 @@ $(document).ready(function() {
             },
             cep: {
                 required: true,
-                maxlength: 8,
-                minlength: 8
+                maxlength: 9,
+                minlength: 9
             },
             numero: {
+                required: true,
                 maxlength: 7
             },
             bairro: {
