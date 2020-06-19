@@ -46,7 +46,13 @@ function enviarEmail(){
     );
 
     localStorage.clear();
-    window.location.replace("../");
+    redirecionar();
+}
+
+function redirecionar() {
+  setTimeout(function() {
+  		window.location.replace("../");
+  }, 3000);
 }
 
 function finalizar(){
