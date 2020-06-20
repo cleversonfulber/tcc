@@ -34,7 +34,8 @@ public class HomeController {
 	@GetMapping("/")
 	public ModelAndView home(Pageable pageable) {
 		ModelAndView modelAndView = new ModelAndView("home");
-		modelAndView.addObject("produtos", produtoRepository.findAll(pageable));
+		modelAndView.addObject("produtos", produtoRepository.buscarProduto(pageable));
+		modelAndView.addObject("produtos2", produtoRepository.buscarProdutoPromocao(pageable));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );

@@ -47,6 +47,7 @@ function enviarEmail(){
 
     localStorage.clear();
     redirecionar();
+//    prepareDatabase("nn","Deu Erro!");
 }
 
 function redirecionar() {
@@ -54,6 +55,14 @@ function redirecionar() {
   		window.location.replace("../");
   }, 3000);
 }
+
+//function prepareDatabase(ready, error) {
+//  return openDatabase('tcc', '1.0', 'Teste de inserir', 5*1024*1024, function (db) {
+//    db.changeVersion('', '1.0', function (t) {
+//      t.executeSql('insert into pedido( id, valor, endereco_id, produto_id) values (3,1,1,1)');
+//    }, error);
+//  });
+//}
 
 function finalizar(){
 

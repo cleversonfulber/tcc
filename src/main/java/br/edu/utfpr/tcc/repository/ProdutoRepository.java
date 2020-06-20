@@ -11,26 +11,30 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
-//    @Query(value = "select * from produtos where nome ilike %?1%", nativeQuery = true)
-//    List<Produto> buscarProdutoNome(String nome, Pageable pageable);
-    List<Produto> findByNomeContainingIgnoreCase(String nome, Pageable pageable);
+    @Query(value = "select * from produtos inner JOIN anuncios on anuncios.produto_id = produtos.id where nome ilike %?1% and data_inicio <= CURRENT_DATE and data_fim >= CURRENT_DATE", nativeQuery = true)
+    List<Produto> buscarProdutoNome(String nome, Pageable pageable);
 
 //    @Query(value = "select * from produtos where categoria_id = ?1", nativeQuery = true)
 //    List<Produto> buscarProdutoumFiltro( String nome, Long id, Pageable pageable);
 
+    @Query(value = "select * from produtos inner JOIN anuncios on anuncios.produto_id = produtos.id where data_inicio <= CURRENT_DATE and data_fim >= CURRENT_DATE", nativeQuery = true)
+    List<Produto> buscarProduto( Pageable pageable);
 
-    @Query(value = "select * from produtos where categoria_id = ?1", nativeQuery = true)
+    @Query(value = "select * from produtos inner JOIN anuncios on anuncios.produto_id = produtos.id where data_inicio <= CURRENT_DATE and data_fim >= CURRENT_DATE and promocao_id is not null", nativeQuery = true)
+    List<Produto> buscarProdutoPromocao( Pageable pageable);
+
+    @Query(value = "select * from produtos inner JOIN anuncios on anuncios.produto_id = produtos.id where categoria_id = ?1 and data_inicio <= CURRENT_DATE and data_fim >= CURRENT_DATE", nativeQuery = true)
     List<Produto> buscarProdutoCategoria(Long id, Pageable pageable);
 
-    @Query(value = "select * from produtos where marca_id = ?1", nativeQuery = true)
+    @Query(value = "select * from produtos inner JOIN anuncios on anuncios.produto_id = produtos.id where marca_id = ?1 and data_inicio <= CURRENT_DATE and data_fim >= CURRENT_DATE", nativeQuery = true)
     List<Produto> buscarProdutoMarca(Long id, Pageable pageable);
 
-    @Query(value = "select * from produtos where tipo_id = ?1", nativeQuery = true)
+    @Query(value = "select * from produtos inner JOIN anuncios on anuncios.produto_id = produtos.id where tipo_id = ?1 and data_inicio <= CURRENT_DATE and data_fim >= CURRENT_DATE", nativeQuery = true)
     List<Produto> buscarProdutoTipo(Long id, Pageable pageable);
 
-    @Query(value = "select * from produtos where cor_id = ?1", nativeQuery = true)
+    @Query(value = "select * from produtos inner JOIN anuncios on anuncios.produto_id = produtos.id where cor_id = ?1 and data_inicio <= CURRENT_DATE and data_fim >= CURRENT_DATE", nativeQuery = true)
     List<Produto> buscarProdutoCor(Long id, Pageable pageable);
 
-    @Query(value = "select * from produtos inner JOIN produtos_tamanho on produtos_tamanho.produto_id = produtos.id where tamanho_id = ?1", nativeQuery = true)
+    @Query(value = "select * from produtos inner JOIN anuncios on anuncios.produto_id = produtos.id inner JOIN produtos_tamanho on produtos_tamanho.produto_id = produtos.id where tamanho_id = ?1 and data_inicio <= CURRENT_DATE and data_fim >= CURRENT_DATE", nativeQuery = true)
     List<Produto> buscarProdutotamanho(Long id, Pageable pageable);
 }

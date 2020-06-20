@@ -35,7 +35,7 @@ public class ProdController {
 	@GetMapping("")
 	public ModelAndView produto(Pageable pageable) {
 		ModelAndView modelAndView = new ModelAndView("produto");
-		modelAndView.addObject("produtos", produtoRepository.findAll((Pageable) pageable));
+		modelAndView.addObject("produtos", produtoRepository.buscarProduto((Pageable) pageable));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
@@ -50,7 +50,7 @@ public class ProdController {
 	public ModelAndView individual(@PathVariable Long id, Pageable pageable) {
 		if(!produtoRepository.existsById(id)){
 			ModelAndView modelAndView = new ModelAndView("erro/produto");
-			modelAndView.addObject("produtos", produtoRepository.findAll());
+			modelAndView.addObject("produtos", produtoRepository.buscarProdutoPromocao(pageable));
 			modelAndView.addObject("categorias", categoriaRepository.findAll() );
 			modelAndView.addObject("marcas", marcaRepository.findAll() );
 			modelAndView.addObject("tipos", tipoRepository.findAll() );
@@ -61,7 +61,7 @@ public class ProdController {
 		ModelAndView modelAndView = new ModelAndView("individual");
 
 		modelAndView.addObject("produtos", produtoRepository.getOne(id));
-		modelAndView.addObject("produtos2", produtoRepository.findAll(pageable));
+		modelAndView.addObject("produtos2", produtoRepository.buscarProduto(pageable));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
@@ -76,7 +76,7 @@ public class ProdController {
 	@PostMapping("/buscarproduto")
 	public ModelAndView pesquisar(@RequestParam("nome") String nome, Pageable pageable){
 		ModelAndView modelAndView = new ModelAndView("produto");
-		modelAndView.addObject("produtos", produtoRepository.findByNomeContainingIgnoreCase(nome,pageable));
+		modelAndView.addObject("produtos", produtoRepository.buscarProdutoNome(nome,pageable));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );

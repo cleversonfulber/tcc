@@ -5828,9 +5828,18 @@ Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, 
 Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (4, 'Pato Branco', 'PR', 'Apartamento', '85230-000', 2574, 'Cristo Rei','Antonio Guimarães', 'N/A' );
 
 
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 1, 2, 10, '2019-06-05', '2019-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 2, 2, 10, '2019-06-05', '2019-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 3, 2, 5, '2019-06-05', '2019-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 4, 2, 20, '2019-06-05', '2019-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 5, 2, 10, '2019-06-05', '2019-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 6, 2, 20, '2019-06-05', '2019-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 1, 2, 10, '2020-06-05', '2020-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 2, 2, 10, '2020-06-05', '2020-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 3, 2, 5, '2020-06-05', '2020-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 4, 2, 20, '2020-06-05', '2020-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 5, 2, 10, '2020-06-05', '2020-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 6, 2, 20, '2020-06-05', '2020-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 7, 2, 20, '2020-06-05', '2020-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 8, 2, 20, '2020-06-05', '2020-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 9, 2, 20, '2020-06-05', '2020-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 10, 2, 20, '2019-06-05', '2019-07-06');
+
+Insert into pedido ( valor, endereco_id, produto_id) VALUES ( 172.90, 2, 7);
+Insert into pedido ( valor, endereco_id, produto_id) VALUES ( 132.89, 2, 9);
+Insert into pedido ( valor, endereco_id, produto_id) VALUES ( 94.90, 2, 3);
+Insert into pedido ( valor, endereco_id, produto_id) VALUES ( 114, 2, 1);
