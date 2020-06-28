@@ -186,11 +186,12 @@
                                         <h4 th:text="${produto.nome} + ' - ' + ${produto.cor.nome}" ></h4>
                                     </a>
                                     <div th:if="${produto.promocao} != null">
-                                        <p class="valor" th:text="${produto.promocao.precoPromocional}" on="formatarMoeda();"></p>
-                                        <p class="valor2" th:text="${produto.valor}"></p>
+                                        <span class="valor">R$ </span> <span class="valor" th:text="${#numbers.formatDecimal(produto.promocao.precoPromocional, 1, 'DEFAULT', 2, 'DEFAULT')}"></span></br>
+                                        <span class="valor2">R$ </span> <span class="valor2" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}" ></span>
                                     </div>
                                     <div th:if="${produto.promocao} == null">
-                                        <p class="valor valor3" th:text="${produto.valor}" id="valor" onkeyup="formatarMoeda();"></p>
+                                        <span class="valor">R$ </span> <span class="valor" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}" ></span>
+                                        <p class="valor4"></p>
                                     </div>
                                     <div>
                                         <a class="view-link shutter ver-produto" >

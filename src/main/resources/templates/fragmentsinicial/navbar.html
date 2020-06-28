@@ -28,14 +28,9 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li>
-									<a th:href="@{/produto/categoria/1}">Calçados</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/categoria/2}">Roupas</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/categoria/3}">Acessórios</a>
+								<li th:each="categoria : ${categorias}">
+									<a th:href="@{'../produto/categoria/' + ${categoria.id}}"
+									   		th:text="${categoria.nome}"></a>
 								</li>
 							</ul>
 						</li>
@@ -44,30 +39,10 @@
 								MARCAS
 								<span class="caret"></span>
 							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<a th:href="@{/produto/marca/1}" >Adidas</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/marca/4}" >Kappa</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/marca/7}" >New Balance</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/marca/8}" >Nike</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/marca/9}" >Oakley</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/marca/11}" >Pegada</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/marca/12}" >Penalty</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/marca/15}" >Umbro</a>
+							<ul class="dropdown-menu ">
+								<li th:each="marca : ${marcas}" >
+									<a th:href="@{'../produto/marca/' + ${marca.id}}"
+									   		th:text="${marca.nome}" ></a>
 								</li>
 							</ul>
 						</li>
@@ -77,29 +52,9 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li>
-									<a th:href="@{/produto/tipo/16}">Bolas</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/tipo/1}">Botas</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/tipo/9}">Camisas Polos</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/tipo/11}">Camisetas</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/tipo/2}">Chinelos</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/tipo/3}">Chuteiras</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/tipo/19}">Meias</a>
-								</li>
-								<li>
-									<a th:href="@{/produto/tipo/5}">Sapatênis</a>
+								<li th:each="tipo : ${tipos}">
+									<a th:href="@{'../produto/tipo/' + ${tipo.id}}"
+									   		th:text="${tipo.nome}"></a>
 								</li>
 							</ul>
 						</li>

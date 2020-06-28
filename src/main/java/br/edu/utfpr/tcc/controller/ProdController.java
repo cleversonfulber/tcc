@@ -18,6 +18,8 @@ public class ProdController {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
@@ -61,7 +63,8 @@ public class ProdController {
 		ModelAndView modelAndView = new ModelAndView("individual");
 
 		modelAndView.addObject("produtos", produtoRepository.getOne(id));
-		modelAndView.addObject("produtos2", produtoRepository.buscarProduto(pageable));
+		modelAndView.addObject("usuarios2", usuarioRepository.buscarUsuarioProduto(id));
+		modelAndView.addObject("produtos2", produtoRepository.buscarProdutoPromocao(pageable));
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );

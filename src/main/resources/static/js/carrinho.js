@@ -44,7 +44,8 @@ class Carrinho{
             id : produto.querySelector('h1').textContent,
             sub: produto.querySelector('p').textContent,
             tamanho: produto.querySelector('#tamanho').value,
-            qtda : 1
+            qtda : 1,
+            loja: produto.querySelector('.loja').textContent
 
         }
         let produtosLS, produtosSL;
@@ -165,7 +166,17 @@ class Carrinho{
         e.preventDefault();
         while(listaProdutos.firstChild){
             listaProdutos.removeChild(listaProdutos.firstChild);
+
         }
+        row.innerHTML = `
+                                <tr class="sem-registros">
+                                    <td colspan="3">
+                                        <h2>O carrinho está vazio...</h2>
+                                    </td>
+                                </tr>
+
+                            `;
+                    listaProdutos.appendChild(row);
         this.esvaciarLocalStorage();
         return false;
     }
@@ -206,19 +217,17 @@ class Carrinho{
                 <td>
                     <img src="${produto.imagem}" width=100>
                 </td>
-                <td>${produto.nome}</td>
-                <td>${produto.valor}</td>
+                <td>R$ ${produto.nome}</td>
+                <td>R$ ${produto.valor.replace('.',',')}</td>
             `;
             listaProdutos.appendChild(row);
         });
 
         if(produtoLS.length === 0) {
             $("tr.sem-registros").show();
-            $("tr.com-registros").hide();
 
         }
         else{
-            $("tr.com-registros").show();
             $("tr.sem-registros").hide();
         }
         this.calcularQtde();
@@ -243,13 +252,14 @@ class Carrinho{
                 <td>
                     <img src="${produto.imagem}" width=100>
                 </td>
-                <td>${produto.nome} - Tam:${produto.tamanho}</td>
-                <td>${produto.valor}</td>
+                <td><p class="nome-produto">${produto.nome} - Tamanho: ${produto.tamanho}</p>
+                <p class="text-loja">Vendido e entregue por: ${produto.loja}</p></td>
+                <td>R$ ${produto.valor}</td>
                 <td>
                     <input type="number" autocomplete="off" class="form-control qtda" min="1" max="6" value=${produto.qtda}>
                 </td>
 
-                <td>${produto.sub}</td>
+                <td>R$ ${produto.sub}</td>
                 <td>
                     <h1 id="produto" style="display: none;">${produto.id}</h1>
                     <a href=""  class="excluir-produto fas fa-times-circle" style="font-size: 25px" >
@@ -280,9 +290,9 @@ class Carrinho{
                 <td>
                     <img src="${produto.imagem}" width=50>
                 </td>
-                <td>${produto.nome} - Tam:${produto.tamanho}</td>
+                <td>${produto.nome} <p>Tam: ${produto.tamanho} - Loja: ${produto.loja}</p></td>
                 <td>${produto.qtda}</td>
-                <td>${produto.sub}</td>
+                <td>R$ ${produto.sub}</td>
             `;
             listaChecar.appendChild(row);
         });
@@ -301,9 +311,9 @@ class Carrinho{
         igv = parseFloat(total * 0.18).toFixed(2);
         subtotal = parseFloat(total-igv).toFixed(2);
 
-        document.getElementById('subtotal').innerHTML = "R$ " + subtotal;
-        document.getElementById('igv').innerHTML = "R$ " + igv;
-        document.getElementById('total').innerHTML = "R$ " + total.toFixed(2);
+        document.getElementById('subtotal').innerHTML = "R$ " + subtotal.replace('.',',');
+        document.getElementById('igv').innerHTML = "R$ " + igv.replace('.',',');
+        document.getElementById('total').innerHTML = "R$ " + total.toFixed(2).replace('.',',');
     }
 
     calcularQtde(){

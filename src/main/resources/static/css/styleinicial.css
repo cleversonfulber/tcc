@@ -18,11 +18,11 @@ element {
 /*Headers*/
 h1,h2,h3,h4,h5,h6 { font-family: 'Yanone Kaffeesatz', sans-serif;color: #555}
 
-h1 { font-size: 48px; }
-h2 { font-size: 38px; }
-h3 { font-size: 33px; }
-h4 { font-size: 28px; }
-h5 { font-size: 23px; }
+h1 { font-size: 35px; }
+h2 { font-size: 28px; }
+h3 { font-size: 25px; }
+h4 { font-size: 22px; }
+h5 { font-size: 20px; }
 h6 { font-size: 18px; }
 ul {padding-left: 0;}
 /*Add space between sections*/
@@ -543,7 +543,6 @@ button.btn.btn-buscar {
 #catagorie .block .thumbnail .caption p {
 	font-size: 13px;
 	color: #4b4b4b;
-	font-weight: 300;
 }
 #catagorie .block .thumbnail .caption {
 	padding: 0;
@@ -645,11 +644,18 @@ button.btn.btn-buscar {
 }
 
 .valor3{
-    margin: 25px 0;
+    margin-top: 32px;
 }
 
 .valor4{
-    margin-top: 20%;
+    margin-top: 38px;
+}
+
+.valor5 {
+	font-size: 20px;
+	color: #ff6200;
+	font-weight: bold;
+	margin-bottom: 8px;
 }
 
 /*	 Call To Action Start
@@ -889,7 +895,10 @@ footer .block span {
 	margin-bottom: 20px;
 }
 
+.owl-item{
+   text-align: center;
 
+}
 
 
 /*	End Of Home Page.......
@@ -1448,5 +1457,13 @@ footer .block span {
 }
 
 .margin-top{
-    margin-top: 157px;
+    margin-top: 102px;
+}
+
+.usuario{
+    margin-top: 55px;
+}
+
+.loja{
+    color: #ff6200;
 }

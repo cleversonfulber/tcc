@@ -34,3 +34,8 @@ function cargarEventos(){
 //
 //  elemento.value = valor;
 //}
+//
+//$(document).ready(function(){
+//	number.toLocaleString('pt-BR',{style:'currency', currency: 'BRL'});
+// })
+

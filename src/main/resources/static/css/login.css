@@ -169,7 +169,7 @@ body {
 }
 
 .superior{
-    margin-top: 20%;
+    margin-top: 30%;
 }
 
 #genero.form-control{
@@ -185,3 +185,31 @@ body {
    font-weight: normal;
    color: #ff7272;
 }
+
+.obrigatorios{
+    color: red;
+    margin: 20px;
+}
+
+.top{
+    margin-top: 25%;
+}
+
+.direita{
+    margin: 5% 0 5% 0;
+    float: right;
+}
+.view-link {
+
+    background-color: #fff;
+}
+
+.top{
+    margin-top: 14%;
+}
+
+.validar{
+    margin-top: 20px;
+}
+
+

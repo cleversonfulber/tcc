@@ -21,7 +21,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="block">
-						<div class="block-heading">
+						<div id="lista-produtos" class="block-heading">
 							<h2>Talvez você possa gostar</h2>
 						</div>
 					</div>
@@ -30,6 +30,10 @@
 							<div>
 								<a th:href="'../produto/' + ${produto.id}">
 									<img class="" th:src="${produto.imagem}" /></a>
+							</div>
+							<div th:if="${produto.promocao} != null">
+								<span class="valor2">R$ </span> <span class="valor2" id="vlr" th:text="${produto.valor}" ></span>
+								<span class="valor">R$ </span> <span class="valor" id="vlr2" th:text="${produto.promocao.precoPromocional}"></span>
 							</div>
 							<div>
 								<a href="" style="display:none">

@@ -48,11 +48,17 @@
                                     <img th:src="${produto.imagem}" style="display: none;"/>
                                     <h4 th:text="${produto.nome} + ' - ' + ${produto.cor.nome}"></h4>
                                     <div th:if="${produto.promocao} != null">
-                                        <p class="valor" th:text="${produto.promocao.precoPromocional}"></p>
-                                        <p class="valor2" th:text="${produto.valor}"></p>
+                                        <p  th:text="${produto.promocao.precoPromocional}" style="display:none;" ></p>
+                                        <div class="valor">
+                                            <span>R$ </span><span th:text="${#numbers.formatDecimal(produto.promocao.precoPromocional, 1, 'DEFAULT', 2, 'DEFAULT')}"></span></br>
+                                        </div>
+                                        <div class="valor2">
+                                            <span>R$ </span> <span th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
+                                        </div>
                                     </div>
                                     <div th:if="${produto.promocao} == null">
-                                        <p class="valor" th:text="${produto.valor}"></p>
+                                        <p th:text="${produto.valor}" style="display:none;" ></p>
+                                        <span class="valor">R$ </span> <span class="valor" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
                                         <p class="valor4" ></p>
                                     </div>
                                     <label for="tamanho" class="texto-tamanho">Tamanho: </label>
@@ -62,7 +68,10 @@
                                                 th:value="${tamanho.nome}"
                                                 th:text="${tamanho.nome}"></option>
                                     </select>
-
+                                    <div class="usuario" th:each="usuario : ${usuarios2}">
+                                        Vendido e Entregue por:
+                                        <span class="loja" th:text="${usuario.nome}"></span>. O E-Marketplace garante seu produto.
+                                    </div>
                                     <a href="" >
                                         <h1 th:text="${produto.id}" style="display: none;"></h1>
                                     </a>

@@ -59,17 +59,17 @@ public class Usuario implements Serializable, UserDetails {
 	@Column(name = "celular", nullable = false,  length = 60)
 	private String celular;
 
-	@Column(name = "sobrenome", nullable = false, length = 15)
+	@Column(name = "sobrenome", nullable = false, length = 25)
 	private String sobrenome;
 
 	@Column(name = "cpf_cnpj", nullable = false, length = 60)
 	private String cpfCnpj;
 
-	@Column(name = "data_nascimento", nullable = false)
+	@Column(name = "data_nascimento")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
 
-	@Column(name = "genero", nullable = false, length = 60)
+	@Column(name = "genero",  length = 60)
 	private String genero;
 
 	public String getEncodedPassword(String password) {

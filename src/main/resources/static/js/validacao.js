@@ -58,7 +58,9 @@ $(document).ready(function() {
                 email:true
             },
             password:{
-                required: true
+                required: true,
+                minlength: 8,
+                maxlength: 20
             },
             telefone: {
                 required: false,
@@ -74,8 +76,13 @@ $(document).ready(function() {
                 maxlength: 60,
                 minlength: 3
             },
-            cpfCnpj: {
-                required: true
+            cpf: {
+                required: true,
+                minlength: 3
+            },
+            cnpj: {
+                required: true,
+                minlength: 3
             },
             dataNascimento: {
                 required: true
@@ -123,5 +130,30 @@ $(document).ready(function() {
         }
     });
 
+});
+
+$('input[name="FlgPontua"]').change(function () {
+    if ($('input[name="FlgPontua"]:checked').val() === "cpf") {
+        $('.cpf').show();
+        $('.cpf *').attr('disabled', false);
+        $('.cnpj').hide();
+        $('.cnpj *').attr('disabled', true);
+        $('.validar').hide();
+        $('#validar').value("false");
+    } else if ($('input[name="FlgPontua"]:checked').val() === "cnpj") {
+        $('.cnpj').show();
+        $('.cnpj *').attr('disabled', false);
+        $('.cpf').hide();
+        $('.cpf *').attr('disabled', true);
+        $('.validar').show();
+        $('#validar').value("true");
+    } else{
+        Swal.fire({
+            type: 'error',
+            title: 'Deu Erro!',
+            timer: 2500,
+            showConfirmButton: false
+        })
+    }
 });
 

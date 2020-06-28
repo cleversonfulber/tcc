@@ -270,3 +270,18 @@ ul {padding-left: 0;}
 .finalizar{
     padding: 8px 100px;
 }
+
+.swal2-styled.swal2-confirm {
+
+    border-radius: 0!important;
+    background-color: #ff6200!important;
+}
+
+.nome-produto{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.text-loja{
+    opacity : 0.5;
+}

@@ -29,7 +29,7 @@
 
 </head>
 
-<body class="text-center">
+<body >
 
 	<nav id="top">
 		<div class="container">
@@ -47,95 +47,141 @@
 		<div class="superior">
 
 		</div>
-		<form id="frm" name="frm"
-			  method="POST"
-			  th:action="@{/usuario}">
+		<div >
+			<form id="frm" name="frm"
+				  method="POST"
+				  th:action="@{/usuario}">
 
-			<h1 class="h3 mb-3">Cadastrar</h1>
+				<h1 class="h3 mb-3 text-center top">Cadastrar</h1>
+
+				<span class="obrigatorios">* Campos Obrigatórios</span>
+
+				<div class="row">
+					<div class="col">
+						<input type="hidden" id="id" name="id"/>
 
 
-			<div class="row">
-				<div class="col">
-					<input type="hidden" id="id" name="id"/>
+						<div class="form-group">
+							<label for="username">E-mail*</label>
+							<input type="text" class="form-control" placeholder="email@email.com"
+								   id="username" name="username" required />
+						</div>
 
-					<div class="form-group">
-						<label for="nome">Nome*</label>
-						<input type="text" class="form-control" placeholder="Nome"
-							   id="nome" name="nome"/>
+						<input type="radio" name="FlgPontua" value="cpf" checked> Pessoa Física &nbsp&nbsp&nbsp&nbsp&nbsp
+						<input type="radio" name="FlgPontua" value="cnpj"> Pessoa Juridíca
+
+						<div class="cpf" >
+							<div class="form-group">
+								<label for="cpfCnpj cpf">CPF*</label>
+								<input type="text" class="form-control" placeholder="000.000.000-00"
+									   id="cpfCnpj cpf" name="cpfCnpj"
+									   required minlength="14" data-mask="000.000.000-00"/>
+							</div>
+							<div class="form-group">
+								<label for="nome">Nome*</label>
+								<input type="text" class="form-control" placeholder="Nome"
+									   id="nome" name="nome" required minlength="3" maxlength="15"/>
+							</div>
+							<div class="form-group">
+								<label for="sobrenome">Sobrenome*</label>
+								<input type="text" class="form-control" placeholder="Sebrenome"
+									   id="sobrenome" name="sobrenome" required minlength="3" maxlength="25"/>
+							</div>
+						</div>
+						<div class="cnpj" style="margin: 0 auto; display: none;" >
+							<div class="form-group">
+								<label for="cpfCnpj cnpj">CNPJ*</label>
+								<input type="text" class="form-control" placeholder="00.000.000/0000-00" disabled
+									   id="cpfCnpj cnpj" name="cpfCnpj"
+									   required minlength="18" data-mask="00.000.000/0000-00"/>
+							</div>
+							<div class="form-group">
+								<label for="nome">Nome Fantasia*</label>
+								<input type="text" class="form-control" placeholder="Nome Fantasia" disabled
+										   id="nome" name="nome" required minlength="3" />
+							</div>
+							<div class="form-group">
+								<label for="sobrenome">Razão Social*</label>
+								<input type="text" class="form-control" placeholder="Razão Social" disabled
+									   id="sobrenome" name="sobrenome" required minlength="3" />
+							</div>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="sobrenome">Sobrenome*</label>
-						<input type="text" class="form-control" placeholder="Sebrenome"
-							   id="sobrenome" name="sobrenome" />
+
+					<div class="col">
+						<div class="form-group">
+							<label for="password">Senha*</label>
+							<input type="password" class="form-control" placeholder="Senha"
+								   id="password" name="password" required maxlength="20" />
+						</div>
+
+						<div class="form-group">
+							<label for="telefone">Telefone</label>
+							<input type="text" class="form-control" placeholder="(00) 0000-0000"
+								   id="telefone" name="telefone" data-mask="(00) 0000-0000" minlength="14"/>
+						</div>
+						<div class="form-group">
+							<label for="celular">Celular*</label>
+							<input type="text" class="form-control" placeholder="(00) 00000-0000"
+								   id="celular" name="celular" required data-mask="(00) 00000-0000"/>
+						</div>
+
+						<div class="cpf">
+							<div class=" form-group">
+								<label for="dataNascimento">Data de Nascimento*</label>
+								<input type="text" class="datepicker form-control" placeholder="00/00/0000"
+									   id="dataNascimento" name="dataNascimento" required data-mask="00/00/0000"/>
+							</div>
+							<div class="form-group">
+								<label for="genero">Gênero*</label>
+								<select class="form-control" id="genero" name="genero" >
+									<option value=""> (Selecione) </option>
+									<option value="Masculino"> Masculino </option>
+									<option value="Feminino"> Feminino </option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group validar" style="display: none;">
+							<input type="checkbox" id="validar" name="validar" value="true"> Deseja ser um parceiro?
+						</div>
+						<div class="form-group" style="display:none">
+							<input type="checkbox" checked name="permissoes"
+								   th:id="'chk_' + ${2}"
+								   th:value="${2}"/>
+							<label
+									th:for="'chk_' + ${2}"
+									th:text="${ROLE_USER}"></label>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="username">E-mail*</label>
-						<input type="text" class="form-control" placeholder="email@email.com"
-							   id="username" name="username" required />
+				</div >
+	<!--			<div class="modal-footer">-->
+	<!--				<a type="button" class="btview-link shuttern3" -->
+	<!--							th:href="@{../}">Cancelar</a>-->
+	<!--				<button type="button" class="btn btn-success"-->
+	<!--						onclick="salvar('/login')">Salvar</button>-->
+	<!--			</div>-->
+				<div class="col-12 col-md-12 final">
+					<div class="col-xs-4 col-md-4 direita">
+						<button type="button" class="view-link shutter"
+								onclick="salvar('/login')">Salvar</button>
 					</div>
-					<div class="form-group">
-						<label for="password">Senha*</label>
-						<input type="password" class="form-control" placeholder="Senha"
-							   id="password" name="password" required />
+					<div class="col-xs-4 col-md-4 direita">
+						<a type="button" class="view-link shutter"
+						   th:href="@{../}">Cancelar</a>
 					</div>
 
 				</div>
 
-				<div class="col">
 
-					<div class="form-group">
-						<label for="telefone">Telefone</label>
-						<input type="text" class="form-control" placeholder="(00) 0000-0000"
-							   id="telefone" name="telefone" data-mask="(00) 0000-0000"/>
-					</div>
-					<div class="form-group">
-						<label for="celular">Celular*</label>
-						<input type="text" class="form-control" placeholder="(00) 00000-0000"
-							   id="celular" name="celular" required data-mask="(00) 00000-0000"/>
-					</div>
-					<div class="form-group">
-						<label for="cpfCnpj">CPF*</label>
-						<input type="text" class="form-control" placeholder="000.000.000-00"
-							   id="cpfCnpj" name="cpfCnpj" required data-mask="000.000.000-00"/>
-					</div>
-					<div class=" form-group">
-						<label for="dataNascimento">Data de Nascimento*</label>
-						<input type="text" class="datepicker form-control" placeholder="00/00/0000"
-							   id="dataNascimento" name="dataNascimento" required data-mask="00/00/0000"/>
-					</div>
-					<div class="form-group">
-						<label for="genero">Gênero*</label>
-						<select class="form-control" id="genero" name="genero" >
-							<option value=""> (Selecione) </option>
-							<option value="Masculino"> Masculino </option>
-							<option value="Feminino"> Feminino </option>
-						</select>
-					</div>
 
-					<div class="form-group" style="display:none">
-						<input type="checkbox" checked name="permissoes"
-							   th:id="'chk_' + ${2}"
-							   th:value="${2}"/>
-						<label
-								th:for="'chk_' + ${2}"
-								th:text="${ROLE_USER}"></label>
-					</div>
-				</div>
-			</div >
-			<div class="modal-footer">
-				<a type="button" class="btn3" data-dismiss="modal"
-							aria-hidden="true"th:href="@{../}">Cancelar</a>
-				<button type="button" class="btn btn-success"
-						onclick="salvar('/login')">Salvar</button>
-			</div>
+			</form>
+		</div>
+		<div class="text-center top">
+			<span class="">Já é Cadastrado?</span>
+			<a th:href="@{/login}" class=" btn2">Entrar</a>
+			<p class="mt-5 mb-3 text-muted text-center">© 2020</p>
+		</div>
 
-			<div>
-				<span class="">Já é Cadastrado?</span>
-				<a th:href="@{/login}" class=" btn2">Entrar</a>
-			</div>
-
-		</form>
-		<p class="mt-5 mb-3 text-muted">© 2020</p>
 	</div>
 
 	<script src="/sweetalert/sweetalert-dev.js"></script>

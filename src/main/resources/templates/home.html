@@ -90,6 +90,37 @@
             </div>
         </div>
 
+        <!-------- Slide de Produtos -------->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <div class="block-heading">
+                            <h2>Para Você</h2>
+                        </div>
+                    </div>
+                    <div id="owl-example" class="owl-carousel">
+                        <div th:id="'row_' + ${produto.id}" th:each="produto : ${produtos2}">
+
+                                <div>
+                                    <a th:href="'produto/' + ${produto.id}">
+                                            <img class="" th:src="${produto.imagem}" /></a>
+                                </div>
+                                <div th:if="${produto.promocao} != null">
+                                    <span class="valor2">R$ </span> <span class="valor2" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}" ></span>
+                                    <span class="valor">R$ </span> <span class="valor" th:text="${#numbers.formatDecimal(produto.promocao.precoPromocional, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
+                                </div>
+                                <div>
+                                    <a href="" style="display:none">
+                                        <h1 th:text="${produto.id}" ></h1></a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-------- Produtos -------->
 
         <div class="container">
@@ -111,12 +142,12 @@
                                 <h4 th:text="${produto.nome} + ' - ' + ${produto.cor.nome}" ></h4>
                             </a >
                             <div th:if="${produto.promocao} != null">
-                                <p class="valor" th:text="${produto.promocao.precoPromocional}"></p>
-                                <p class="valor2" th:text="${produto.valor}"></p>
+                                <span class="valor">R$ </span> <span class="valor" th:text="${#numbers.formatDecimal(produto.promocao.precoPromocional, 1, 'DEFAULT', 2, 'DEFAULT')}"></span></br>
+                                <span class="valor2">R$ </span> <span class="valor2" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}" ></span>
                             </div>
                             <div th:if="${produto.promocao} == null">
-                                <p class="valor valor3" th:text="${produto.valor}"></p>
-
+                                <span class="valor">R$ </span> <span class="valor" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}" ></span>
+                                <p class="valor3"></p>
                             </div>
                             <div>
                                 <a class="view-link shutter ver-produto" >
@@ -131,32 +162,7 @@
             </div>	<!-- FIm do .products-grid -->
         </div>
 
-        <!-------- Slide de Produtos -------->
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="block">
-                        <div class="block-heading">
-                            <h2>Outros Produtos</h2>
-                        </div>
-                    </div>
-                    <div id="owl-example" class="owl-carousel">
-                        <div th:id="'row_' + ${produto.id}" th:each="produto : ${produtos2}">
-                            <div>
-                                <a th:href="'produto/' + ${produto.id}">
-                                <img class="" th:src="${produto.imagem}" /></a>
-                            </div>
-                            <div>
-                                <a href="" style="display:none">
-                                    <h1 th:text="${produto.id}" ></h1></a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <script src="/js/pedido.js" type="text/javascript"></script>
 
     </section>

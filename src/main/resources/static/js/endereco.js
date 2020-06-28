@@ -30,22 +30,6 @@ class Endereco{
         window.location.replace("../checagem");
     }
 
-//    selecionarEndereco(endereco){
-//        const row = document.createElement('tr');
-//        row.innerHTML = `
-//            <th scope="col">
-//                <p>${endereco.nome}</p>
-//                <span>${endereco.rua}</span>,
-//                <span>${endereco.numero}</span>,
-//                <span>${endereco.complemento}</span>
-//                <h5>${endereco.bairro}</h5>
-//                <h5>${endereco.cidade}</h5>
-//                <span>CEP: </span> <span>${endereco.cep}</span>
-//            </th>
-//        `;
-//        this.salvarEnderecoLocalStorage(endereco);
-//    }
-
     salvarEnderecoLocalStorage(endereco){
         let enderecos;
         enderecos = [];
