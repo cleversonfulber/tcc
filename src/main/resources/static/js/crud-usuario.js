@@ -55,14 +55,24 @@ function salvarUsuario(urlDestino){
 //        swal('Erro!', 'Senhas Incoretas!', 'error');
 //        return error;
 //   }
-
+    $('#frm').validate();
+        if (!$('#frm').valid()){
+        	return false;
+        }
     $.ajax({
         type: $('#frm').attr('method'),
         url: $('#frm').attr('action'),
         data: $('#frm').serialize(),
         success: function(){
-            swal('Salvo!', 'Registro salvo com sucesso!', 'success');
-            window.location = urlDestino;
+            swal({
+                type: 'success',
+                title: 'Registro concluido com sucesso!',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            setTimeout(function() {
+                window.location = urlDestino;
+            }, 2000);
         },
         error: function(){
             swal('Erro!', 'Falha ao salvar o registro!', 'error');

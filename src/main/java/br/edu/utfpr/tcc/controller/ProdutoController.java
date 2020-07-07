@@ -1,12 +1,15 @@
 package br.edu.utfpr.tcc.controller;
 
 import br.edu.utfpr.tcc.model.Produto;
+import br.edu.utfpr.tcc.model.Usuario;
+import br.edu.utfpr.tcc.model.service.UsuarioService;
 import br.edu.utfpr.tcc.repository.*;
 import br.edu.utfpr.tcc.services.S3Services;
 import com.amazonaws.services.s3.AmazonS3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +32,8 @@ public class ProdutoController {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
@@ -45,8 +50,13 @@ public class ProdutoController {
 
 	@GetMapping
 	public ModelAndView listar() {
+
+		Usuario usuario = (Usuario) usuarioService.loadUserByUsername(
+				SecurityContextHolder.getContext().getAuthentication().getName()
+		);
+
 		ModelAndView modelAndView = new ModelAndView("produto/lista");
-		modelAndView.addObject("produtos", produtoRepository.findAll());
+		modelAndView.addObject("produtos", produtoRepository.buscarProdutoUsuario(usuario.getId()) );
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );

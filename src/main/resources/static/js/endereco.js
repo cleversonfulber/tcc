@@ -60,6 +60,7 @@ class Endereco{
                 </th>
             `;
             enderecoChecar.appendChild(row);
+//            calculalaValorCEP(${endereco.cep});
         });
 
     }
@@ -109,11 +110,11 @@ class Endereco{
         //Verifica se campo cep possui valor informado.
         if (cep != "") {
 
-        //Expressão regular para validar o CEP.
-        var validacep = /^[0-9]{8}$/;
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
 
-        //Valida o formato do CEP.
-        if(validacep.test(cep)) {
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
                 //Preenche os campos com "..." enquanto consulta webservice.
                 document.getElementById('rua').value="...";
                 document.getElementById('bairro').value="...";
@@ -142,7 +143,6 @@ class Endereco{
             limpa_formulário_cep();
         }
     }
-
 
 }
 

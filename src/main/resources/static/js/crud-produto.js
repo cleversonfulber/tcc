@@ -2,14 +2,15 @@ function editarProduto(url) {
 	$.get(url, function(entity, status){
 		$('#id').val(entity.id);
 		$('#nome').val(entity.nome);
-		$('#valor').val(entity.valor);
-		$('#descricao').val(entity.descricao);
+		$('#valor').val(entity.valor.toString().replace('.',','));
+		$('#descri').val(entity.descri);
 		$('#caracteristica').val(entity.caracteristica);
 		$('#tamanho').val(entity.tamanho.id);
 		$('#cor').val(entity.cor.id);
 		$('#tipo').val(entity.tipo.id);
 		$('#marca').val(entity.marca.id);
 		$('#categoria').val(entity.categoria.id);
+		$('#imagem').val(entity.categoria.id);
 	});
 	$('#modal-form').modal();
 }
@@ -33,7 +34,7 @@ function saveUpload(urlDestino){
 		success: function(){
 			swal('Salvo!', 'Registro salvo com sucesso!', 'success');
 			window.location = urlDestino;
-			
+			document.location.reload(true);
 		},
 		error: function(){
 			swal('Erro!', 'Falha ao salvar o registro!', 'error');

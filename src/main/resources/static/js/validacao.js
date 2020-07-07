@@ -79,6 +79,7 @@ $(document).ready(function() {
             cpf: {
                 required: true,
                 minlength: 3
+
             },
             cnpj: {
                 required: true,
@@ -131,6 +132,7 @@ $(document).ready(function() {
     });
 
 });
+
 
 $('input[name="FlgPontua"]').change(function () {
     if ($('input[name="FlgPontua"]:checked').val() === "cpf") {

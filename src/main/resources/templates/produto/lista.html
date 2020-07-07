@@ -37,6 +37,7 @@
 				<tr>
 					<th>Código</th>
 					<th>Nome</th>
+					<th>Valor</th>
 					<th>Imagem</th>
 					<th>Ações</th>
 				</tr>
@@ -46,6 +47,7 @@
 					<td style="width:150px" class="text-center" th:text="${produto.id}">0</td>
 					<td><a class="texto" th:href="'javascript:editarProduto(\'/produtos/ajax/' + ${produto.id} + '\' );'"
 						   th:text="${produto.nome}">...</a></td>
+					<td><a class="valor" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}"></a></td>
 					<td><img width="64px" height="64px" th:src="${produto.imagem}" /></td>
 					<td style="width:200px" class="text-center">
 						<a th:href="'javascript:editarProduto(\'/produtos/ajax/' + ${produto.id} + '\' );'"
@@ -85,17 +87,17 @@
 							<input type="text" class="form-control" id="valor" name="valor" maxlength="8"
 							placeholder="R$ 0,00" data-mask="#.###,00" data-mask-reverse="true"/>
 						</div>
-<!--						<div class="form-group">-->
-<!--							<label>Tamanho</label>-->
-<!--							<div th:each="tamanho: ${tamanhos}">-->
-<!--								<input type="checkbox" name="tamanhos"-->
-<!--									   th:id="'chk_' + ${tamanho.id}"-->
-<!--									   th:value="${tamanho.id}"/>-->
-<!--								<label-->
-<!--										th:for="'chk_' + ${tamanho.id}"-->
-<!--										th:text="${tamanho.nome}"></label>-->
-<!--							</div>-->
-<!--						</div>-->
+						<div class="form-group">
+							<label>Tamanho</label>
+							<div th:each="tamanho: ${tamanhos}">
+								<input type="checkbox" name="tamanhos"
+									   th:id="'chk_' + ${tamanho.id}"
+									   th:value="${tamanho.id}"/>
+								<label
+										th:for="'chk_' + ${tamanho.id}"
+										th:text="${tamanho.nome}"></label>
+							</div>
+						</div>
 						<div class="form-group">
 							<label for="cor">Cor</label>
 							<select id="cor" name="cor" class="form-control">

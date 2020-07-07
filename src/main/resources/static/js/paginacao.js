@@ -42,17 +42,19 @@ $(document).ready( function () {
     });
 } );
 
-$(document).ready(function() {
 
-    function formata(v){
-       return parseFloat(v).toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
-    }
 
-//    var valor = document.getElementById("vlr").innerHTML
-//    document.getElementById("vlr").innerHTML = formata(valor)
+//$(document).ready(function() {
 //
-//    var valor2 = document.getElementById("vlr2").innerHTML
-//    document.getElementById("vlr2").innerHTML = formata(valor2)
-
-//    document.getElementById("vlr2").innerHTML = document.getElementById("vlr2").innerHTML.replace('.',',')
-});
+//    function formata(v){
+//       return parseFloat(v).toLocaleString("pt-BR", { style: "currency" , currency:"BRL"});
+//    }
+//
+////    var valor = document.getElementById("vlr").innerHTML
+////    document.getElementById("vlr").innerHTML = formata(valor)
+////
+////    var valor2 = document.getElementById("vlr2").innerHTML
+////    document.getElementById("vlr2").innerHTML = formata(valor2)
+//
+////    document.getElementById("vlr2").innerHTML = document.getElementById("vlr2").innerHTML.replace('.',',')
+//});

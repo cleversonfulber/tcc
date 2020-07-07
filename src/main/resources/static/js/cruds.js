@@ -58,11 +58,13 @@ function excluir(id, url){
                     swal('Removido!',
                         'Registro removido com sucesso!',
                         'success');
+                    document.location.reload(true);
                 },
                 error: function(){
                     swal('Erro!',
                         'Falha ao remover registro!',
                         'error');
+
                 }
             });//Fim ajax
         }

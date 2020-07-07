@@ -84,10 +84,14 @@ class Carrinho{
                 })
             }else{
                 this.inserirCarrinho(infoProduto);
+                setTimeout(function() {
+                    document.location.reload(true);
+                }, 1500);
+
                 Swal.fire({
                   type: 'success',
                   title: 'Produto adicionado ao carrinho!',
-                  timer: 1000,
+                  timer: 1500,
                   showConfirmButton: false
                 })
             }
@@ -142,24 +146,37 @@ class Carrinho{
         const produtoQtda = e.target.parentElement.parentElement
                     .querySelector('td input').value;
 
-        const produtoID = e.target.parentElement.parentElement
-            .querySelector('td h1').innerText;
+        if(produtoQtda > 6 || produtoQtda < 1){
+            Swal.fire({
+                type: 'error',
+                title: 'Erro!',
+                text: 'Permitido entre 1 e 6 produtos.',
+                timer: 2000,
+                showConfirmButton: false
+            })
+        }else{
 
-        let produtosLS = this.pegarProdutosLocalStorage();
+            const produtoID = e.target.parentElement.parentElement
+                .querySelector('td h1').innerText;
 
-        produtosLS.forEach(function(produtosLS){
-            if(produtosLS.id == produtoID){
-                produtosLS.qtda = produtoQtda;
-                produtosLS.sub = produtoQtda*produtosLS.valor;
-                produtosLS.sub = parseFloat(produtosLS.sub.toFixed(2));
-            }
-        });
+            let produtosLS = this.pegarProdutosLocalStorage();
 
-        localStorage.setItem('produtos', JSON.stringify(produtosLS));
+            produtosLS.forEach(function(produtosLS){
+                if(produtosLS.id == produtoID){
+                    produtosLS.qtda = produtoQtda;
+                    const produtoValor = produtosLS.valor;
+                    produtosLS.sub = produtoQtda*produtoValor.replace(',','.');
+                    produtosLS.sub = produtosLS.sub.toFixed(2);
+                    produtosLS.sub = produtosLS.sub.toString();
+                    produtosLS.sub = produtosLS.sub.replace('.',',');
+                    document.getElementById('sub_'+produtoID).innerHTML = 'R$ '+produtosLS.sub;
+                }
+            });
 
-        this.calcularTotal();
-//        window.location = "/carrinho";
-        document.location.reload(true);
+            localStorage.setItem('produtos', JSON.stringify(produtosLS));
+
+            this.calcularTotal();
+        }
     }
 
     esvaciarCarrinho(e){
@@ -168,16 +185,15 @@ class Carrinho{
             listaProdutos.removeChild(listaProdutos.firstChild);
 
         }
+        const row = document.createElement('tr');
         row.innerHTML = `
-                                <tr class="sem-registros">
-                                    <td colspan="3">
-                                        <h2>O carrinho está vazio...</h2>
-                                    </td>
-                                </tr>
+                <td class="sem-registros">
+                    <h5>O carrinho está vazio.</h5>
+                </td>
+        `;
 
-                            `;
-                    listaProdutos.appendChild(row);
         this.esvaciarLocalStorage();
+        listaProdutos.appendChild(row);
         return false;
     }
 
@@ -187,8 +203,6 @@ class Carrinho{
         produtos.push(produto);
         localStorage.setItem('produtos', JSON.stringify(produtos));
     }
-
-
 
     pegarProdutosLocalStorage(){
         let produtoLS;
@@ -217,7 +231,7 @@ class Carrinho{
                 <td>
                     <img src="${produto.imagem}" width=100>
                 </td>
-                <td>R$ ${produto.nome}</td>
+                <td>${produto.nome}</td>
                 <td>R$ ${produto.valor.replace('.',',')}</td>
             `;
             listaProdutos.appendChild(row);
@@ -256,10 +270,10 @@ class Carrinho{
                 <p class="text-loja">Vendido e entregue por: ${produto.loja}</p></td>
                 <td>R$ ${produto.valor}</td>
                 <td>
-                    <input type="number" autocomplete="off" class="form-control qtda" min="1" max="6" value=${produto.qtda}>
+                    <input type="number" class="form-control qtda" min="1" max="6" value=${produto.qtda}>
                 </td>
 
-                <td>R$ ${produto.sub}</td>
+                <td><span id="sub_${produto.id}">R$ ${produto.sub}</span></td>
                 <td>
                     <h1 id="produto" style="display: none;">${produto.id}</h1>
                     <a href=""  class="excluir-produto fas fa-times-circle" style="font-size: 25px" >
@@ -302,17 +316,27 @@ class Carrinho{
     calcularTotal(){
 
         let produtosLS;
-        let total = 0, subtotal = 0, igv =0;
+        let total = 0, subtotal = 0, igv =0, frete = 0;
         produtosLS = this.pegarProdutosLocalStorage();
         for(let i = 0; i < produtosLS.length; i++){
-            let element = Number(produtosLS[i].valor * produtosLS[i].qtda);
+            let valor = produtosLS[i].valor.replace(',','.');
+            let element = Number(valor * produtosLS[i].qtda);
             total = total + element;
         }
-        igv = parseFloat(total * 0.18).toFixed(2);
-        subtotal = parseFloat(total-igv).toFixed(2);
+        igv = document.getElementById('vlrFrete').innerHTML;
+        frete = document.getElementById('vlrFrete').innerHTML;
+        if(frete == ''){
+         frete = '0.00';
+         igv = '0.00';
+        }
 
-        document.getElementById('subtotal').innerHTML = "R$ " + subtotal.replace('.',',');
-        document.getElementById('igv').innerHTML = "R$ " + igv.replace('.',',');
+        igv = parseFloat(igv.replace(',','.'));
+
+        subtotal = total;
+        total = total + igv;
+
+        document.getElementById('subtotal').innerHTML = "R$ " + subtotal.toFixed(2).replace('.',',');
+        document.getElementById('igv').innerHTML = "R$ " + frete.replace('.',',');
         document.getElementById('total').innerHTML = "R$ " + total.toFixed(2).replace('.',',');
     }
 
@@ -353,4 +377,8 @@ class Carrinho{
             })
         }
     }
+
+
+
+
 }

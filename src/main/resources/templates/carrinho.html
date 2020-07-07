@@ -97,15 +97,8 @@
                 <!-- Inicio do formulario -->
 
 
-                <form id="procesar-pago" action="#">
+                <div id="procesar-pago" >
 
-                    <div class="form-group row">
-                        <label for="correo" class="col-12 col-md-2 col-form-label h2">Frete :</label>
-                        <div class="col-12 col-md-10">
-                            <input type="text" class="form-control" id="correo" data-mask="00.000-000"
-                                   data-mask-reverse="true" placeholder="Adicione seu CEP" required>
-                        </div>
-                    </div>
 
                     <div id="carrinho" class="table-responsive">
                         <table class="table" id="lista-compra">
@@ -153,6 +146,24 @@
                         </table>
                     </div>
 
+                    <div class="form-group row">
+                        <label for="cep" class="col-12 col-md-2 col-form-label h2">Frete :</label>
+                        <div class="col-12 col-md-4">
+                            <input type="text" class="form-control" id="cep" data-mask="00.000-000" style="height:41px;"
+                                   data-mask-reverse="true" placeholder="Adicione seu CEP" required>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <button class="view-link shutter"
+                                    onclick="calcularFrete()">Calcular</button>
+                            <!--                            <input type="button" class="view-link shutter calcular-frete" value="Finalizar Compra" />-->
+                        </div>
+
+                    </div>
+                    <div >
+                        <p id="prazo"></p>
+                        <p id="frete"></p>
+                        <p id="vlrFrete" style="display:none;"></p>
+                    </div>
 
                     <div class="col-12 col-md-12 final">
                         <div class="col-xs-4 col-md-4 direita">
@@ -162,7 +173,7 @@
                             <a href="/" class="view-link shutter " >Comprar mais</a>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

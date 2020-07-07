@@ -743,6 +743,14 @@ footer .block span {
 	margin: 0px 4px;
 }
 
+.fa-youtube {
+	margin: 0px -1px;
+}
+
+.fa-instagram{
+    margin: 0px 2px;
+}
+
 .fa-linkedin{
     margin: 0px 2px;
 }
@@ -753,8 +761,8 @@ footer .block span {
 .twitter-icon:hover {
 	background: #3bc1ed;
 }
-.pinterest-icon:hover {
-	background: #d02128;
+.instagram-icon:hover {
+	background: #7d28a9;
 }
 .linkedin-icon:hover {
 	background: #1d87be;
@@ -762,8 +770,8 @@ footer .block span {
 .twitter-icon:hover {
 	background: #3bc1ed;
 }
-.plus-icon:hover {
-	background: #dd4b39;
+.youtube-icon:hover {
+	background: #ff0000;
 }
 
 /*----------------Cash Out--------------------*/
@@ -1467,3 +1475,4 @@ footer .block span {
 .loja{
     color: #ff6200;
 }
+
