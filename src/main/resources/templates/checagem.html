@@ -95,6 +95,7 @@
 <!--                <form id="procesar-pago" action="#">-->
 
                     <div class="col-12 col-md-6" >
+                        <p id="vlrFrete" style="display:none;"></p>
                         <div class="table-responsive" id="endereco-selecionado">
 
                             <table id="residencia" class="table">
@@ -133,13 +134,19 @@
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th colspan="2" scope="col" mask="99.999-999" class="text-right">FRETE :</th>
+                                    <th colspan="2" scope="col" mask="99.999-999" class="text-right">Frete :</th>
                                     <th scope="col">
                                         <p id="igv"></p>
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th colspan="2" scope="col" class="text-right">TOTAL :</th>
+                                    <th colspan="2" scope="col" class="text-right">Prazo : </th>
+                                    <th scope="col">
+                                        <p id="prazos"></p>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" scope="col" class="text-right">TOTAL : </th>
                                     <th scope="col">
                                         <p id="total"></p>
                                     </th>
