@@ -5822,24 +5822,24 @@ Insert into usuarios_permissoes ( usuario_id, permissoes_id) VALUES (2, 2);
 Insert into usuarios_permissoes ( usuario_id, permissoes_id) VALUES (3, 3);
 Insert into usuarios_permissoes ( usuario_id, permissoes_id) VALUES (4, 3);
 
-Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (2, 'Chopinzinho', 'PR', 'Escritório', '85340-000', 4783, 'Nossa Senhora Aparecida','Diogo Antonio Fiejó', 'CP 398' );
-Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (2, 'São Joao', 'PR', 'Casa', '85560-000', 3453, 'Cosul','Antônio Ludvicheck', 'Próximo a Igreja' );
-Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (3, 'São Paulo', 'SP', 'Apartamento', '85230-000', 2574, 'Cristo Rei','Antonio Guimarães', 'N/A' );
-Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (4, 'Pato Branco', 'PR', 'Apartamento', '85230-000', 2574, 'Cristo Rei','Antonio Guimarães', 'N/A' );
+Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (2, 'Chopinzinho', 'PR', 'Escritório', '85560-000', 4783, 'Nossa Senhora Aparecida','Diogo Antonio Fiejó', 'CP 398' );
+Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (2, 'São Joao', 'PR', 'Casa', '85570-000', 3453, 'Cosul','Antônio Ludvicheck', 'Próximo a Igreja' );
+Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (3, 'São Paulo', 'SP', 'Apartamento', '02920-130', 2574, 'Cristo Rei','Antonio Guimarães', 'N/A' );
+Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (4, 'Pato Branco', 'PR', 'Apartamento', '85507-510', 2574, 'Cristo Rei','Antonio Guimarães', 'N/A' );
 
 
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 1, 3, 10, '2020-06-05', '2020-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 2, 3, 10, '2020-06-05', '2020-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 3, 3, 5, '2020-06-05', '2020-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 4, 3, 20, '2020-06-05', '2020-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 5, 3, 10, '2020-06-05', '2020-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 6, 4, 20, '2020-06-05', '2020-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 7, 4, 20, '2020-06-05', '2020-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 8, 4, 20, '2020-06-05', '2020-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 9, 4, 20, '2020-06-05', '2020-07-06');
-Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 10, 4, 20, '2019-06-05', '2019-07-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 1, 3, 10, '2020-06-05', '2020-08-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 2, 3, 10, '2020-06-05', '2020-08-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 3, 3, 5, '2020-06-05', '2020-08-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 4, 3, 20, '2020-06-05', '2020-08-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 5, 3, 10, '2020-06-05', '2020-08-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 6, 4, 20, '2020-06-05', '2020-08-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 7, 4, 20, '2020-06-05', '2020-08-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 8, 4, 20, '2020-06-05', '2020-08-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 9, 4, 20, '2020-06-05', '2020-08-06');
+Insert into anuncios ( produto_id, usuario_id, qtde, data_inicio, data_fim) values ( 10, 4, 20, '2019-06-05', '2019-08-06');
 
-Insert into pedido ( valor, endereco_id, produto_id) VALUES ( 172.90, 2, 7);
-Insert into pedido ( valor, endereco_id, produto_id) VALUES ( 132.89, 2, 9);
-Insert into pedido ( valor, endereco_id, produto_id) VALUES ( 94.90, 2, 3);
-Insert into pedido ( valor, endereco_id, produto_id) VALUES ( 114, 2, 1);
+Insert into pedido ( valor, endereco_id, produto_id, data_pedido ) VALUES ( 172.90, 2, 7, '2020-06-05');
+Insert into pedido ( valor, endereco_id, produto_id, data_pedido ) VALUES ( 132.89, 2, 9, '2020-06-05');
+Insert into pedido ( valor, endereco_id, produto_id, data_pedido ) VALUES ( 94.90, 2, 3, '2020-06-05');
+Insert into pedido ( valor, endereco_id, produto_id, data_pedido ) VALUES ( 114, 2, 1, '2020-06-05');

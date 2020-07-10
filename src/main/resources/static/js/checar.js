@@ -99,7 +99,7 @@ function finalizar(){
 //    Calcular valor cep
 
 function calculaValorCEP() {
-
+       $("div.loader").show();
        let cep = document.getElementById('cep').innerHTML;
 
        // Adicionar tratamentos de cep inserido e cep válido
@@ -107,6 +107,7 @@ function calculaValorCEP() {
 
        if(cep == ""){
        // CEP em branco
+       $("div.loader").hide();
        }else{
            //Expressão regular para validar o CEP.
            var validacep = /^[0-9]{8}$/;
@@ -126,6 +127,7 @@ function calculaValorCEP() {
            else {
                //cep é inválido.
                alert("CEP inválido.");
+               $("div.loader").hide();
            }
        }
     }
@@ -185,6 +187,7 @@ function   meu_callback(conteudo) {
 
 
                    compra.calcularTotal();
+                   $("div.loader").hide();
                }
            }
            request.send();
@@ -193,5 +196,6 @@ function   meu_callback(conteudo) {
         else {
             //CEP não Encontrado.
             alert("CEP não encontrado.");
+            $("div.loader").hide();
         }
     }

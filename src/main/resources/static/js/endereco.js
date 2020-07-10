@@ -4,8 +4,22 @@ class Endereco{
         e.preventDefault();
         if(e.target.classList.contains('selecionar-endereco')){
 
-            const endereco = e.target.parentElement.parentElement;
-            this.lerDadosEndereco(endereco);
+            var teste = localStorage.getItem('produtos');
+
+            if(localStorage.getItem('produtos') == '[]' || localStorage.getItem('produtos') == null){
+                Swal.fire({
+                    type: 'error',
+                    title: 'Carrinho Vazio!',
+                    text: 'Adicione um item ao carrinho.',
+                    timer: 2000,
+                    showConfirmButton: false
+                }).then(function(){
+                    window.location = "../";
+                })
+            }else{
+                const endereco = e.target.parentElement.parentElement;
+                this.lerDadosEndereco(endereco);
+            }
         }
     }
 

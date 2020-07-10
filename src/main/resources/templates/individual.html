@@ -26,6 +26,7 @@
                 </div>	<!-- /.row -->
             </div>	<!-- /.container-->
         </section><!-- /Section -->
+
         <div class="container" id="lista-produtos">
             <div  >
                 <div class="row" >
@@ -75,6 +76,22 @@
                                     <a href="" >
                                         <h1 th:text="${produto.id}" style="display: none;"></h1>
                                     </a>
+                                    <div class="">
+
+<!--                                        <div class="col-12 col-md-6">-->
+                                            <input type="text" class="form-control cep" id="cep" data-mask="00.000-000"
+                                                   data-mask-reverse="true" placeholder="Adicione seu CEP" required>
+<!--                                        </div>-->
+<!--                                        <div class="col-12 col-md-6">-->
+                                            <button class="view-link shutter calcular-frete"
+                                                    onclick="calcularFrete()">Calcular Frete</button>
+                                            <!--                            <input type="button" class="view-link shutter calcular-frete" value="Finalizar Compra" />-->
+<!--                                        </div>-->
+                                    </div>
+                                    <div style="font-size:15px;">
+                                        <b id="prazo"></b>
+                                        <b id="frete"></b>
+                                    </div>
                                     <a class="view-link shutter adicionar-carrinho margin-top" href="" >
                                         <i class="fa fa-plus-circle"></i>Adicionar ao Carrinho</a>
                                     <a class="view-link shutter processar-pedido">
@@ -131,6 +148,8 @@
         </div>	<!-- End of /.Container -->
 
         <script src="/js/pedido.js" type="text/javascript"></script>
+        <script src="/js/frete.js" type="text/javascript"></script>
+        <script th:src="@{/webjars/jquery-mask-plugin/dist/jquery.mask.min.js}"></script>
 
     </section>
 </body>

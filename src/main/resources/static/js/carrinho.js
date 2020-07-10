@@ -132,12 +132,14 @@ class Carrinho{
         if((this.pegarProdutosLocalStorage() || []).length === 0)
         {
            $("tr.sem-registros").show();
-            $("tr.com-registros").hide();
-        }
-        else{
-            $("tr.com-registros").show();
-            $("tr.sem-registros").hide();
-        }
+           $("tr.com-registros").hide();
+           $("div.form-group").hide();
+       }
+       else{
+           $("tr.com-registros").show();
+           $("tr.sem-registros").hide();
+           $("div.form-group").show();
+       }
     }
 
     alterarQtda(e){
@@ -286,11 +288,12 @@ class Carrinho{
         if(produtoLS.length === 0) {
             $("tr.sem-registros").show();
             $("tr.com-registros").hide();
-
+            $("div.form-group").hide();
         }
         else{
             $("tr.com-registros").show();
             $("tr.sem-registros").hide();
+            $("div.form-group").show();
         }
 
     }
@@ -369,12 +372,12 @@ class Carrinho{
                 window.location = "../";
             })
         }else{
-            Swal.fire({
-                title: 'Selecione um endereço!',
-                showConfirmButton: true
-            }).then(function(){
+//            Swal.fire({
+//                title: 'Selecione um endereço!',
+//                showConfirmButton: true
+//            }).then(function(){
                 window.location = "../endereco";
-            })
+//            })
         }
     }
 

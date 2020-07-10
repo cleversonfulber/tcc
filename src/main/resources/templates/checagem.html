@@ -25,6 +25,8 @@
 
 <body>
 
+<div class="lds-spinner loader" id="loader" style="padding-top:22%;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
 <nav id="top">
     <div class="container">
         <div class="row">
@@ -48,7 +50,7 @@
                                     <a >Minha Conta</a>
                                 </li>
                                 <li class="botao">
-                                    <a >Meus Pedidos</a>
+                                    <a th:href="@{/pedido}" >Meus Pedidos</a>
                                 </li>
                                 <li class="botao">
                                     <a th:href="@{/logout}" >Sair</a>

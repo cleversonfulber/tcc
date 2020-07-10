@@ -1,28 +1,3 @@
-
-const compra = new Carrinho();
-const listaCompra = document.querySelector('#lista-compra tbody');
-const carrinho = document.getElementById('carrinho');
-const freteBtn = document.getElementById('calcular-frete');
-const cliente = document.getElementById('cliente');
-const correio = document.getElementById('correio');
-const finalizarCompraBtn = document.getElementById('finalizar-pedido');
-
-carregarEventos();
-
-function carregarEventos(){
-
-    document.addEventListener('DOMContentLoaded', compra.lerLocalStorageCompra());
-
-    $("#carrinho tbody tr td a.excluir-produto").click((e) => compra.excluirProduto(e));
-
-    $("#carrinho tbody tr td input.qtda").on('keyup click', (e) => compra.alterarQtda(e));
-
-    compra.calcularTotal();
-
-    finalizarCompraBtn.addEventListener('click', (e) => {compra.finalizarCompra(e)});
-
-}
-
 function meu_callback(conteudo) {
    if (!("erro" in conteudo)) {
 
@@ -72,13 +47,8 @@ function meu_callback(conteudo) {
                    prazo = prazo.textContent;
                }
 
-               document.getElementById('igv').innerHTML = valor;
-               document.getElementById('vlrFrete').innerHTML = valor;
-               document.getElementById('frete').innerHTML = 'Frete: R$ ' + valor;
-               document.getElementById('prazo').innerHTML = 'Prazo: ' + prazo + ' dias.';
-
-
-               compra.calcularTotal();
+               document.getElementById('frete').innerHTML = ' - Valor: R$ ' + valor;
+               document.getElementById('prazo').innerHTML = 'Prazo: ' + prazo + ' dias';
                $("div.loader").hide();
            }
        }
@@ -93,7 +63,9 @@ function meu_callback(conteudo) {
 }
 
 function calcularFrete() {
+
    $("div.loader").show();
+
    let cep = document.getElementById('cep');
 
    // Adicionar tratamentos de cep inserido e cep válido
@@ -125,5 +97,3 @@ function calcularFrete() {
        }
    }
 }
-
-
