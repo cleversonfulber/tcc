@@ -2,6 +2,7 @@ package br.edu.utfpr.tcc.model;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -22,4 +23,7 @@ public class Pedido {
 
     @Column(name = "valor", nullable = false)
     private String valor;
+
+    @Column(name= "data_pedido", nullable = false, columnDefinition = "DATE")
+    private LocalDate dataPedido;
 }

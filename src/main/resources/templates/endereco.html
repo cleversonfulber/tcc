@@ -47,7 +47,7 @@
                                     <a >Minha Conta</a>
                                 </li>
                                 <li class="botao">
-                                    <a >Meus Pedidos</a>
+                                    <a th:href="@{/pedido}" >Meus Pedidos</a>
                                 </li>
                                 <li class="botao">
                                     <a th:href="@{/logout}" >Sair</a>
@@ -104,7 +104,7 @@
                                     <th scope="col">Cidade</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
-                                    <th scope="col">Selecione um endereço</th>
+                                    <th scope="col" class="recolhe-endereco" >Selecione um endereço</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -128,7 +128,7 @@
                                                 <a th:href="'javascript:delet('+ ${endereco.id} +',\'/endereco\');'"
                                                    class="bt bt-excluir"><i class="fa fa-trash-alt"></i></a>
                                             </td>
-                                            <td class="col-md-2 mb-2">
+                                            <td class="col-md-2 mb-2 recolhe-endereco" >
                                                 <a href="" class="view-link shutter selecionar-endereco">
                                                     <i class="fa fa-check"></i></a>
                                             </td>
@@ -150,7 +150,7 @@
                 <a onclick="novo()" data-toggle="modal" data-target="#modal-form" class="view-link shutter ">
                     <i class="fa fa-plus"></i> Novo Endereco</a>
             </div>
-            <div class="col-xs-4 col-md-4 direita">
+            <div class="col-xs-4 col-md-4 direita recolhe-endereco" >
                 <a href="/carrinho" class="view-link shutter " >Voltar ao Carrinho</a>
             </div>
         </div>

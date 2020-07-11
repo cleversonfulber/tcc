@@ -25,6 +25,8 @@
 
 <body>
 
+<div class="lds-spinner loader" id="loader" style="padding-top:22%;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
 <nav id="top">
     <div class="container">
         <div class="row">
@@ -48,7 +50,7 @@
                                     <a >Minha Conta</a>
                                 </li>
                                 <li class="botao">
-                                    <a >Meus Pedidos</a>
+                                    <a th:href="@{/pedido}" >Meus Pedidos</a>
                                 </li>
                                 <li class="botao">
                                     <a th:href="@{/logout}" >Sair</a>
@@ -95,6 +97,7 @@
 <!--                <form id="procesar-pago" action="#">-->
 
                     <div class="col-12 col-md-6" >
+                        <p id="vlrFrete" style="display:none;"></p>
                         <div class="table-responsive" id="endereco-selecionado">
 
                             <table id="residencia" class="table">
@@ -133,13 +136,19 @@
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th colspan="2" scope="col" mask="99.999-999" class="text-right">FRETE :</th>
+                                    <th colspan="2" scope="col" mask="99.999-999" class="text-right">Frete :</th>
                                     <th scope="col">
                                         <p id="igv"></p>
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th colspan="2" scope="col" class="text-right">TOTAL :</th>
+                                    <th colspan="2" scope="col" class="text-right">Prazo : </th>
+                                    <th scope="col">
+                                        <p id="prazos"></p>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" scope="col" class="text-right">TOTAL : </th>
                                     <th scope="col">
                                         <p id="total"></p>
                                     </th>

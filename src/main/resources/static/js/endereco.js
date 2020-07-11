@@ -4,8 +4,22 @@ class Endereco{
         e.preventDefault();
         if(e.target.classList.contains('selecionar-endereco')){
 
-            const endereco = e.target.parentElement.parentElement;
-            this.lerDadosEndereco(endereco);
+            var teste = localStorage.getItem('produtos');
+
+            if(localStorage.getItem('produtos') == '[]' || localStorage.getItem('produtos') == null){
+                Swal.fire({
+                    type: 'error',
+                    title: 'Carrinho Vazio!',
+                    text: 'Adicione um item ao carrinho.',
+                    timer: 2000,
+                    showConfirmButton: false
+                }).then(function(){
+                    window.location = "../";
+                })
+            }else{
+                const endereco = e.target.parentElement.parentElement;
+                this.lerDadosEndereco(endereco);
+            }
         }
     }
 
@@ -24,10 +38,14 @@ class Endereco{
         Swal.fire({
           type: 'success',
           title: 'Endereco Selecionado!',
-          timer: 1000,
+          timer: 1500,
           showConfirmButton: false
         })
-        window.location.replace("../checagem");
+
+        setTimeout(function() {
+            window.location.replace("../checagem");
+        }, 1600);
+
     }
 
     salvarEnderecoLocalStorage(endereco){
@@ -56,13 +74,11 @@ class Endereco{
                     <span>${endereco.complemento}</span>
                     <h5>${endereco.bairro}</h5>
                     <h5>${endereco.cidade}</h5>
-                    <span>CEP: </span> <span>${endereco.cep}</span>
+                    <span >CEP: </span> <span id="cep">${endereco.cep}</span>
                 </th>
             `;
             enderecoChecar.appendChild(row);
-//            calculalaValorCEP(${endereco.cep});
         });
-
     }
 
     pegarEnderecosLocalStorage(){
