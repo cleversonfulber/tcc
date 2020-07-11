@@ -186,11 +186,6 @@ body {
    color: #ff7272;
 }
 
-.obrigatorios{
-    color: red;
-    margin: 20px;
-}
-
 .top{
     margin-top: 25%;
 }
@@ -211,5 +206,3 @@ body {
 .validar{
     margin-top: 20px;
 }
-
-

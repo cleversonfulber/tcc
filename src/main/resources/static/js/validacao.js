@@ -130,32 +130,24 @@ $(document).ready(function() {
             }
         }
     });
-
 });
 
+function changeType() {
+  let cpf = document.getElementById('pessoa-fisica');
+  let cnpj = document.getElementById('pessoa-juridica');
 
-$('input[name="FlgPontua"]').change(function () {
-    if ($('input[name="FlgPontua"]:checked').val() === "cpf") {
-        $('.cpf').show();
-        $('.cpf *').attr('disabled', false);
-        $('.cnpj').hide();
-        $('.cnpj *').attr('disabled', true);
-        $('.validar').hide();
-        $('#validar').value("false");
-    } else if ($('input[name="FlgPontua"]:checked').val() === "cnpj") {
-        $('.cnpj').show();
-        $('.cnpj *').attr('disabled', false);
-        $('.cpf').hide();
-        $('.cpf *').attr('disabled', true);
-        $('.validar').show();
-        $('#validar').value("true");
-    } else{
-        Swal.fire({
-            type: 'error',
-            title: 'Deu Erro!',
-            timer: 2500,
-            showConfirmButton: false
-        })
-    }
-});
+  let cpfForm = document.getElementById('formulario-cpf');
+  let cnpjForm = document.getElementById('formulario-cnpj');
 
+  if(cpf.checked) {
+    cpfForm.classList.remove('d-none');
+
+    cnpjForm.classList.add('d-none');
+    document.getElementById('input-cnpj').value = '';
+  } else if(cnpj.checked) {
+    cnpjForm.classList.remove('d-none');
+
+    cpfForm.classList.add('d-none');
+    document.getElementById('input-cpf').value = '';
+  }
+}
