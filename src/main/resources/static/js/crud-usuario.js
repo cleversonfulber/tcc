@@ -35,16 +35,75 @@ function editarUsuario(id, url) {
 	$('#modal-form').modal();
 }
 
-function validarSenha(){
-   senha = document.getElementsByName('password').value;
-   senha2 = document.getElementsByName('senha').value;
+function validarUsuario(id, url) {
 
-   if(senha!= senha2) {
-        senha2.setCustomValidity("Senhas diferentes!");
-       return false;
-   }
-   return true;
+	$.get( url+ '/' + id, function(entity, status){
+		$('#id').val(entity.id);
+		$('#nome').val(entity.nome);
+		$('#sobrenome').val(entity.sobrenome);
+		$('#username').val(entity.username);
+//		$('#password').val(entity.password);
+		$('#telefone').val(entity.telefone);
+        $('#celular').val(entity.celular);
+        $('#cpfCnpj').val(entity.cpfCnpj);
+//        $('#dataNascimento').val(entity.dataNascimento);
+//        $('#genero').val(entity.genero);
+        $('#chk_3').prop('checked', true);
+
+	});
+	swal('Alerta!', 'Dados apenas para conferência!', 'warning');
+	$('#modal-form').modal();
 }
+
+function validarLojista( url) {
+
+    var id = $("#id");
+    id = id[0].value;
+
+    $.get( url+ '/salvar/' + id, function(entity, status){
+	});
+	swal({
+        type: 'success',
+        title: 'Parceiro Registrado!',
+        timer: 2000,
+        showConfirmButton: false
+    });
+	setTimeout(function() {
+        window.location = url;
+    }, 2000);
+
+}
+
+function salvarValidarUsuario(urlDestino){
+
+    $.ajax({
+        type: $('#frm').attr('method'),
+        url: $('#frm').attr('action'),
+        data: $('#frm').serialize(),
+        function(){
+            swal({
+                type: 'success',
+                title: 'Registro concluido com sucesso!',
+                timer: 2000,
+                showConfirmButton: false
+            });
+            setTimeout(function() {
+                window.location = urlDestino;
+            }, 2000);
+        }
+    });//Fim Ajax
+}
+
+//function validarSenha(){
+//   senha = document.getElementsByName('password').value;
+//   senha2 = document.getElementsByName('senha').value;
+//
+//   if(senha!= senha2) {
+//        senha2.setCustomValidity("Senhas diferentes!");
+//       return false;
+//   }
+//   return true;
+//}
 
 function salvarUsuario(urlDestino){
 

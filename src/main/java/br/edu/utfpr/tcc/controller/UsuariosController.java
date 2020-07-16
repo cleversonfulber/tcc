@@ -13,10 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping("usuarios")
@@ -54,6 +50,13 @@ public class UsuariosController {
 	@ResponseBody
 	public Usuario editar(@PathVariable Long id) {
 		return usuarioRepository.findById(id).orElse(null);
+	}
+
+	@GetMapping("salvar/{id}")
+	@ResponseBody
+	public void salvarvalidacao(@PathVariable Long id) {
+		usuarioRepository.validarParceiro(id);
+
 	}
 
 	@PostMapping("/")

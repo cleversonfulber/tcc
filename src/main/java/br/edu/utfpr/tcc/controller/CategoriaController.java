@@ -83,7 +83,7 @@ public class CategoriaController {
 	@GetMapping("ajax/{id}")
 	@ResponseBody
 	public Categoria editar(@PathVariable Long id) {
-		return categoriaRepository.findById(id).orElse(null);
+			return categoriaRepository.findById(id).orElse(null);
 	}
 
 	@DeleteMapping("{id}")

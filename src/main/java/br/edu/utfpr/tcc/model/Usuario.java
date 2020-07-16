@@ -72,6 +72,8 @@ public class Usuario implements Serializable, UserDetails {
 	@Column(name = "genero",  length = 60)
 	private String genero;
 
+	private Boolean validar;
+
 	public String getEncodedPassword(String password) {
 		return bCrypt.encode(password);
 	}
