@@ -5,7 +5,6 @@ import br.edu.utfpr.tcc.model.Usuario;
 import br.edu.utfpr.tcc.model.service.UsuarioService;
 import br.edu.utfpr.tcc.repository.*;
 import br.edu.utfpr.tcc.services.S3Services;
-import com.amazonaws.services.s3.AmazonS3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,6 @@ import javax.validation.Valid;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-
 
 @Controller
 @RequestMapping("/produtos")
@@ -47,6 +45,9 @@ public class ProdutoController {
 	private TamanhoRepository tamanhoRepository;
 	@Autowired
 	private CorRepository corRepository;
+
+	@Autowired
+	private AnuncioRepository anuncioRepository;
 
 	@GetMapping
 	public ModelAndView listar() {
@@ -105,12 +106,16 @@ public class ProdutoController {
 		if ( result.hasErrors() ) {
 			return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
 		}
+
+//		ProdutosTamanho cursoTurno = new CursoTurno(); // crio minha list
+//		cursoTurno.setCurso(produto); // set ela
+//		produto.getCursoTurnos().add(cursoTurno);
+
 		produtoRepository.save(produto);
 
 		if (anexos.length > 0 && !anexos[0].getOriginalFilename().isEmpty()) {
 			saveFile(produto.getId(), anexos, request);
 		}
-
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
@@ -147,7 +152,27 @@ public class ProdutoController {
 				e.printStackTrace();
 			}
 		}
+	}
 
 
+	@GetMapping("/anuncios/{id}")
+	public ModelAndView anuncio(@PathVariable Long id){
+
+		Usuario usuario = (Usuario) usuarioService.loadUserByUsername(
+				SecurityContextHolder.getContext().getAuthentication().getName()
+		);
+
+		ModelAndView modelAndView = new ModelAndView("produto/lista");
+		modelAndView.addObject("produtos", produtoRepository.buscarProdutoAnuncio(id,usuario.getId()) );
+		modelAndView.addObject("categorias", categoriaRepository.findAll() );
+		modelAndView.addObject("marcas", marcaRepository.findAll() );
+		modelAndView.addObject("tipos", tipoRepository.findAll() );
+		modelAndView.addObject("promocoes", promocaoRepository.findAll() );
+		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
+		modelAndView.addObject("cores", corRepository.findAll() );
+		modelAndView.addObject("usuncios", anuncioRepository.getOne(id) );
+		modelAndView.addObject("produto", new Produto());
+
+		return modelAndView;
 	}
 }

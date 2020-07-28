@@ -108,6 +108,7 @@ public class ProdController {
 //		return modelAndView;
 //	}
 
+
 	@GetMapping("/categoria/{id}")
 	public ModelAndView categoria(@PathVariable Long id, Pageable pageable){
 		ModelAndView modelAndView = new ModelAndView("produto");

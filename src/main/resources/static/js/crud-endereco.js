@@ -12,7 +12,9 @@ function save(urlDestino){
         data: $('#frm').serialize(),
         success: function(){
             swal.fire('Salvo!', 'Registro salvo com sucesso!', 'success');
-            window.location = urlDestino;
+            setTimeout(function() {
+                window.location = urlDestino;
+            }, 2000);
         },
         error: function(){
             swal.fire('Erro!', 'Falha ao salvar o registro!', 'error');

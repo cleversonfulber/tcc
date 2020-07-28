@@ -12,7 +12,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 	Usuario findByUsername(String username);
 
-	@Query(value = "select * from usuarios inner join anuncios on usuarios.id = anuncios.usuario_id inner join produtos on produtos.id = anuncios.produto_id where produtos.id = ?1", nativeQuery = true)
+	@Query(value = "select * from usuarios inner join anuncios on usuarios.id = anuncios.usuario_id inner join produtos on produtos.anuncio_id = anuncios.id where produtos.id = ?1", nativeQuery = true)
 	List<Usuario> buscarUsuarioProduto(Long id);
 
 	@Transactional

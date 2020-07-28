@@ -1,7 +1,9 @@
 package br.edu.utfpr.tcc.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,20 +18,19 @@ public class Anuncio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "produto_id", referencedColumnName = "id")
-	private Produto produto;
+	@Column(name = "nome", nullable = false, length = 60)
+	private String nome;
 
 	@ManyToOne
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	@JsonIgnore
 	private Usuario usuario;
 
-	@Column(name = "qtde", nullable = false)
-	private Integer qtde;
-
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name= "data_inicio", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataInicio;
 
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name= "data_fim", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataFim;
 }

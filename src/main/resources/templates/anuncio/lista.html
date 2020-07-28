@@ -17,7 +17,7 @@
 			</ul>
 			<div class="row">
 				<div class="col-xs-4">
-					<a class="btn btn-primary" onclick="novo()"
+						<a class="btn btn-primary" onclick="novo()"
 					   data-toggle="modal" data-target="#modal-form">
 						<i class="fa fa-plus-square"></i> Novo Registro	</a>
 				</div>
@@ -40,22 +40,32 @@
 					<tr>
 						<th>Código</th>
 						<th>Nome</th>
+						<th>Dt Inicial</th>
+						<th>Dt Final</th>
 						<th>Ações</th>
+						<th>Produtos</th>
 					</tr>
 				</thead>
 				<tbody>
 				<tr th:id="'row_' + ${anuncio.id}" th:each="anuncio : ${anuncios}">
 
 					<td style="width:150px" class="text-center" th:text="${anuncio.id}">0</td>
-					<td><a class="texto" th:href="'javascript:editar(\'/anuncios/ajax/'
+					<td><a class="texto" th:href="'javascript:editarAnuncio(\'/anuncios/ajax/'
 					 	+ ${anuncio.id} + '\' );'" th:text="${anuncio.nome}">...</a>
 					</td>
+					<td><a class="texto" th:text="${#temporals.format(anuncio.dataInicio, 'dd/MM/yyyy')}">...</a>
+					<td><a class="texto" th:text="${#temporals.format(anuncio.dataFim, 'dd/MM/yyyy')}">...</a>
+					</td>
 					<td style="width:200px" class="text-center">
-						<a th:href="'javascript:editar(\'/anuncios/ajax/' + ${anuncio.id} + '\' );'"
+						<a th:href="'javascript:editarAnuncio(\'/anuncios/ajax/' + ${anuncio.id} + '\' );'"
 						   class="btn btn-primary btn-xs botao"> <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 						</a> &nbsp;
 						<a th:href="'javascript:excluir('+ ${anuncio.id} +',\'/anuncios\');'"
 						   class="btn btn-danger btn-xs botao"><span class="oi oi-circle-x " title="Exclusão desabilitada" aria-hidden="true"></span></span></i></a>
+					</td>
+					<td >
+						<a th:href="'javascript:verProdutos(\'/produtos/anuncios/' + ${anuncio.id} + '\' );'"
+						   class="btn btn-primary ">Ver Itens</a>
 					</td>
 
 				</tr>
@@ -69,9 +79,9 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3>Anuncio</h3>
+					<h3>Anuncios</h3>
 					<button type="button" class="close" data-dismiss="modal"
-							onclick="limpar()" aria-hidden="true">x</button>
+							onclick="limparAnuncio()" aria-hidden="true">x</button>
 				</div> <!-- modal-header -->
 				<div class="modal-body">
 					<form id="frm" name="frm"
@@ -82,19 +92,32 @@
 						<div class="form-group">
 							<label for="nome">Nome</label>
 							<input type="text" class="form-control" id="nome"
-								   name="nome" />
+								   name="nome" placeholder="Ex: anuncio 1"/>
+						</div>
+						<div class="form-group">
+							<label for="dataInicio">Dt. Inicio:</label>
+							<input type="text"
+								   class="datepicker form-control" data-mask="00/00/0000"
+								   id="dataInicio" name="dataInicio" placeholder="00/00/0000" />
+						</div>
+						<div class="form-group">
+							<label for="dataFim">Dt. Inicio:</label>
+							<input type="text"
+								   class="datepicker form-control" data-mask="00/00/0000"
+								   id="dataFim" name="dataFim" placeholder="00/00/0000" />
 						</div>
 					</form>
 				</div> <!-- modal-body -->
 				<div class="modal-footer">
 					<button type="button" class="btn" data-dismiss="modal"
-							onclick="limpar()" aria-hidden="true">Cancelar</button>
+							onclick="limparAnuncio()" aria-hidden="true">Cancelar</button>
 					<button type="button" class="btn btn-success"
-							onclick="salvar('/anuncios')">Salvar</button>
+							onclick="salvarAnuncio('/anuncios')">Salvar</button>
 				</div>
 			</div> <!-- modal-content -->
 		</div> <!-- modal-dialog -->
 	</div> <!-- modal-form -->
+	<script type="text/javascript" th:src="@{/js/crud-anuncio.js}"></script>
 </section>
 
 </body>

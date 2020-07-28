@@ -7,6 +7,8 @@
 
 <section class="layout-content" layout:fragment="corpo">
 
+	<div class="lds-spinner loader" id="loader" style="padding-top:23%;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
 	<nav class="navbar navbar-expand-md bg-light">
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
@@ -47,7 +49,7 @@
 					<td style="width:150px" class="text-center" th:text="${produto.id}">0</td>
 					<td><a class="texto" th:href="'javascript:editarProduto(\'/produtos/ajax/' + ${produto.id} + '\' );'"
 						   th:text="${produto.nome}">...</a></td>
-					<td><a class="valor" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}"></a></td>
+					<td><a class="valor" th:text="'R$ '+${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}"></a></td>
 					<td><img width="64px" height="64px" th:src="${produto.imagem}" /></td>
 					<td style="width:200px" class="text-center">
 						<a th:href="'javascript:editarProduto(\'/produtos/ajax/' + ${produto.id} + '\' );'"
@@ -83,21 +85,30 @@
 							placeholder="Nome"/>
 						</div>
 						<div class="form-group">
+							<label for="qtde">Quantidade</label>
+							<input type="number" class="form-control" id="qtde" name="qtde" max="10000"
+								   placeholder="Quantidade"/>
+						</div>
+						<div class="form-group">
 							<label for="valor">Valor</label>
 							<input type="text" class="form-control" id="valor" name="valor" maxlength="8"
 							placeholder="R$ 0,00" data-mask="#.###,00" data-mask-reverse="true"/>
 						</div>
+
 						<div class="form-group">
-							<label>Tamanho</label>
-							<div th:each="tamanho: ${tamanhos}">
-								<input type="checkbox" name="tamanhos"
-									   th:id="'chk_' + ${tamanho.id}"
-									   th:value="${tamanho.id}"/>
-								<label
-										th:for="'chk_' + ${tamanho.id}"
-										th:text="${tamanho.nome}"></label>
+							<label>Selecone um ou mais tamanhos:</label>
+							<div class="checkbox-list">
+								<div th:each="tamanho: ${tamanhos}">
+									<input type="checkbox" name="tamanhos"
+										   th:id="'chk_' + ${tamanho.id}"
+										   th:value="${tamanho.id}"/>
+									<label
+											th:for="'chk_' + ${tamanho.id}"
+											th:text="${tamanho.nome}"></label>
+								</div>
 							</div>
 						</div>
+
 						<div class="form-group">
 							<label for="cor">Cor</label>
 							<select id="cor" name="cor" class="form-control">
@@ -150,6 +161,17 @@
 								   multiple
 								   required class="form-control" />
 						</div>
+
+						<div class="form-group" style="display:none">
+							<label for="anuncio">Anuncio</label>
+							<select id="anuncio" name="anuncio" class="form-control">
+								<option value=""> (Selecione) </option>
+								<option th:each="anuncio: ${usuncios}" selected
+										th:value="${anuncio.id}"
+										th:text="${anuncio.nome}"></option>
+							</select>
+						</div>
+
 					</form>
 				</div> <!-- modal-body -->
 				<div class="modal-footer">

@@ -73,8 +73,7 @@ public class EnderecoController {
 
 	@GetMapping({"novo"})
 	public ModelAndView novo(Endereco endereco) {
-		ModelAndView modelAndView = new ModelAndView("endereco/lista");
-
+		ModelAndView modelAndView = new ModelAndView("endereco");
 		if (endereco != null) {
 			modelAndView.addObject(endereco);
 		}else {

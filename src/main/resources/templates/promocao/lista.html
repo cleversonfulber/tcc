@@ -43,7 +43,7 @@
 				<tbody>
 				<tr th:id="'row_' + ${promocao.id}" th:each="promocao : ${promocoes}">
 					<td style="width:150px" class="text-center" th:text="${promocao.id}">0</td>
-					<td><a class="texto" th:href="'javascript:editarPromocao(\'/promocoes/ajax/' + ${promocao.id} + '\' );'"
+					<td>R$ <a class="texto" th:href="'javascript:editarPromocao(\'/promocoes/ajax/' + ${promocao.id} + '\' );'"
 						   th:text="${#numbers.formatDecimal(promocao.precoPromocional, 1, 'DEFAULT', 2, 'DEFAULT')}">...</a></td>
 
 					<td style="width:200px" class="text-center">

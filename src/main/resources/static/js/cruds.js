@@ -1,4 +1,3 @@
-
 function salvar(urlDestino){
 
     $('#frm').validate();
@@ -11,7 +10,9 @@ function salvar(urlDestino){
         data: $('#frm').serialize(),
         success: function(){
             swal('Salvo!', 'Registro salvo com sucesso!', 'success');
-            window.location = urlDestino;
+            setTimeout(function() {
+                window.location = urlDestino;
+            }, 2000);
         },
         error: function(){
             swal('Erro!', 'Falha ao salvar o registro!', 'error');
@@ -58,7 +59,9 @@ function excluir(id, url){
                     swal('Removido!',
                         'Registro removido com sucesso!',
                         'success');
-                    document.location.reload(true);
+                    setTimeout(function() {
+                        document.location.reload(true);
+                    }, 2000);
                 },
                 error: function(){
                     swal('Erro!',

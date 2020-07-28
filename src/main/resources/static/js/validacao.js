@@ -102,7 +102,7 @@ $(document).ready(function() {
             },
             qtde: {
                 required: true,
-                maxlength: 3
+                min: 0
             },
             cidade: {
                 required: true
