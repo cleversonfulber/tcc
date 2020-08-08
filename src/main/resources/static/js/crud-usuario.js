@@ -1,4 +1,3 @@
-
 function limparUsuario() {
 
 	$('#id').val('');
@@ -35,19 +34,16 @@ function editarUsuario(id, url) {
 	$('#modal-form').modal();
 }
 
-function validarUsuario(id, url) {
+function verUsuario(id, url) {
 
 	$.get( url+ '/' + id, function(entity, status){
 		$('#id').val(entity.id);
 		$('#nome').val(entity.nome);
 		$('#sobrenome').val(entity.sobrenome);
 		$('#username').val(entity.username);
-//		$('#password').val(entity.password);
 		$('#telefone').val(entity.telefone);
         $('#celular').val(entity.celular);
         $('#cpfCnpj').val(entity.cpfCnpj);
-//        $('#dataNascimento').val(entity.dataNascimento);
-//        $('#genero').val(entity.genero);
         $('#chk_3').prop('checked', true);
 
 	});
@@ -60,7 +56,7 @@ function validarLojista( url) {
     var id = $("#id");
     id = id[0].value;
 
-    $.get( url+ '/salvar/' + id, function(entity, status){
+    $.get( url+ '/validar/' + id, function(entity, status){
 	});
 	swal({
         type: 'success',
@@ -75,7 +71,6 @@ function validarLojista( url) {
 }
 
 function salvarValidarUsuario(urlDestino){
-
     $.ajax({
         type: $('#frm').attr('method'),
         url: $('#frm').attr('action'),
@@ -94,26 +89,7 @@ function salvarValidarUsuario(urlDestino){
     });//Fim Ajax
 }
 
-//function validarSenha(){
-//   senha = document.getElementsByName('password').value;
-//   senha2 = document.getElementsByName('senha').value;
-//
-//   if(senha!= senha2) {
-//        senha2.setCustomValidity("Senhas diferentes!");
-//       return false;
-//   }
-//   return true;
-//}
-
 function salvarUsuario(urlDestino){
-
-//    senha = document.getElementsByName('password').value;
-//    senha2 = document.getElementsByName('current-password').value;
-//
-//    if(senha!= senha2) {
-//        swal('Erro!', 'Senhas Incoretas!', 'error');
-//        return error;
-//   }
     $('#frm').validate();
         if (!$('#frm').valid()){
         	return false;

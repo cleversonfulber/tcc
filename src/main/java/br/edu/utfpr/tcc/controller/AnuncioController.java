@@ -1,9 +1,11 @@
 package br.edu.utfpr.tcc.controller;
 
 import br.edu.utfpr.tcc.model.Anuncio;
+import br.edu.utfpr.tcc.model.Produto;
 import br.edu.utfpr.tcc.model.Usuario;
 import br.edu.utfpr.tcc.model.service.UsuarioService;
 import br.edu.utfpr.tcc.repository.AnuncioRepository;
+import br.edu.utfpr.tcc.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/anuncios")
@@ -25,6 +28,9 @@ public class AnuncioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
+
+	@Autowired
+	private ProdutoRepository produtosRepository;
 
 	@GetMapping
 	public ModelAndView listar() {
@@ -37,6 +43,35 @@ public class AnuncioController {
 		modelAndView.addObject("anuncio", new Anuncio());
 
 		return modelAndView;
+	}
+
+
+	@GetMapping("lista/{id}")
+	public ModelAndView verLista(@PathVariable Long id) {
+		ModelAndView modelAndView = new ModelAndView("anuncio/listaprodutos");
+		modelAndView.addObject("produtos", produtosRepository.listarProdutosAnuncio(id));
+		return modelAndView;
+	}
+
+	@GetMapping("valida")
+	public ModelAndView validar() {
+		ModelAndView modelAndView = new ModelAndView("anuncio/valida");
+		modelAndView.addObject("anuncios", anuncioRepository.findAll());
+		modelAndView.addObject("anuncio", new Anuncio());
+
+		return modelAndView;
+	}
+
+	@GetMapping("valida/{id}")
+	@ResponseBody
+	public void salvarvalidacao(@PathVariable Long id) {
+		anuncioRepository.validarAnuncio(id);
+	}
+
+	@GetMapping("editarValidacao/{id}")
+	@ResponseBody
+	public void editarValidacao(@PathVariable Long id) {
+		anuncioRepository.editarValidacao(id);
 	}
 
 	@GetMapping({"novo"})

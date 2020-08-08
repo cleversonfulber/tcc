@@ -19,5 +19,4 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	@Modifying(clearAutomatically = true)
 	@Query(value = "with changed_hosts as ( update usuarios set validar = null where id = ?1 returning * ) update usuarios_permissoes set permissoes_id = 3 where usuario_id in (select id from changed_hosts)", nativeQuery = true)
 	int validarParceiro(Long id);
-
 }

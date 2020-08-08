@@ -33,14 +33,19 @@
 					class="oi oi-spreadsheet"></i> <span>Promoções</span>
 			</a></li>
 		</ul>
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills" sec:authorize="hasRole('ROLE_LOJISTA')">
 			<li class="nav-item"><a class="nav-link" href="/anuncios/"> <i
-					class="oi oi-spreadsheet"></i> <span>Anuncios</span>
+					class="oi oi-spreadsheet"></i> <span>Meus Anuncios</span>
+			</a></li>
+		</ul>
+		<ul class="nav nav-pills" sec:authorize="hasRole('ROLE_ADMIN')">
+			<li class="nav-item"><a class="nav-link" href="/anuncios/valida/"> <i
+					class="oi oi-spreadsheet"></i> <span>Validar Anúncios</span>
 			</a></li>
 		</ul>
 		<ul class="nav nav-pills" sec:authorize="hasRole('ROLE_ADMIN')">
 			<li class="nav-item"><a class="nav-link" href="/usuarios/"> <i
-					class="oi oi-spreadsheet"></i> <span>Usuarios</span>
+					class="oi oi-spreadsheet"></i> <span>Validar Usuários</span>
 			</a></li>
 		</ul>
 

@@ -19,8 +19,8 @@
 			</ul>
 			<div class="row">
 				<div class="col-xs-4">
-					<a class="btn btn-primary" onclick="novo()" data-toggle="modal" data-target="#modal-form">
-						<i class="fa fa-plus-square"></i> Novo Registro	</a>
+					<a class="btn btn-primary" onclick="novoProduto()" data-toggle="modal" data-target="#modal-form">
+						<i class="oi oi-plus"></i> Novo Registro</a>
 				</div>
 			</div>
 		</div>
@@ -41,6 +41,7 @@
 					<th>Nome</th>
 					<th>Valor</th>
 					<th>Imagem</th>
+					<th>Promoção</th>
 					<th>Ações</th>
 				</tr>
 				</thead>
@@ -51,7 +52,20 @@
 						   th:text="${produto.nome}">...</a></td>
 					<td><a class="valor" th:text="'R$ '+${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}"></a></td>
 					<td><img width="64px" height="64px" th:src="${produto.imagem}" /></td>
-					<td style="width:200px" class="text-center">
+
+					<td th:if="${produto.promocao} != null">
+						<a th:href="'javascript:verPromocao(\'/promocoes/lista/' + ${produto.id} + '\' )'"
+						   class="btn btn-success">
+							<span>Ver</span>
+						</a>
+					</td>
+					<td th:if="${produto.promocao} == null">
+						<a th:href="'javascript:novaPromocao('+ ${produto.id} +');'"
+						   class="btn btn-primary">
+							<span>Adicionar</span>
+						</a>
+					</td>
+					<td style="width:150px" class="text-center">
 						<a th:href="'javascript:editarProduto(\'/produtos/ajax/' + ${produto.id} + '\' );'"
 						   class="btn btn-primary btn-xs botao"> <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 						</a> &nbsp;
@@ -61,6 +75,8 @@
 				</tr>
 				</tbody>
 			</table>
+			<a class="btn btn-primary" href="/anuncios/">
+				<i class="oi oi-chevron-left"></i> Voltar</a>
 		</div>
 	</div>
 
@@ -183,6 +199,53 @@
 			</div> <!-- modal-content -->
 		</div> <!-- modal-dialog -->
 	</div> <!-- modal-form -->
+
+<!--	adicionar promoção-->
+
+	<div class="modal modal-form" th:id="modal-form2">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3>Promoção</h3>
+					<button type="button" class="close" data-dismiss="modal"
+							onclick="limparPromocao()" aria-hidden="true">x</button>
+				</div> <!-- modal-header -->
+				<div class="modal-body">
+					<form id="frm2" name="frm"
+						  method="POST" class="form-vertical"
+						  th:action="@{/promocoes/ajax}">
+						<input type="hidden" id="id2" name="id"/>
+						<input type="hidden" id="idProduto" name="id"/>
+						<div class="form-group">
+							<label for="precoPromocional">Preço</label>
+							<input type="text" class="form-control" maxlength="8"
+								   placeholder="R$ 0,00" data-mask="#.###,00" data-mask-reverse="true"
+								   id="precoPromocional" name="precoPromocional" />
+						</div>
+						<div class="form-group">
+							<label for="dataInicio">Dt. Inicio:</label>
+							<input type="text" n
+								   class="datepicker form-control" data-mask="00/00/0000"
+								   id="dataInicio" name="dataInicio" placeholder="00/00/0000" />
+						</div>
+						<div class="form-group">
+							<label for="dataFim">Dt. Final:</label>
+							<input type="text"
+								   class="datepicker form-control" data-mask="00/00/0000"
+								   id="dataFim" name="dataFim" placeholder="00/00/0000"/>
+						</div>
+					</form>
+				</div> <!-- modal-body -->
+				<div class="modal-footer">
+					<button type="button" class="btn" data-dismiss="modal"
+							onclick="limparPromocao()" aria-hidden="true">Cancelar</button>
+					<button type="button" class="btn btn-success"
+							onclick="salvarPromocao()">Salvar</button>
+				</div>
+			</div> <!-- modal-content -->
+		</div> <!-- modal-dialog -->
+	</div> <!-- modal-form -->
+
 	<script type="text/javascript" th:src="@{/js/crud-produto.js}"></script>
 </section>
 

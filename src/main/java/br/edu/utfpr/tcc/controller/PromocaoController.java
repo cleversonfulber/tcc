@@ -1,6 +1,7 @@
 package br.edu.utfpr.tcc.controller;
 
 import br.edu.utfpr.tcc.model.Promocao;
+import br.edu.utfpr.tcc.repository.ProdutoRepository;
 import br.edu.utfpr.tcc.repository.PromocaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,10 +22,13 @@ public class PromocaoController {
 	@Autowired
 	private PromocaoRepository promocaoRepository;
 
-	@GetMapping
-	public ModelAndView listar() {
+	@Autowired
+	private ProdutoRepository produtoRepository;
+
+	@GetMapping("/lista/{id}")
+	public ModelAndView listar(@PathVariable Long id) {
 		ModelAndView modelAndView = new ModelAndView("promocao/lista");
-		modelAndView.addObject("promocoes", promocaoRepository.findAll());
+		modelAndView.addObject("promocoes", promocaoRepository.buscarProdutoPromocao(id));
 		modelAndView.addObject("promocao", new Promocao());
 
 		return modelAndView;
@@ -41,17 +45,18 @@ public class PromocaoController {
 		return modelAndView;
 	}
 
-	@PostMapping("ajax")
+	@PostMapping("salvar/{id}")
 	public ResponseEntity<?> salvar(@Valid Promocao promocao, BindingResult result,
 							   RedirectAttributes attributes) {
 		if ( result.hasErrors() ) {
 			return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
 		}
 		promocaoRepository.save(promocao);
+		produtoRepository.salvarPromocaoProduto(promocao.getId());
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	@GetMapping("ajax/{id}")
+	@GetMapping("editar/{id}")
 	@ResponseBody
 	public Promocao editar(@PathVariable Long id) {
 		return promocaoRepository.findById(id).orElse(null);

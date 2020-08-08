@@ -19,7 +19,7 @@
 				<div class="col-xs-4">
 						<a class="btn btn-primary" onclick="novo()"
 					   data-toggle="modal" data-target="#modal-form">
-						<i class="fa fa-plus-square"></i> Novo Registro	</a>
+						<i class="oi oi-plus"></i> Novo Registro	</a>
 				</div>
 			</div>
 		</div>
@@ -31,7 +31,6 @@
 			 th:if="${!#strings.isEmpty(mensagem)}">
 			<i class="fa fa-check-circle"></i> <span th:text="${mensagem}">Mensagem de sucesso!</span>
 		</div>
-
 		<div class="table-responsive">
 			<table id="minhaTable" class="table table-striped
 				    table-bordered  table-hover  table-condensed">
@@ -61,11 +60,11 @@
 						   class="btn btn-primary btn-xs botao"> <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 						</a> &nbsp;
 						<a th:href="'javascript:excluir('+ ${anuncio.id} +',\'/anuncios\');'"
-						   class="btn btn-danger btn-xs botao"><span class="oi oi-circle-x " title="Exclusão desabilitada" aria-hidden="true"></span></span></i></a>
+						   class="btn btn-danger btn-xs botao"><span class="oi oi-circle-x" title="Exclusão desabilitada" aria-hidden="true"></span></span></i></a>
 					</td>
 					<td >
 						<a th:href="'javascript:verProdutos(\'/produtos/anuncios/' + ${anuncio.id} + '\' );'"
-						   class="btn btn-primary ">Ver Itens</a>
+						   class="btn btn-primary">Ver Itens</a>
 					</td>
 
 				</tr>

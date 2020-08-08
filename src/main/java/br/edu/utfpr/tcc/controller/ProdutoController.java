@@ -1,6 +1,7 @@
 package br.edu.utfpr.tcc.controller;
 
 import br.edu.utfpr.tcc.model.Produto;
+import br.edu.utfpr.tcc.model.Promocao;
 import br.edu.utfpr.tcc.model.Usuario;
 import br.edu.utfpr.tcc.model.service.UsuarioService;
 import br.edu.utfpr.tcc.repository.*;
@@ -94,6 +95,8 @@ public class ProdutoController {
 	@GetMapping("ajax/{id}")
 	@ResponseBody
 	public Produto editar(@PathVariable Long id) {
+		produtoRepository.validarAnuncio(id);
+
 		return produtoRepository.findById(id).orElse(new Produto());
 	}
 
@@ -175,4 +178,11 @@ public class ProdutoController {
 
 		return modelAndView;
 	}
+
+//	@GetMapping("editarProduto/{id}")
+//	@ResponseBody
+//	public void editarProduto(@PathVariable Long id) {
+//		produtoRepository.editarProduto(id);
+//	}
+
 }

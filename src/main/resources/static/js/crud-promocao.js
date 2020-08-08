@@ -28,7 +28,7 @@ function salvarPromocao(urlDestino){
                 success: function(){
                     swal('Salvo!', 'Registro salvo com sucesso!', 'success');
                     setTimeout(function() {
-                        window.location = urlDestino;
+                        document.location.reload();
                     }, 2000);
                 },
                 error: function(){
@@ -44,7 +44,7 @@ function salvarPromocao(urlDestino){
                     success: function(){
                         swal('Salvo!', 'Registro salvo com sucesso!', 'success');
                         setTimeout(function() {
-                            window.location = urlDestino;
+                            document.location.reload();
                         }, 2000);
                     },
                     error: function(){
@@ -66,7 +66,7 @@ function salvarPromocao(urlDestino){
                 success: function(){
                     swal('Salvo!', 'Registro salvo com sucesso!', 'success');
                     setTimeout(function() {
-                        window.location = urlDestino;
+                        document.location.reload();
                     }, 2000);
                 },
                 error: function(){
@@ -82,7 +82,7 @@ function salvarPromocao(urlDestino){
                     success: function(){
                         swal('Salvo!', 'Registro salvo com sucesso!', 'success');
                         setTimeout(function() {
-                            window.location = urlDestino;
+                            document.location.reload();
                         }, 2000);
                     },
                     error: function(){
@@ -123,4 +123,8 @@ function limparPromocao(){
     $('#dataInicio').val('');
     $('#dataFim').val('');
     $('#modal-form').hide();
+}
+
+function voltarAterior(){
+    window.history.back();
 }

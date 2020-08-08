@@ -52,7 +52,7 @@ public class UsuariosController {
 		return usuarioRepository.findById(id).orElse(null);
 	}
 
-	@GetMapping("salvar/{id}")
+	@GetMapping("validar/{id}")
 	@ResponseBody
 	public void salvarvalidacao(@PathVariable Long id) {
 		usuarioRepository.validarParceiro(id);

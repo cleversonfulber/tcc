@@ -121,8 +121,49 @@ function limparAnuncio(){
     $('#modal-form').hide();
 }
 
+function fechar(){
+    $('#modal-form').hide();
+}
+
 function verProdutos(urlDestino){
     window.location = urlDestino;
+}
+
+function verProdutosUsuario(id, url) {
+	$.get( url+ '/' + id, function(entity, status){
+	});
+	window.location = url+ '/' + id;
+}
+
+function validarAnuncio(id, url) {
+
+    swal({
+        title: "O anuncio ficara disponível!",
+        text: "Certifique-se que todos os produtos estão corretos.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#0d7d27",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Confirmar"
+        }, function(){
+
+            $.get( url + id, function(entity, status){
+            });
+
+            setTimeout(function() {
+                swal({
+                    type: 'success',
+                    title: 'Anúncio Disponível!',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            }, 300);
+            setTimeout(function() {
+                window.location = url;
+            }, 2300);
+        }
+    );
+
 }
 
 

@@ -60,13 +60,13 @@
 							</ul>
 						</td>
 						<td th:if="${usuario.validar} != null">
-							<a th:href="'javascript:validarUsuario('+ ${usuario.id} +',\'/usuarios\');'"
+							<a th:href="'javascript:verUsuario('+ ${usuario.id} +',\'/usuarios\');'"
 							   class="btn btn-danger">
 								<span>Validar</span>
 							</a> &nbsp;
 						</td>
 						<td th:if="${usuario.validar} == null">
-							OK
+							Validado
 						</td>
 <!--						<td style="width:200px" class="text-center">-->
 

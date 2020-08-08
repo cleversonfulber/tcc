@@ -33,4 +33,6 @@ public class Anuncio {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name= "data_fim", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataFim;
+
+	private Boolean validar;
 }
