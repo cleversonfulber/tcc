@@ -30,6 +30,7 @@ public class PromocaoController {
 		ModelAndView modelAndView = new ModelAndView("promocao/lista");
 		modelAndView.addObject("promocoes", promocaoRepository.buscarProdutoPromocao(id));
 		modelAndView.addObject("promocao", new Promocao());
+		modelAndView.addObject("produtos", produtoRepository.getOne(id) );
 
 		return modelAndView;
 	}
@@ -45,14 +46,18 @@ public class PromocaoController {
 		return modelAndView;
 	}
 
-	@PostMapping("salvar/{id}")
+	@PostMapping("ajax")
 	public ResponseEntity<?> salvar(@Valid Promocao promocao, BindingResult result,
 							   RedirectAttributes attributes) {
 		if ( result.hasErrors() ) {
 			return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
 		}
+
+
 		promocaoRepository.save(promocao);
-		produtoRepository.salvarPromocaoProduto(promocao.getId());
+		produtoRepository.excluirPromocaoProduto(promocao.getId());
+		produtoRepository.salvarPromocaoProduto(promocao.getId(), promocao.getProduto());
+
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
@@ -65,7 +70,9 @@ public class PromocaoController {
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
 		try {
+			produtoRepository.excluirPromocaoProduto(id);
 			promocaoRepository.deleteById(id);
+
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -26,4 +26,7 @@ public class Promocao {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name= "data_fim", nullable = false, columnDefinition = "DATE")
 	private LocalDate dataFim;
+
+	@Column(name = "produto_id")
+	private Long produto;
 }

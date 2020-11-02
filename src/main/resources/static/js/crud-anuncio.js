@@ -138,7 +138,7 @@ function verProdutosUsuario(id, url) {
 function validarAnuncio(id, url) {
 
     swal({
-        title: "O anuncio ficara disponível!",
+        title: "O anúncio ficará disponível!",
         text: "Certifique-se que todos os produtos estão corretos.",
         type: "warning",
         showCancelButton: true,

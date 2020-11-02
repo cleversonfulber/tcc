@@ -3,6 +3,7 @@ package br.edu.utfpr.tcc.controller;
 import br.edu.utfpr.tcc.model.Produto;
 import br.edu.utfpr.tcc.repository.*;
 import br.edu.utfpr.tcc.services.S3Services;
+//import java.util.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.data.domain.Pageable;
@@ -39,7 +40,8 @@ public class HomeController {
 		modelAndView.addObject("categorias", categoriaRepository.findAll() );
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
-		modelAndView.addObject("promocoes", promocaoRepository.findAll() );
+		modelAndView.addObject("promocoes", promocaoRepository.buscarData() );
+		modelAndView.addObject("promocoes2", promocaoRepository.buscarDataFora() );
 		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
 		modelAndView.addObject("cores", corRepository.findAll() );
 		modelAndView.addObject("produto", new Produto());

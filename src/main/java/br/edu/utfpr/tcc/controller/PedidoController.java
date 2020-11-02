@@ -1,8 +1,6 @@
 package br.edu.utfpr.tcc.controller;
 
-import br.edu.utfpr.tcc.model.Endereco;
-import br.edu.utfpr.tcc.model.Produto;
-import br.edu.utfpr.tcc.model.Usuario;
+import br.edu.utfpr.tcc.model.*;
 import br.edu.utfpr.tcc.model.service.UsuarioService;
 import br.edu.utfpr.tcc.repository.*;
 import br.edu.utfpr.tcc.services.S3Services;
@@ -69,5 +67,26 @@ public class PedidoController {
 		modelAndView.addObject("endereco", new Produto());
 
 		return modelAndView;
+	}
+
+	@GetMapping({"novo"})
+	public ModelAndView novo(Pedido pedido) {
+		ModelAndView modelAndView = new ModelAndView("pedido/lista");
+		if (pedido != null) {
+			modelAndView.addObject(pedido);
+		}else {
+			modelAndView.addObject(new Categoria());
+		}
+		return modelAndView;
+	}
+
+	@PostMapping("/ajax")
+	public ResponseEntity<?> salvar(@Valid Pedido pedido, BindingResult result,
+									RedirectAttributes attributes) {
+		if ( result.hasErrors() ) {
+			return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
+		}
+		pedidoRepository.save(pedido);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

@@ -7,7 +7,7 @@ function salvarPromocao(urlDestino){
     let dataInicio = document.getElementById('dataInicio').value;
     let dataFim = document.getElementById('dataFim').value;
 
-    // Precisamos quebrar a string para retornar cada parte
+    // quebrar a string para retornar cada parte
     const dataSplit1 = dataInicio.split('/');
     const dataSplit2 = dataFim.split('/');
 
@@ -105,6 +105,7 @@ function editarPromocao(url){
         $('#precoPromocional').val(entity.precoPromocional.toString().replace('.',','));
         $('#dataInicio').val(formatDate(entity.dataInicio));
         $('#dataFim').val(formatDate(entity.dataFim));
+        $('#produto').val(entity.dataFim);
     });
     $('#modal-form').modal();
 }

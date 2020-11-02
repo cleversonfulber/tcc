@@ -80,10 +80,32 @@ function finalizar(){
 //        dataType: 'JSON',
 //        data: dados,
 
+    var hoje = new Date();
+
+    function formatDate(data) {
+        return (data.getDate());
+    }
+
+    var enderecoP = document.getElementById("usuario").innerHTML
+    var produtoP = document.getElementById("carrinho").innerHTML
+    var totalP = document.getElementById("total").innerText
+    var dataP = formatDate(hoje)
+
+
+
     $.ajax({
-        type: $('#frm').attr('method'),
-        url: $('#frm').attr('action'),
-        data: $('#frm').serialize(),
+        type: "POST",
+        url: "/pedido/ajax",
+        data: JSON.stringify({ dataPedido : dataP,
+                                endereco : enderecoP}),
+        contentType: "application/json",
+
+//        data: {
+//          endereco : "enderecoP",
+//          produto : "produtoP",
+//          valor : "totalP",
+//          dataPedido : dataP
+//        },
         success: function(){
             enviarEmail();
             localStorage.clear();

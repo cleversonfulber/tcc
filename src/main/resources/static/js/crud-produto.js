@@ -1,8 +1,8 @@
 
 function novoProduto(){
     swal({
-        title: "Seu anuncio passara por validação!",
-        text: "Seus produtos estarão disponíveis após o anuncio ser validado.",
+        title: "Seu anúncio passará por validação!",
+        text: "Seus produtos estarão disponíveis após o anúncio ser validado.",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#0d7d27",
@@ -19,10 +19,10 @@ function novoProduto(){
 function editarProduto(url) {
 
     swal({
-        title: "Seu anuncio passara por validação!",
-        text: "Seus produtos estarão disponíveis após o anuncio ser validado.",
+        title: "Seu anúncio passará por validação!",
+        text: "Seus produtos só estarão disponíveis após o anúncio ser validado.",
         type: "warning",
-        showCancelButton: true,
+        showCancelButton: true, 
         confirmButtonColor: "#0d7d27",
         cancelButtonText: "Cancelar",
         confirmButtonText: "Confirmar"
@@ -30,7 +30,7 @@ function editarProduto(url) {
             $.get(url, function(entity, status){
                 $('#id').val(entity.id);
                 $('#nome').val(entity.nome);
-                $('#qtde').val(entity.cor.id);
+                $('#qtde').val(entity.qtde);
                 $('#valor').val(entity.valor.toString().replace('.',','));
                 $('#descri').val(entity.descri);
                 $('#caracteristica').val(entity.caracteristica);
@@ -38,7 +38,7 @@ function editarProduto(url) {
                 $('#tipo').val(entity.tipo.id);
                 $('#marca').val(entity.marca.id);
                 $('#categoria').val(entity.categoria.id);
-        //		$('#anexos').val(entity.imagem);
+                $('#promocao').val(entity.promocao.id);
                 $.each(entity.tamanhos, function(i, item) {
                     $('#chk_'+entity.tamanhos[i].id).prop('checked', true);
                 });
@@ -51,8 +51,8 @@ function editarProduto(url) {
 
 function saveUpload(urlDestino){
 
+//    mudar para não validado
     var id = document.getElementById('anuncio').value;
-
     $.get( '/anuncios/editarValidacao/' + id, function(entity, status){
     });
 
@@ -122,108 +122,108 @@ function limparPromocao(){
     $('#modal-form').hide();
 }
 
-function salvarPromocao(){
-    $('#frm2').validate();
-    if (!$('#frm2').valid()){
-    	return false;
-    }
-//    var idProduto = document.getElementById('idProduto').value;
-    var idPromocao = document.getElementById('id2').value;
-
-    $.get( '/produtos/editarProduto/' + idPromocao, function(entity, status){
-    });
-
-    let dataInicio = document.getElementById('dataInicio').value;
-    let dataFim = document.getElementById('dataFim').value;
-
-    // Precisamos quebrar a string para retornar cada parte
-    const dataSplit1 = dataInicio.split('/');
-    const dataSplit2 = dataFim.split('/');
-
-    const dia1 = dataSplit1[0];
-    const mes1 = dataSplit1[1];
-    const ano1 = dataSplit1[2];
-
-    const dia2 = dataSplit2[0];
-    const mes2 = dataSplit2[1];
-    const ano2 = dataSplit2[2];
-
-    if (ano1 == ano2){
-        if (mes1 < mes2){
-            $.ajax({
-                type: $('#frm2').attr('method'),
-                url: $('#frm2').attr('action'),
-                data: $('#frm2').serialize(),
-                success: function(){
-                    swal('Salvo!', 'Registro salvo com sucesso!', 'success');
-                    setTimeout(function() {
-                        document.location.reload();
-                    }, 2000);
-                },
-                error: function(){
-                    swal('Erro!', 'Falha ao salvar o registro!', 'error');
-                }
-            });//Fim Ajax
-        }else if(mes1 == mes2){
-            if (dia1 < dia2){
-                $.ajax({
-                    type: $('#frm2').attr('method'),
-                    url: $('#frm2').attr('action'),
-                    data: $('#frm2').serialize(),
-                    success: function(){
-                        swal('Salvo!', 'Registro salvo com sucesso!', 'success');
-                        setTimeout(function() {
-                            document.location.reload();
-                        }, 2000);
-                    },
-                    error: function(){
-                        swal('Erro!', 'Falha ao salvar o registro!', 'error');
-                    }
-                });//Fim Ajax
-            }else{
-                swal('Erro!', '"Data Final" deve ser Maior que a "Data Inicial!"', 'error');
-            }
-        }else{
-            swal('Erro!', '"Data Final" deve ser Maior que a "Data Inicial!"', 'error');
-        }
-    }else if (ano1 < ano2){
-        if (mes1 != mes2){
-            $.ajax({
-                type: $('#frm2').attr('method'),
-                url: $('#frm2').attr('action'),
-                data: $('#frm2').serialize(),
-                success: function(){
-                    swal('Salvo!', 'Registro salvo com sucesso!', 'success');
-                    setTimeout(function() {
-                        document.location.reload();
-                    }, 2000);
-                },
-                error: function(){
-                    swal('Erro!', 'Falha ao salvar o registro!', 'error');
-                }
-            });//Fim Ajax
-        }else{
-            if (dia1 < dia2){
-                $.ajax({
-                    type: $('#frm2').attr('method'),
-                    url: $('#frm2').attr('action'),
-                    data: $('#frm2').serialize(),
-                    success: function(){
-                        swal('Salvo!', 'Registro salvo com sucesso!', 'success');
-                        setTimeout(function() {
-                            document.location.reload();
-                        }, 2000);
-                    },
-                    error: function(){
-                        swal('Erro!', 'Falha ao salvar o registro!', 'error');
-                    }
-                });//Fim Ajax
-            }else{
-                swal('Erro!', '"Data Final" deve ser Maior que a "Data Inicial!"', 'error');
-            }
-            swal('Erro!', '"Data Final" deve ser Maior que a "Data Inicial!"', 'error');
-        }
-    }else{
-        swal('Erro!', '"Data Final" deve ser Maior que a "Data Inicial!"', 'error');
-    }
-}
+//function salvarPromocao(){
+//    $('#frm2').validate();
+//    if (!$('#frm2').valid()){
+//    	return false;
+//    }
+////    var idProduto = document.getElementById('idProduto').value;
+//    var idPromocao = document.getElementById('id2').value;
+//
+//    $.get( '/produtos/editarProduto/' + idPromocao, function(entity, status){
+//    });
+//
+//    let dataInicio = document.getElementById('dataInicio').value;
+//    let dataFim = document.getElementById('dataFim').value;
+//
+//    // Precisamos quebrar a string para retornar cada parte
+//    const dataSplit1 = dataInicio.split('/');
+//    const dataSplit2 = dataFim.split('/');
+//
+//    const dia1 = dataSplit1[0];
+//    const mes1 = dataSplit1[1];
+//    const ano1 = dataSplit1[2];
+//
+//    const dia2 = dataSplit2[0];
+//    const mes2 = dataSplit2[1];
+//    const ano2 = dataSplit2[2];
+//
+//    if (ano1 == ano2){
+//        if (mes1 < mes2){
+//            $.ajax({
+//                type: $('#frm2').attr('method'),
+//                url: $('#frm2').attr('action'),
+//                data: $('#frm2').serialize(),
+//                success: function(){
+//                    swal('Salvo!', 'Registro salvo com sucesso!', 'success');
+//                    setTimeout(function() {
+//                        document.location.reload();
+//                    }, 2000);
+//                },
+//                error: function(){
+//                    swal('Erro!', 'Falha ao salvar o registro!', 'error');
+//                }
+//            });//Fim Ajax
+//        }else if(mes1 == mes2){
+//            if (dia1 < dia2){
+//                $.ajax({
+//                    type: $('#frm2').attr('method'),
+//                    url: $('#frm2').attr('action'),
+//                    data: $('#frm2').serialize(),
+//                    success: function(){
+//                        swal('Salvo!', 'Registro salvo com sucesso!', 'success');
+//                        setTimeout(function() {
+//                            document.location.reload();
+//                        }, 2000);
+//                    },
+//                    error: function(){
+//                        swal('Erro!', 'Falha ao salvar o registro!', 'error');
+//                    }
+//                });//Fim Ajax
+//            }else{
+//                swal('Erro!', '"Data Final" deve ser Maior que a "Data Inicial!"', 'error');
+//            }
+//        }else{
+//            swal('Erro!', '"Data Final" deve ser Maior que a "Data Inicial!"', 'error');
+//        }
+//    }else if (ano1 < ano2){
+//        if (mes1 != mes2){
+//            $.ajax({
+//                type: $('#frm2').attr('method'),
+//                url: $('#frm2').attr('action'),
+//                data: $('#frm2').serialize(),
+//                success: function(){
+//                    swal('Salvo!', 'Registro salvo com sucesso!', 'success');
+//                    setTimeout(function() {
+//                        document.location.reload();
+//                    }, 2000);
+//                },
+//                error: function(){
+//                    swal('Erro!', 'Falha ao salvar o registro!', 'error');
+//                }
+//            });//Fim Ajax
+//        }else{
+//            if (dia1 < dia2){
+//                $.ajax({
+//                    type: $('#frm2').attr('method'),
+//                    url: $('#frm2').attr('action'),
+//                    data: $('#frm2').serialize(),
+//                    success: function(){
+//                        swal('Salvo!', 'Registro salvo com sucesso!', 'success');
+//                        setTimeout(function() {
+//                            document.location.reload();
+//                        }, 2000);
+//                    },
+//                    error: function(){
+//                        swal('Erro!', 'Falha ao salvar o registro!', 'error');
+//                    }
+//                });//Fim Ajax
+//            }else{
+//                swal('Erro!', '"Data Final" deve ser Maior que a "Data Inicial!"', 'error');
+//            }
+//            swal('Erro!', '"Data Final" deve ser Maior que a "Data Inicial!"', 'error');
+//        }
+//    }else{
+//        swal('Erro!', '"Data Final" deve ser Maior que a "Data Inicial!"', 'error');
+//    }
+//}

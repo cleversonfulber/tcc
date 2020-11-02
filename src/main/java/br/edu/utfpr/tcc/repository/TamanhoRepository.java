@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface TamanhoRepository extends JpaRepository<Tamanho, Long> {
 
-    @Query(value = "select * from tamanho inner JOIN produtos_tamanho on produtos_tamanho.tamanho_id = tamanho.id where produto_id = ?1", nativeQuery = true)
+    @Query(value = "select * from tamanho inner JOIN produtos_tamanhos on produtos_tamanhos.tamanhos_id = tamanho.id where produto_id = ?1", nativeQuery = true)
     List<Tamanho> buscarTamanhoProduto(Long id);
 }

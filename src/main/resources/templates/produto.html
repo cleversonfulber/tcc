@@ -187,8 +187,26 @@
                                         <h4 th:text="${produto.nome} + ' - ' + ${produto.cor.nome}" ></h4>
                                     </a>
                                     <div th:if="${produto.promocao} != null">
-                                        <span class="valor">R$ </span> <span class="valor" th:text="${#numbers.formatDecimal(produto.promocao.precoPromocional, 1, 'DEFAULT', 2, 'DEFAULT')}"></span></br>
-                                        <span class="valor2">R$ </span> <span class="valor2" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}" ></span>
+
+                                        <div  th:each="promocao : ${promocoes}">
+
+                                            <div th:if="${produto.id} == ${promocao.produto}">
+                                                <div th:if="${produto.promocao.id} == ${promocao.id}">
+                                                    <span class="valor">R$ </span> <span class="valor" th:text="${#numbers.formatDecimal(produto.promocao.precoPromocional, 1, 'DEFAULT', 2, 'DEFAULT')}"></span></br>
+                                                    <span class="valor2">R$ </span> <span class="valor2" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}" ></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div th:each="promocao : ${promocoes2}">
+
+                                            <div th:if="${produto.id} == ${promocao.produto}">
+                                                <div th:if="${produto.promocao.id} == ${promocao.id}">
+                                                    <span class="valor">R$ </span> <span class="valor" th:text="${#numbers.formatDecimal(produto.promocao.precoPromocional, 1, 'DEFAULT', 2, 'DEFAULT')}"></span></br>
+                                                    <span class="valor2">R$ </span> <span class="valor2" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}" ></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div th:if="${produto.promocao} == null">
                                         <span class="valor">R$ </span> <span class="valor" th:text="${#numbers.formatDecimal(produto.valor, 1, 'DEFAULT', 2, 'DEFAULT')}" ></span>

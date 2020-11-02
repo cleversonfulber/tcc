@@ -43,6 +43,8 @@ public class ProdController {
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
 		modelAndView.addObject("cores", corRepository.findAll() );
 		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
+		modelAndView.addObject("promocoes", promocaoRepository.buscarData() );
+		modelAndView.addObject("promocoes2", promocaoRepository.buscarDataFora() );
 		modelAndView.addObject("produto", new Produto());
 
 		return modelAndView;
@@ -56,6 +58,8 @@ public class ProdController {
 			modelAndView.addObject("categorias", categoriaRepository.findAll() );
 			modelAndView.addObject("marcas", marcaRepository.findAll() );
 			modelAndView.addObject("tipos", tipoRepository.findAll() );
+			modelAndView.addObject("promocoes", promocaoRepository.buscarData() );
+			modelAndView.addObject("promocoes2", promocaoRepository.buscarDataFora() );
 			modelAndView.addObject("produto", new Produto());
 
 			return modelAndView;
@@ -70,6 +74,8 @@ public class ProdController {
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
 		modelAndView.addObject("cores", corRepository.findAll() );
 		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
+		modelAndView.addObject("promocoes", promocaoRepository.buscarData() );
+		modelAndView.addObject("promocoes2", promocaoRepository.buscarDataFora() );
 		modelAndView.addObject("produto_tamanhos", tamanhoRepository.buscarTamanhoProduto(id) );
 		modelAndView.addObject("produto", new Produto());
 
@@ -84,6 +90,8 @@ public class ProdController {
 		modelAndView.addObject("marcas", marcaRepository.findAll() );
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
 		modelAndView.addObject("cores", corRepository.findAll() );
+		modelAndView.addObject("promocoes", promocaoRepository.buscarData() );
+		modelAndView.addObject("promocoes2", promocaoRepository.buscarDataFora() );
 		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
 		modelAndView.addObject("produto", new Produto());
 
@@ -118,7 +126,8 @@ public class ProdController {
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
 		modelAndView.addObject("cores", corRepository.findAll() );
 		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
-
+		modelAndView.addObject("promocoes", promocaoRepository.buscarData() );
+		modelAndView.addObject("promocoes2", promocaoRepository.buscarDataFora() );
 		modelAndView.addObject("categorias2", categoriaRepository.getOne(id) );
 
 		modelAndView.addObject("produto", new Produto());
@@ -135,7 +144,8 @@ public class ProdController {
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
 		modelAndView.addObject("cores", corRepository.findAll() );
 		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
-
+		modelAndView.addObject("promocoes", promocaoRepository.buscarData() );
+		modelAndView.addObject("promocoes2", promocaoRepository.buscarDataFora() );
 		modelAndView.addObject("marcas2", marcaRepository.getOne(id) );
 
 		modelAndView.addObject("produto", new Produto());
@@ -152,7 +162,8 @@ public class ProdController {
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
 		modelAndView.addObject("cores", corRepository.findAll() );
 		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
-
+		modelAndView.addObject("promocoes", promocaoRepository.buscarData() );
+		modelAndView.addObject("promocoes2", promocaoRepository.buscarDataFora() );
 		modelAndView.addObject("tipos2", tipoRepository.getOne(id) );
 
 		modelAndView.addObject("produto", new Produto());
@@ -169,7 +180,8 @@ public class ProdController {
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
 		modelAndView.addObject("cores", corRepository.findAll() );
 		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
-
+		modelAndView.addObject("promocoes", promocaoRepository.buscarData() );
+		modelAndView.addObject("promocoes2", promocaoRepository.buscarDataFora() );
 		modelAndView.addObject("cores2", corRepository.getOne(id) );
 
 		modelAndView.addObject("produto", new Produto());
@@ -186,7 +198,8 @@ public class ProdController {
 		modelAndView.addObject("tipos", tipoRepository.findAll() );
 		modelAndView.addObject("cores", corRepository.findAll() );
 		modelAndView.addObject("tamanhos", tamanhoRepository.findAll() );
-
+		modelAndView.addObject("promocoes", promocaoRepository.buscarData() );
+		modelAndView.addObject("promocoes2", promocaoRepository.buscarDataFora() );
 		modelAndView.addObject("tamanhos2", tamanhoRepository.getOne(id) );
 
 		modelAndView.addObject("produto", new Produto());

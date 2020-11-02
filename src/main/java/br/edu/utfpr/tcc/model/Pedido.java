@@ -13,17 +13,14 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
-    private Endereco endereco;
+    private String endereco;
 
-    @ManyToOne
-    @JoinColumn(name = "produto_id", referencedColumnName = "id")
-    private Produto produto;
 
-    @Column(name = "valor", nullable = false)
+    private String produto;
+
+
     private String valor;
 
-    @Column(name= "data_pedido", nullable = false, columnDefinition = "DATE")
+
     private LocalDate dataPedido;
 }
