@@ -188,15 +188,15 @@
 										th:text="${anuncio.nome}"></option>
 							</select>
 						</div>
-						<div class="form-group" style="display:none">
-							<label for="promocao">Anuncio</label>
-							<select id="promocao" name="promocao" class="form-control">
-								<option value=""> (Selecione) </option>
-								<option th:each="promocao: ${promocoes}" selected
-										th:value="${promocao.id}"
-										th:text="${promocao.precoPromocional}"></option>
-							</select>
-						</div>
+<!--						<div class="form-group" >-->
+<!--							<label for="promocao">Promoção</label>-->
+<!--							<select id="promocao" name="promocao" class="form-control">-->
+<!--								<option value=""> (Selecione) </option>-->
+<!--								<option th:each="promocao: ${promocoes}" selected-->
+<!--										th:value="${promocao.id}"-->
+<!--										th:text="${promocao.precoPromocional}"></option>-->
+<!--							</select>-->
+<!--						</div>-->
 
 					</form>
 				</div> <!-- modal-body -->

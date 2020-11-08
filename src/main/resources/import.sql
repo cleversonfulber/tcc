@@ -5744,9 +5744,9 @@ Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, 
 Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (3, 'São Paulo', 'SP', 'Apartamento', '02920-130', 2574, 'Cristo Rei','Antonio Guimarães', 'N/A' );
 Insert into enderecos ( usuario_id, cidade, uf, descricao, cep, numero, bairro, rua, complemento) VALUES (4, 'Pato Branco', 'PR', 'Apartamento', '85507-510', 2574, 'Cristo Rei','Antonio Guimarães', 'N/A' );
 
-Insert into anuncios ( nome, usuario_id, data_inicio, data_fim) values ( 'Anuncio 1', 3,'2020-06-05', '2020-11-06');
-Insert into anuncios ( nome, usuario_id, data_inicio, data_fim) values ( 'Anuncio 2', 3, '2020-06-05', '2020-11-06');
-Insert into anuncios ( nome, usuario_id, data_inicio, data_fim) values ( 'Meu Anuncio', 4, '2020-06-05', '2020-11-06');
+Insert into anuncios ( nome, usuario_id, data_inicio, data_fim) values ( 'Anuncio 1', 3,'2020-06-05', '2020-12-16');
+Insert into anuncios ( nome, usuario_id, data_inicio, data_fim) values ( 'Anuncio 2', 3, '2020-06-05', '2020-12-16');
+Insert into anuncios ( nome, usuario_id, data_inicio, data_fim) values ( 'Meu Anuncio', 4, '2020-06-05', '2020-12-16');
 
 Insert into promocoes ( preco_promocional, data_inicio, data_fim, produto_id) values ( 102.99, '2019-06-05', '2020-12-06', 1);
 Insert into promocoes ( preco_promocional, data_inicio, data_fim, produto_id) values ( 49.99, '2019-06-05', '2020-12-06', 2);

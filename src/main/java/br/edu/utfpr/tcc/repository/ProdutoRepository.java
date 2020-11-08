@@ -38,6 +38,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     @Query(value = "update produtos set promocao_id = null where produtos.promocao_id = ?1", nativeQuery = true)
     void excluirPromocaoProduto(Long id);
 
+
 //    Cliente
 
     @Query(value = "select * from produtos inner JOIN anuncios on anuncios.id = produtos.anuncio_id where produtos.nome ilike %?1% and data_inicio <= CURRENT_DATE and data_fim >= CURRENT_DATE and validar is null", nativeQuery = true)

@@ -85,6 +85,7 @@ public class ProdutoController {
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluir(@PathVariable Long id){
 		try {
+			tamanhoRepository.excluirTamanhoProduto(id);
 			produtoRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
@@ -109,10 +110,6 @@ public class ProdutoController {
 		if ( result.hasErrors() ) {
 			return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
 		}
-
-//		ProdutosTamanho cursoTurno = new CursoTurno(); // crio minha list
-//		cursoTurno.setCurso(produto); // set ela
-//		produto.getCursoTurnos().add(cursoTurno);
 
 		produtoRepository.save(produto);
 
